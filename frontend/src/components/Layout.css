@@ -11,6 +11,30 @@
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
+.layout-header-inner {
+  max-width: 52rem;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.layout-brand {
+  color: inherit;
+  text-decoration: none;
+}
+
+.layout-brand:hover {
+  text-decoration: underline;
+}
+
+.layout-brand:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: 2px;
+}
+
 .layout-header h1 {
   font-size: 1.5rem;
   font-weight: 600;
@@ -20,6 +44,28 @@
   font-size: 0.875rem;
   opacity: 0.9;
   margin-top: 0.25rem;
+}
+
+.layout-nav {
+  display: flex;
+  gap: 1.25rem;
+}
+
+.layout-nav a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 0.9375rem;
+  font-weight: 500;
+}
+
+.layout-nav a:hover,
+.layout-nav a[aria-current="page"] {
+  text-decoration: underline;
+}
+
+.layout-nav a:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: 2px;
 }
 
 .layout-main {

@@ -1,37 +1,127 @@
 .home {
-  max-width: 640px;
+  max-width: 52rem;
+  margin: 0 auto;
 }
 
-.home h2 {
-  margin-bottom: 0.5rem;
+/* Hero */
+.home-hero {
+  margin-bottom: 2.5rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.home-hero-title {
+  font-size: clamp(1.5rem, 4vw, 2rem);
+  font-weight: 700;
   color: #0d47a1;
-}
-
-.home p {
+  line-height: 1.25;
   margin-bottom: 1rem;
-  color: #424242;
 }
 
-.home-api-status {
-  margin-top: 2rem;
-  padding: 1rem;
+.home-hero-lead {
+  font-size: 1.125rem;
+  color: #37474f;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* Intro */
+.home-intro {
+  margin-bottom: 2.5rem;
+}
+
+.home-intro p {
+  font-size: 1rem;
+  color: #424242;
+  line-height: 1.7;
+  margin: 0;
+}
+
+/* Section title */
+.home-section-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #1565c0;
+  margin-bottom: 1.25rem;
+}
+
+/* Pillars */
+.home-pillars {
+  margin-bottom: 2.5rem;
+}
+
+.home-pillars-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+}
+
+.home-pillar {
   background: #fff;
+  padding: 1.5rem;
   border-radius: 8px;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+  border-left: 4px solid #0d47a1;
 }
 
-.home-api-status h3 {
-  font-size: 1rem;
+.home-pillar-icon {
+  display: block;
+  color: #0d47a1;
+  font-size: 0.75rem;
   margin-bottom: 0.5rem;
+}
+
+.home-pillar h3 {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #0d47a1;
+  margin-bottom: 0.5rem;
+}
+
+.home-pillar p {
+  font-size: 0.9375rem;
+  color: #546e7a;
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* CTA */
+.home-cta {
+  margin-bottom: 2rem;
+}
+
+.home-cta-text {
+  font-size: 0.9375rem;
   color: #616161;
+  text-align: center;
+  margin: 0;
+  padding: 1rem;
+  background: #e3f2fd;
+  border-radius: 8px;
 }
 
-.status-ok {
+/* Status */
+.home-status {
+  font-size: 0.875rem;
+  color: #616161;
+  padding: 0.5rem 0;
+}
+
+.home-status-label {
+  margin-right: 0.35rem;
+}
+
+.home-status-value {
+  font-weight: 500;
+}
+
+.home-status-ok {
   color: #2e7d32;
-  font-weight: 500;
 }
 
-.status-error {
-  color: #c62828;
-  font-weight: 500;
+.home-status-error {
+  color: #757575;
 }
