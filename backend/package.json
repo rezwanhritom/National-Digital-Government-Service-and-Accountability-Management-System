@@ -1,5 +1,5 @@
 {
-  "name": "ndgsams-server",
+  "name": "ndgsams-backend",
   "version": "1.0.0",
   "description": "Backend API for National Digital Government Service and Accountability Management System",
   "main": "server.js",
