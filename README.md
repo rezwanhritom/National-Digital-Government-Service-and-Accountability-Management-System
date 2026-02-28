@@ -44,10 +44,9 @@ MERN stack project with MVC architecture on the backend.
    npm run install:all
    ```
 
-   Or manually:
+   Or manually (dependencies live only in `frontend` and `backend`—no root `node_modules`):
 
    ```bash
-   npm install
    cd backend && npm install
    cd ../frontend && npm install
    ```
