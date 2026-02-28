@@ -27,9 +27,20 @@ MERN stack project with MVC architecture on the backend.
 │   ├── views/              # Optional server-side views
 │   ├── app.js
 │   └── server.js
+├── docs/                   # Guidelines and documentation
+│   ├── README.md           # Index of docs
+│   ├── coding-standards.md
+│   ├── api-guidelines.md
+│   ├── frontend-guidelines.md
+│   ├── git-workflow.md
+│   └── architecture.md
 ├── package.json            # Root scripts
 └── README.md
 ```
+
+## Documentation
+
+Guidelines and docs are in the **[docs/](docs/)** folder. Start with [docs/README.md](docs/README.md) for an index of coding standards, API and frontend guidelines, git workflow, and architecture.
 
 ## Prerequisites
 
