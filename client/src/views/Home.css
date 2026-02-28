@@ -1,0 +1,37 @@
+.home {
+  max-width: 640px;
+}
+
+.home h2 {
+  margin-bottom: 0.5rem;
+  color: #0d47a1;
+}
+
+.home p {
+  margin-bottom: 1rem;
+  color: #424242;
+}
+
+.home-api-status {
+  margin-top: 2rem;
+  padding: 1rem;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+
+.home-api-status h3 {
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+  color: #616161;
+}
+
+.status-ok {
+  color: #2e7d32;
+  font-weight: 500;
+}
+
+.status-error {
+  color: #c62828;
+  font-weight: 500;
+}

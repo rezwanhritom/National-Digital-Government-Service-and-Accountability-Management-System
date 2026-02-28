@@ -1,0 +1,35 @@
+.layout {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.layout-header {
+  background: #0d47a1;
+  color: #fff;
+  padding: 1rem 2rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.layout-header h1 {
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.tagline {
+  font-size: 0.875rem;
+  opacity: 0.9;
+  margin-top: 0.25rem;
+}
+
+.layout-main {
+  flex: 1;
+  padding: 2rem;
+}
+
+.layout-footer {
+  padding: 1rem 2rem;
+  background: #e0e0e0;
+  text-align: center;
+  color: #616161;
+}
