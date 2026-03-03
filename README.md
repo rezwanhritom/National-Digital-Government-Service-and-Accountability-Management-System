@@ -141,23 +141,31 @@ This project represents a structured, workflow-driven, AI-enhanced full-stack tr
 │       ├── components/
 │       ├── views/
 │       └── services/       # API client
-├── backend/                # Express backend (MVC)
-│   ├── config/             # DB and app config
+├── backend/                # Express API gateway (MVC)
+│   ├── config/
 │   ├── controllers/
 │   ├── middleware/
-│   ├── models/             # Mongoose models
+│   ├── models/
 │   ├── routes/
-│   ├── views/              # Optional server-side views
 │   ├── app.js
 │   └── server.js
-├── docs/                   # Guidelines and documentation
-│   ├── README.md           # Index of docs
+├── ai-services/            # Python FastAPI – ETA, crowding, congestion, incidents
+│   ├── app/
+│   │   ├── api/            # ETA, crowding, incidents (classify/impact), congestion
+│   │   ├── inference/      # Model loading and prediction
+│   │   └── main.py
+│   ├── training/           # Notebooks and scripts for training models
+│   ├── model_registry/     # Persisted models (e.g. .pkl)
+│   ├── requirements.txt
+│   └── README.md
+├── docs/
+│   ├── README.md
 │   ├── coding-standards.md
 │   ├── api-guidelines.md
 │   ├── frontend-guidelines.md
 │   ├── git-workflow.md
 │   └── architecture.md
-├── package.json            # Root scripts
+├── package.json
 └── README.md
 ```
 
@@ -170,3 +178,4 @@ Guidelines and docs are in **[docs/](docs/)**. See [docs/README.md](docs/README.
 - **Backend:** `npm run backend`
 - **Frontend:** `npm run frontend`
 - **Both:** `npm run dev`
+- **AI services:** see [ai-services/README.md](ai-services/README.md) (Python, FastAPI; run separately on e.g. port 8000)

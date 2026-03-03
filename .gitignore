@@ -24,3 +24,12 @@ dist-ssr
 *.sw?
 
 .env
+
+# Python / AI services
+__pycache__
+*.py[cod]
+*.pkl
+.venv
+venv
+ai-services/model_registry/*.pkl
+**/.ipynb_checkpoints
