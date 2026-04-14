@@ -2,6 +2,7 @@ import 'dotenv/config';
 import express from 'express';
 import cors from 'cors';
 import routes from './routes/index.js';
+import plannerRoutes from './routes/plannerRoutes.js';
 import { notFound, errorHandler } from './middleware/errorHandler.js';
 
 const app = express();
@@ -11,6 +12,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 app.use('/api', routes);
+app.use('/api/planner', plannerRoutes);
 
 app.get('/health', (req, res) => {
   res.json({ status: 'OK' });
