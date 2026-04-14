@@ -7,18 +7,17 @@ import {
   MapPin,
   Navigation,
   ShieldAlert,
-  Sparkles,
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const easeOut = [0.22, 1, 0.36, 1];
 
 const fadeUp = {
-  hidden: { opacity: 0, y: 28 },
+  hidden: { opacity: 0, y: 20 },
   show: (i = 0) => ({
     opacity: 1,
     y: 0,
-    transition: { delay: i * 0.08, duration: 0.55, ease: easeOut },
+    transition: { delay: i * 0.06, duration: 0.45, ease: easeOut },
   }),
 };
 
@@ -26,28 +25,31 @@ const stagger = {
   hidden: { opacity: 0 },
   show: {
     opacity: 1,
-    transition: { staggerChildren: 0.1, delayChildren: 0.12 },
+    transition: { staggerChildren: 0.08, delayChildren: 0.06 },
   },
 };
 
 const cardReveal = {
-  hidden: { opacity: 0, y: 32 },
+  hidden: { opacity: 0, y: 24 },
   show: {
     opacity: 1,
     y: 0,
-    transition: { type: 'spring', stiffness: 320, damping: 28 },
+    transition: { type: 'spring', stiffness: 380, damping: 32 },
   },
 };
 
-const viewportOnce = { once: true, margin: '-60px' };
+const viewportOnce = { once: true, margin: '-48px' };
 
-function FullBleed({ children, className = '' }) {
+const cardBase =
+  'relative rounded-2xl border border-white/10 bg-white/5 p-8 shadow-lg backdrop-blur-md transition duration-300 hover:-translate-y-2 hover:shadow-xl';
+
+function PageSection({ children, className = '' }) {
   return (
-    <div
-      className={`relative left-1/2 w-screen -translate-x-1/2 ${className}`.trim()}
+    <section
+      className={`w-full max-w-full overflow-x-hidden py-24 md:py-32 ${className}`.trim()}
     >
-      <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">{children}</div>
-    </div>
+      {children}
+    </section>
   );
 }
 
@@ -57,24 +59,21 @@ const features = [
     title: 'Smart Planner',
     description:
       'Multi-route commute search with segment ETAs and crowding fused into one clear recommendation.',
-    accent: 'from-cyan-500/20 to-blue-600/10',
-    ring: 'ring-cyan-400/25',
+    iconBg: 'bg-primary/15 text-primary ring-1 ring-primary/20',
   },
   {
     icon: ShieldAlert,
     title: 'Incident Detection',
     description:
       'Surface disruptions faster with AI-assisted classification so operators and riders stay ahead.',
-    accent: 'from-violet-500/20 to-fuchsia-600/10',
-    ring: 'ring-violet-400/25',
+    iconBg: 'bg-accent/10 text-accent ring-1 ring-accent/20',
   },
   {
     icon: Activity,
     title: 'Congestion Intelligence',
     description:
       'Understand corridor pressure by time and place, built for Dhaka-scale density and volatility.',
-    accent: 'from-amber-500/15 to-rose-600/10',
-    ring: 'ring-amber-400/20',
+    iconBg: 'bg-indigo-500/10 text-indigo-300 ring-1 ring-indigo-400/15',
   },
 ];
 
@@ -101,75 +100,54 @@ const steps = [
 
 function Home() {
   return (
-    <div className="relative -mx-4 text-slate-100 sm:-mx-6 lg:-mx-8">
-      <div className="bg-red-500 p-6 text-center text-white">
-        Tailwind is working
-      </div>
-      {/* Hero */}
-      <FullBleed className="min-h-[calc(100vh-6.5rem)] bg-gradient-to-b from-slate-950 via-indigo-950/90 to-slate-950 pb-20 pt-6 sm:min-h-[calc(100vh-7rem)] sm:pt-10">
-        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_100%_60%_at_50%_-10%,rgba(99,102,241,0.45),transparent_55%)]" />
-        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_80%_60%,rgba(168,85,247,0.18),transparent_45%)]" />
+    <div className="w-full max-w-full overflow-x-hidden text-slate-200">
+      <section className="relative flex w-full max-w-full min-h-[calc(100dvh-5rem)] items-center justify-center overflow-x-hidden bg-darkbg">
+        <div className="absolute inset-0 bg-gradient-to-br from-[#020617] via-[#0f172a] to-[#020617]" />
+        <div
+          className="pointer-events-none absolute left-4 top-8 h-64 w-64 rounded-full bg-primary/15 blur-2xl md:left-12 md:h-80 md:w-80"
+          style={{ animation: 'pulseGlow 6s ease-in-out infinite' }}
+        />
+        <div
+          className="pointer-events-none absolute right-4 top-24 h-56 w-56 rounded-full bg-cyan-400/20 blur-2xl md:right-12 md:h-72 md:w-72"
+          style={{ animation: 'pulseGlow 6s ease-in-out infinite' }}
+        />
 
-        <motion.div
-          className="relative flex min-h-[calc(100vh-8rem)] flex-col items-center justify-center py-12 text-center sm:py-16"
-          variants={stagger}
-          initial="hidden"
-          animate="show"
-        >
-          <motion.div
-            variants={fadeUp}
-            custom={0}
-            className="mb-6 inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-4 py-1.5 text-xs font-medium uppercase tracking-[0.2em] text-indigo-200/90 backdrop-blur-md sm:text-sm"
-          >
-            <Sparkles className="h-3.5 w-3.5 text-amber-300" aria-hidden />
+        <div className="relative z-10 mx-auto w-full max-w-4xl text-center">
+          <div className="mb-5 inline-block rounded-full border border-white/10 bg-white/5 px-4 py-1.5 text-[11px] font-medium uppercase tracking-[0.2em] text-slate-400 backdrop-blur-md">
             AI transit platform
-          </motion.div>
+          </div>
 
-          <motion.h1
-            variants={fadeUp}
-            custom={1}
-            className="max-w-4xl text-balance text-4xl font-bold tracking-tight text-white sm:text-5xl md:text-6xl lg:text-[3.35rem] lg:leading-[1.1]"
-          >
-            AI-Powered Smart Transit for Dhaka
-          </motion.h1>
+          <h1 className="text-5xl font-bold leading-[1.1] tracking-tight text-white md:text-7xl">
+            AI-Powered{' '}
+            <span className="bg-gradient-to-r from-indigo-400 to-cyan-400 bg-clip-text text-transparent">
+              Smart Transit
+            </span>{' '}
+            for Dhaka
+          </h1>
 
-          <motion.p
-            variants={fadeUp}
-            custom={2}
-            className="mt-6 max-w-2xl text-pretty text-base leading-relaxed text-slate-300 sm:text-lg md:text-xl"
-          >
+          <p className="mx-auto mt-6 max-w-xl text-lg text-slate-400 md:text-xl">
             Plan routes, avoid congestion, and travel smarter with real-time AI
             insights.
-          </motion.p>
+          </p>
 
-          <motion.div
-            variants={fadeUp}
-            custom={3}
-            className="mt-10 flex flex-col items-stretch justify-center gap-4 sm:flex-row sm:items-center"
-          >
-            <motion.div whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.98 }}>
-              <Link
-                to="/planner"
-                className="inline-flex w-full items-center justify-center gap-2 rounded-2xl bg-gradient-to-r from-indigo-500 to-violet-600 px-8 py-4 text-base font-semibold text-white shadow-xl shadow-indigo-900/40 ring-1 ring-white/20 transition hover:from-indigo-400 hover:to-violet-500 sm:w-auto"
-              >
-                Plan Your Route
-                <ArrowRight className="h-5 w-5" aria-hidden />
-              </Link>
-            </motion.div>
-            <motion.div whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.98 }}>
-              <Link
-                to="/dashboard"
-                className="inline-flex w-full items-center justify-center rounded-2xl border border-white/20 bg-white/10 px-8 py-4 text-base font-semibold text-white shadow-lg backdrop-blur-md transition hover:border-white/30 hover:bg-white/15 sm:w-auto"
-              >
-                View Dashboard
-              </Link>
-            </motion.div>
-          </motion.div>
-        </motion.div>
-      </FullBleed>
+          <div className="mt-10 flex w-full max-w-md flex-col items-stretch justify-center gap-3 sm:mx-auto sm:max-w-none sm:flex-row sm:items-center sm:justify-center sm:gap-4">
+            <Link
+              to="/planner"
+              className="inline-flex items-center justify-center rounded-lg bg-primary px-6 py-3 text-sm font-semibold text-white transition hover:bg-indigo-500"
+            >
+              Plan Your Route &rarr;
+            </Link>
+            <Link
+              to="/dashboard"
+              className="inline-flex items-center justify-center rounded-lg border border-white/10 px-6 py-3 text-sm font-semibold text-slate-300 transition hover:bg-white/5"
+            >
+              View Dashboard
+            </Link>
+          </div>
+        </div>
+      </section>
 
-      {/* Features */}
-      <FullBleed className="border-y border-white/10 bg-slate-950/80 py-20 backdrop-blur-sm">
+      <PageSection className="border-y border-white/10 bg-[#030a1f]">
         <motion.div
           initial="hidden"
           whileInView="show"
@@ -179,13 +157,13 @@ function Home() {
         >
           <motion.p
             variants={fadeUp}
-            className="text-xs font-semibold uppercase tracking-[0.25em] text-indigo-300/90"
+            className="text-xs font-semibold uppercase tracking-[0.2em] text-accent/90"
           >
             Capabilities
           </motion.p>
           <motion.h2
             variants={fadeUp}
-            className="mt-3 text-3xl font-bold tracking-tight text-white sm:text-4xl"
+            className="mt-3 text-4xl font-bold tracking-tight text-white md:text-6xl"
           >
             Built for complex urban mobility
           </motion.h2>
@@ -199,117 +177,112 @@ function Home() {
         </motion.div>
 
         <motion.ul
-          className="mt-14 grid gap-6 md:grid-cols-3"
+          className="mt-14 grid grid-cols-1 gap-6 md:grid-cols-2 md:gap-8 lg:grid-cols-3"
           initial="hidden"
           whileInView="show"
           viewport={viewportOnce}
-          variants={{ show: { transition: { staggerChildren: 0.12 } } }}
+          variants={{ show: { transition: { staggerChildren: 0.1 } } }}
         >
           {features.map((f) => (
             <motion.li
               key={f.title}
               variants={cardReveal}
-              className={`group relative overflow-hidden rounded-3xl border border-white/10 bg-gradient-to-br ${f.accent} p-8 shadow-xl shadow-black/20 ring-1 ${f.ring} backdrop-blur-xl transition duration-300 hover:border-white/20 hover:shadow-2xl`}
+              className={cardBase}
             >
-              <div className="absolute -right-8 -top-8 h-32 w-32 rounded-full bg-white/5 blur-2xl transition group-hover:bg-white/10" />
-              <div className="relative flex h-12 w-12 items-center justify-center rounded-2xl border border-white/15 bg-white/10 text-white shadow-inner">
-                <f.icon className="h-6 w-6" strokeWidth={1.75} aria-hidden />
+              <div
+                className={`flex h-11 w-11 items-center justify-center rounded-xl ${f.iconBg}`}
+              >
+                <f.icon className="h-5 w-5" strokeWidth={1.75} aria-hidden />
               </div>
-              <h3 className="relative mt-6 text-xl font-semibold text-white">
-                {f.title}
-              </h3>
-              <p className="relative mt-3 text-sm leading-relaxed text-slate-300">
+              <h3 className="mt-6 text-lg font-semibold text-white">{f.title}</h3>
+              <p className="mt-3 text-sm leading-relaxed text-slate-400">
                 {f.description}
               </p>
             </motion.li>
           ))}
         </motion.ul>
-      </FullBleed>
+      </PageSection>
 
-      {/* How it works */}
-      <FullBleed className="relative overflow-hidden py-20">
-        <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-transparent via-indigo-950/40 to-slate-950" />
+      <PageSection className="relative bg-darkbg">
+        <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-transparent via-slate-900/40 to-darkbg" />
         <div className="relative">
           <motion.div
             className="text-center"
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={viewportOnce}
-            transition={{ duration: 0.5, ease: easeOut }}
+            transition={{ duration: 0.45, ease: easeOut }}
           >
-            <p className="text-xs font-semibold uppercase tracking-[0.25em] text-violet-300/90">
+            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-primary/90">
               How it works
             </p>
-            <h2 className="mt-3 text-3xl font-bold text-white sm:text-4xl">
+            <h2 className="mt-3 text-4xl font-bold text-white md:text-6xl">
               From query to commute in three steps
             </h2>
           </motion.div>
 
           <motion.ol
-            className="mt-14 grid gap-8 md:grid-cols-3"
+            className="mt-14 grid grid-cols-1 gap-6 md:grid-cols-2 md:gap-8 lg:grid-cols-3"
             initial="hidden"
             whileInView="show"
             viewport={viewportOnce}
-            variants={{ show: { transition: { staggerChildren: 0.14 } } }}
+            variants={{ show: { transition: { staggerChildren: 0.1 } } }}
           >
-            {steps.map((s, idx) => (
+            {steps.map((s) => (
               <motion.li
                 key={s.step}
                 variants={cardReveal}
-                className="relative rounded-3xl border border-white/10 bg-white/[0.06] p-8 text-center shadow-lg backdrop-blur-xl"
+                className={`${cardBase} text-center`}
               >
-                {idx < steps.length - 1 && (
-                  <div
-                    className="absolute left-[calc(100%-1rem)] top-1/2 hidden h-px w-[calc(100%-2rem)] -translate-y-1/2 bg-gradient-to-r from-white/25 to-transparent md:block"
-                    aria-hidden
-                  />
-                )}
-                <span className="text-xs font-bold uppercase tracking-widest text-indigo-300/80">
+                <span className="text-[11px] font-bold uppercase tracking-widest text-slate-500">
                   {s.step}
                 </span>
-                <div className="mx-auto mt-4 flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br from-indigo-500/30 to-violet-600/20 ring-1 ring-white/15">
-                  <s.icon className="h-7 w-7 text-indigo-100" aria-hidden />
+                <div className="mx-auto mt-4 flex h-12 w-12 items-center justify-center rounded-xl bg-primary/10 ring-1 ring-primary/20">
+                  <s.icon className="h-6 w-6 text-primary" aria-hidden />
                 </div>
-                <h3 className="mt-5 text-lg font-semibold text-white">{s.title}</h3>
+                <h3 className="mt-5 text-base font-semibold text-white">{s.title}</h3>
                 <p className="mt-2 text-sm leading-relaxed text-slate-400">{s.copy}</p>
               </motion.li>
             ))}
           </motion.ol>
         </div>
-      </FullBleed>
+      </PageSection>
 
-      {/* CTA */}
-      <FullBleed className="py-24">
+      <PageSection className="pb-8 md:pb-12">
         <motion.div
-          initial={{ opacity: 0, scale: 0.97 }}
-          whileInView={{ opacity: 1, scale: 1 }}
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
           viewport={viewportOnce}
-          transition={{ duration: 0.55, ease: easeOut }}
-          className="relative overflow-hidden rounded-[2rem] border border-white/15 bg-gradient-to-br from-indigo-600/40 via-violet-700/30 to-slate-900/80 p-12 text-center shadow-2xl shadow-indigo-950/50 backdrop-blur-xl sm:p-16"
+          transition={{ duration: 0.45, ease: easeOut }}
+          className={`relative overflow-hidden ${cardBase} px-8 py-14 text-center md:px-12 md:py-16`}
         >
-          <div className="pointer-events-none absolute -left-20 top-0 h-64 w-64 rounded-full bg-violet-500/30 blur-3xl" />
-          <div className="pointer-events-none absolute -bottom-24 right-0 h-72 w-72 rounded-full bg-cyan-500/20 blur-3xl" />
-          <h2 className="relative text-3xl font-bold tracking-tight text-white sm:text-4xl">
+          <div className="pointer-events-none absolute inset-0 overflow-hidden rounded-2xl">
+            <div className="absolute -right-8 top-0 h-40 w-40 rounded-full bg-primary/10 blur-2xl" />
+            <div className="absolute -bottom-8 left-8 h-36 w-36 rounded-full bg-accent/10 blur-2xl" />
+          </div>
+          <h2 className="relative text-4xl font-bold tracking-tight text-white md:text-5xl">
             Start Planning Your Commute Today
           </h2>
-          <p className="relative mx-auto mt-4 max-w-lg text-slate-200/90">
+          <p className="relative mx-auto mt-4 max-w-lg text-sm text-slate-400 md:text-base">
             {`Join riders using AI-backed ETAs and crowding signals tuned for Dhaka's corridors.`}
           </p>
-          <motion.div
-            className="relative mt-10 flex justify-center"
-            whileHover={{ scale: 1.04 }}
-            whileTap={{ scale: 0.98 }}
-          >
+          <div className="relative mt-8 flex flex-col items-stretch justify-center gap-3 sm:flex-row sm:items-center sm:justify-center">
             <Link
               to="/planner"
-              className="inline-flex items-center gap-2 rounded-2xl bg-white px-8 py-4 text-base font-semibold text-indigo-950 shadow-xl transition hover:bg-slate-100"
+              className="inline-flex items-center justify-center gap-2 rounded-lg bg-primary px-6 py-3 text-sm font-semibold text-white transition hover:bg-indigo-500"
             >
               Go to Planner
-              <ArrowRight className="h-5 w-5" aria-hidden />
+              <ArrowRight className="h-4 w-4" aria-hidden />
             </Link>
-          </motion.div>
+            <Link
+              to="/dashboard"
+              className="inline-flex items-center justify-center rounded-lg border border-white/10 px-6 py-3 text-sm font-semibold text-slate-300 transition hover:bg-white/5"
+            >
+              View Dashboard
+            </Link>
+          </div>
         </motion.div>
-      </FullBleed>
+      </PageSection>
     </div>
   );
 }

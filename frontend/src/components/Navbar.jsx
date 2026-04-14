@@ -1,5 +1,6 @@
-import { motion } from 'framer-motion';
-import { NavLink, Link } from 'react-router-dom';
+import { useState } from 'react';
+import { Menu, X } from 'lucide-react';
+import { Link, NavLink } from 'react-router-dom';
 
 const links = [
   { to: '/', label: 'Home' },
@@ -8,46 +9,80 @@ const links = [
 ];
 
 function Navbar() {
+  const [open, setOpen] = useState(false);
+
   return (
-    <header className="fixed top-0 z-50 w-full px-4 pt-4 sm:px-6 lg:px-8">
-      <div className="mx-auto flex w-full max-w-7xl flex-wrap items-center justify-between gap-3 rounded-2xl border border-white/15 bg-slate-950/40 px-4 py-3 shadow-lg shadow-indigo-950/30 backdrop-blur-xl sm:flex-nowrap sm:gap-4 sm:px-5">
-        <NavLink
+    <nav className="fixed left-0 top-0 z-50 w-full max-w-full border-b border-white/10 bg-white/5 backdrop-blur-xl">
+      <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
+        <Link
           to="/"
-          className="shrink-0 text-lg font-semibold tracking-tight text-white transition hover:text-indigo-200"
+          className="font-display text-xl font-semibold tracking-tight text-white"
+          onClick={() => setOpen(false)}
         >
           Dhaka Smart Transit
-        </NavLink>
-        <nav
-          className="flex items-center gap-1 sm:gap-2"
-          aria-label="Primary navigation"
-        >
+        </Link>
+
+        <div className="hidden items-center gap-8 md:flex">
           {links.map(({ to, label }) => (
-            <motion.div key={to} whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.98 }}>
+            <NavLink
+              key={to}
+              to={to}
+              className={({ isActive }) =>
+                `text-sm text-slate-300 transition hover:text-white ${
+                  isActive ? 'font-medium text-white' : ''
+                }`
+              }
+            >
+              {label}
+            </NavLink>
+          ))}
+          <Link
+            to="/planner"
+            className="rounded-lg bg-primary px-4 py-2 text-sm font-semibold text-white transition hover:bg-indigo-500"
+          >
+            Get Started
+          </Link>
+        </div>
+
+        <button
+          type="button"
+          className="inline-flex items-center justify-center rounded-lg border border-white/10 p-2 text-slate-200 transition hover:bg-white/5 md:hidden"
+          aria-expanded={open}
+          aria-label={open ? 'Close menu' : 'Open menu'}
+          onClick={() => setOpen((v) => !v)}
+        >
+          {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+        </button>
+      </div>
+
+      {open ? (
+        <div className="w-full max-w-full border-t border-white/10 bg-darkbg/95 px-6 py-4 backdrop-blur-md md:hidden">
+          <div className="mx-auto flex max-w-7xl flex-col gap-1">
+            {links.map(({ to, label }) => (
               <NavLink
+                key={to}
                 to={to}
+                onClick={() => setOpen(false)}
                 className={({ isActive }) =>
-                  `rounded-xl px-3 py-2 text-sm font-medium transition sm:px-4 ${
-                    isActive
-                      ? 'bg-white/15 text-white ring-1 ring-white/20'
-                      : 'text-slate-300 hover:bg-white/10 hover:text-white'
+                  `rounded-lg px-3 py-3 text-sm text-slate-300 transition hover:bg-white/5 hover:text-white ${
+                    isActive ? 'bg-white/10 font-medium text-white' : ''
                   }`
                 }
               >
                 {label}
               </NavLink>
-            </motion.div>
-          ))}
-          <motion.div whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.98 }}>
+            ))}
             <Link
               to="/planner"
-              className="ml-1 inline-flex items-center rounded-xl bg-gradient-to-r from-indigo-500 to-violet-600 px-4 py-2 text-sm font-semibold text-white shadow-md shadow-indigo-900/40 ring-1 ring-white/15 transition hover:from-indigo-400 hover:to-violet-500 sm:ml-2"
+              onClick={() => setOpen(false)}
+              className="mt-2 rounded-lg bg-primary px-4 py-3 text-center text-sm font-semibold text-white transition hover:bg-indigo-500"
             >
               Get Started
             </Link>
-          </motion.div>
-        </nav>
-      </div>
-    </header>
+          </div>
+        </div>
+      ) : null}
+    </nav>
   );
 }
 

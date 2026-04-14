@@ -4,10 +4,9 @@ import Navbar from './Navbar';
 
 function Layout() {
   return (
-    <div className="min-h-screen bg-slate-950 text-slate-100">
-      <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_top,_rgba(56,189,248,0.15),_transparent_50%),radial-gradient(circle_at_80%_20%,_rgba(16,185,129,0.18),_transparent_40%)]" />
+    <div className="min-h-screen w-full max-w-full overflow-x-hidden bg-darkbg text-slate-200">
       <Navbar />
-      <main className="mx-auto w-full max-w-7xl px-4 pb-12 pt-28 sm:px-6 lg:px-8">
+      <main className="mx-auto w-full max-w-7xl px-6 pb-12 pt-24 md:px-12 md:pt-28">
         <Outlet />
       </main>
       <Footer />
