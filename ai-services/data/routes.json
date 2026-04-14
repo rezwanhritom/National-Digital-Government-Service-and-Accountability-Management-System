@@ -1,0 +1,127 @@
+[
+  {
+    "name": "Alif Paribahan",
+    "stops": [
+      "Shyamoli",
+      "Agargaon",
+      "Farmgate",
+      "Karwan Bazar",
+      "Mohakhali",
+      "Gulshan 1",
+      "Badda",
+      "Rampura",
+      "Banasree",
+      "Demra"
+    ]
+  },
+  {
+    "name": "BRTC",
+    "stops": [
+      "Mirpur 10",
+      "Kazipara",
+      "Agargaon",
+      "Farmgate",
+      "Shahbag",
+      "Paltan",
+      "Motijheel"
+    ]
+  },
+  {
+    "name": "Himachal",
+    "stops": [
+      "Uttara Sector 10",
+      "Airport",
+      "Banani",
+      "Mohakhali",
+      "Tejgaon",
+      "Karwan Bazar",
+      "Farmgate",
+      "Dhanmondi 27",
+      "Mohammadpur"
+    ]
+  },
+  {
+    "name": "Shatabdi",
+    "stops": [
+      "Mirpur 2",
+      "Mirpur 10",
+      "Shewrapara",
+      "Agargaon",
+      "Farmgate",
+      "Shahbag",
+      "Paltan",
+      "Motijheel"
+    ]
+  },
+  {
+    "name": "Green Dhaka",
+    "stops": [
+      "Badda",
+      "Gulshan 1",
+      "Gulshan 2",
+      "Banani",
+      "Kakoli",
+      "Airport",
+      "Uttara Sector 12"
+    ]
+  },
+  {
+    "name": "Projapati",
+    "stops": [
+      "Mohammadpur",
+      "Dhanmondi 32",
+      "Science Lab",
+      "Shahbag",
+      "Paltan",
+      "Motijheel"
+    ]
+  },
+  {
+    "name": "Raja City",
+    "stops": [
+      "Mirpur 10",
+      "Agargaon",
+      "Farmgate",
+      "Karwan Bazar",
+      "Mohakhali",
+      "Banani",
+      "Airport"
+    ]
+  },
+  {
+    "name": "Supravat",
+    "stops": [
+      "Banasree",
+      "Rampura",
+      "Malibagh",
+      "Mouchak",
+      "Paltan",
+      "Motijheel"
+    ]
+  },
+  {
+    "name": "Ababil",
+    "stops": [
+      "Uttara House Building",
+      "Airport",
+      "Kuril",
+      "Bashundhara",
+      "Notun Bazar",
+      "Badda",
+      "Rampura"
+    ]
+  },
+  {
+    "name": "Borak Transport",
+    "stops": [
+      "Demra",
+      "Banasree",
+      "Rampura",
+      "Malibagh",
+      "Mouchak",
+      "Paltan",
+      "Shahbag",
+      "Farmgate"
+    ]
+  }
+]

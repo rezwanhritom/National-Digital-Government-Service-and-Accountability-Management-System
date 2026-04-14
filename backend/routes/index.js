@@ -1,11 +1,10 @@
 import { Router } from 'express';
 import { classifyIncident, getCrowding, getETA, getImpact } from '../services/aiService.js';
-// import exampleRoutes from './exampleRoutes.js';
+import plannerRoutes from './plannerRoutes.js';
 
 const router = Router();
 
-// Mount route modules
-// router.use('/examples', exampleRoutes);
+router.use('/planner', plannerRoutes);
 
 router.get('/health', (req, res) => {
   res.json({ status: 'OK' });

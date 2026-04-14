@@ -1,13 +1,4 @@
 """
-Lightweight ETA endpoint used by backend integration tests.
+POST /eta is implemented in app.main (real ML inference).
+This module is kept for package layout; do not register a duplicate router here.
 """
-from fastapi import APIRouter
-from random import randint
-
-router = APIRouter()
-
-
-@router.post("")
-def predict_eta(payload: dict):
-    _ = payload
-    return {"eta": randint(8, 55)}

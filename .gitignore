@@ -29,6 +29,8 @@ dist-ssr
 __pycache__
 *.py[cod]
 *.pkl
+!ai-services/models/*.pkl
+!ai-services/encoders/*.pkl
 .venv
 venv
 ai-services/model_registry/*.pkl

@@ -1,13 +1,4 @@
 """
-Crowding endpoint returning a mock crowd level.
+POST /crowding is implemented in app.main (real ML inference).
+This module is kept for package layout; do not register a duplicate router here.
 """
-from fastapi import APIRouter
-from random import choice
-
-router = APIRouter()
-
-
-@router.post("")
-def predict_crowding(payload: dict):
-    _ = payload
-    return {"level": choice(["Low", "Medium", "High"])}
