@@ -1,0 +1,9 @@
+PORT=5000
+MONGO_URI=mongodb+srv://rezwanhritom:M6rMNSsnmYAkZfTK@cluster0.nw6zeuq.mongodb.net/?appName=Cluster0
+AI_SERVICE_URL=http://localhost:8000
+
+
+SMTP_HOST=smtp.gmail.com
+SMTP_PORT=587
+SMTP_USER=abrar.mojahid.rafi1@gmail.com
+SMTP_PASS=syyjqetlnlforyzw
