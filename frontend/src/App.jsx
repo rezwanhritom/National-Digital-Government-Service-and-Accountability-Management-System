@@ -1,16 +1,23 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 import Layout from './components/Layout';
-import Home from './views/Home';
+import Dashboard from './pages/Dashboard';
+import Home from './pages/Home';
+import Incident from './pages/Incident';
+import Planner from './pages/Planner';
 
 function App() {
   return (
-    <Router>
-      <Layout>
-        <Routes>
+    <BrowserRouter>
+      <Routes>
+        <Route element={<Layout />}>
           <Route path="/" element={<Home />} />
-        </Routes>
-      </Layout>
-    </Router>
+          <Route path="/planner" element={<Planner />} />
+          <Route path="/incident" element={<Incident />} />
+          <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="*" element={<Navigate to="/" replace />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
   );
 }
 

@@ -1,27 +1,16 @@
-import { Link, useLocation } from 'react-router-dom';
-import './Layout.css';
+import { Outlet } from 'react-router-dom';
+import Footer from './Footer';
+import Navbar from './Navbar';
 
-function Layout({ children }) {
-  const location = useLocation();
-  const isHome = location.pathname === '/';
-
+function Layout() {
   return (
-    <div className="layout">
-      <header className="layout-header">
-        <div className="layout-header-inner">
-          <Link to="/" className="layout-brand">
-            <h1>NDGSAMS</h1>
-            <p className="tagline">National Digital Government Service and Accountability Management System</p>
-          </Link>
-          <nav className="layout-nav" aria-label="Main">
-            <Link to="/" aria-current={isHome ? 'page' : undefined}>Home</Link>
-          </nav>
-        </div>
-      </header>
-      <main className="layout-main">{children}</main>
-      <footer className="layout-footer">
-        <small>&copy; NDGSAMS</small>
-      </footer>
+    <div className="min-h-screen bg-slate-950 text-slate-100">
+      <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_top,_rgba(56,189,248,0.15),_transparent_50%),radial-gradient(circle_at_80%_20%,_rgba(16,185,129,0.18),_transparent_40%)]" />
+      <Navbar />
+      <main className="mx-auto w-full max-w-7xl px-4 pb-12 pt-28 sm:px-6 lg:px-8">
+        <Outlet />
+      </main>
+      <Footer />
     </div>
   );
 }
