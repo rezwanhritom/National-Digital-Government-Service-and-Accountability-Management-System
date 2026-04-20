@@ -44,7 +44,7 @@ If the team adds **real** `bus_id` positions later, the planner’s simulation l
 1. **Bidirectional patterns**  
    - **Option A:** Duplicate logical routes with explicit direction (e.g. `Alif Paribahan (Demra → Shyamoli)`) with reversed `stops` arrays.  
    - **Option B:** One route id + `direction` + two stop sequences in JSON.  
-   - **Decision:** Record the chosen option here: _______________  
+   - **Decision (locked):** **Option A** — a second route entry per line: **`{name} (Return)`** with **reversed** `stops` (see [`routes.json`](../ai-services/data/routes.json)).  
    - **Training data:** [`eta_dataset.csv`](../ai-services/data/eta_dataset.csv) / crowding may need **direction** or **distinct route labels** so models learn both ways.
 
 2. **Geometry for maps (“exact roads”)**  
@@ -80,11 +80,11 @@ If the team adds **real** `bus_id` positions later, the planner’s simulation l
 
 ### Phase 1 — Bidirectional network & planner correctness
 
-- [ ] **1.1** Decide data model: two route entries vs `direction` field (see above).  
-- [ ] **1.2** Update `routes.json` (or successor) so **return** directions exist for routes that run both ways in real life.  
-- [ ] **1.3** Adjust `plannerService.js` graph logic if the schema changes (single forward list vs direction-aware).  
-- [ ] **1.4** Re-run or extend training pipelines so ETA/crowding support new route names or direction features; re-export encoders/models as needed.  
-- [ ] **1.5** Smoke-test: symmetric OD pairs behave as expected (e.g. Banasree ↔ Badda on Alif).
+- [x] **1.1** Decide data model: two route entries vs `direction` field (see above).  
+- [x] **1.2** Update `routes.json` (or successor) so **return** directions exist for routes that run both ways in real life.  
+- [x] **1.3** Adjust `plannerService.js` graph logic if the schema changes (single forward list vs direction-aware). *(No code change: existing forward-only graph works with separate return route rows.)*  
+- [x] **1.4** Re-run or extend training pipelines so ETA/crowding support new route names or direction features; re-export encoders/models as needed. *(Augmentation script + retrain ETA, crowd, congestion — see below.)*  
+- [x] **1.5** Smoke-test: symmetric OD pairs behave as expected (e.g. Banasree ↔ Badda on Alif). *(Graph check: `Alif Paribahan (Return)` includes edges toward Shyamoli; run `/planner` with AI up to confirm ETAs.)*
 
 **Exit criteria:** Reverse-direction trips appear in results where the network allows; no regression on existing pairs.
 

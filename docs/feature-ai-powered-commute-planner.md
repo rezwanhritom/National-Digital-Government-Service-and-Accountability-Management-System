@@ -1,6 +1,6 @@
 # AI-powered commute planner (simple guide)
 
-**What users get:** Pick origin stop, destination stop, and hour. The app suggests bus routes (can include transfers), total time (ETA), how crowded it might be, and short explanations.
+**What users get:** Pick origin stop, destination stop, and hour. The app suggests bus routes (can include transfers), total time (ETA), how crowded it might be, and short explanations. **Return directions** are modeled as separate routes named `{Route} (Return)` with reversed stop order so trips such as Banasree → Badda can use the same line’s backward path.
 
 ---
 
@@ -48,7 +48,7 @@ flowchart TB
 
 | File | Role |
 |------|------|
-| [`ai-services/data/routes.json`](../ai-services/data/routes.json) | Route names and stop order — **the network** the planner searches |
+| [`ai-services/data/routes.json`](../ai-services/data/routes.json) | Route names and stop order — **the network** the planner searches (includes **`… (Return)`** rows for reverse directions) |
 
 ### Training data (CSV)
 
@@ -79,6 +79,7 @@ flowchart TB
 |------|------|
 | [`ai-services/training/train_eta.py`](../ai-services/training/train_eta.py) | Builds ETA model + route/stop/traffic encoders from `eta_dataset.csv` |
 | [`ai-services/training/train_crowd.py`](../ai-services/training/train_crowd.py) | Builds crowding model + encoders from `crowd_dataset.csv` |
+| [`ai-services/training/augment_return_training_data.py`](../ai-services/training/augment_return_training_data.py) | After changing `routes.json`, augments ETA + crowd CSV rows for **`(Return)`** routes (idempotent); then retrain ETA + crowd + congestion |
 | [`ai-services/training/paths.py`](../ai-services/training/paths.py) | Imports paths from `ml_paths.py` for scripts |
 | [`ai-services/ml_paths.py`](../ai-services/ml_paths.py) | Single place for all `.pkl` and `.csv` paths |
 
