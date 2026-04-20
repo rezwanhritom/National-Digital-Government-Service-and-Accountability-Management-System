@@ -1,0 +1,13 @@
+category,severity,affected_route_count,hour,delay_minutes,recovery_minutes
+accident,HIGH,3,8,45,120
+accident,MEDIUM,2,12,25,60
+breakdown,HIGH,2,9,35,90
+breakdown,MEDIUM,1,15,18,45
+overcrowding,HIGH,4,18,15,30
+overcrowding,MEDIUM,2,7,10,25
+road_blockage,HIGH,5,8,40,100
+road_blockage,MEDIUM,3,17,22,55
+reckless_driving,HIGH,1,20,12,40
+reckless_driving,MEDIUM,1,11,8,25
+other,LOW,1,6,5,15
+other,MEDIUM,1,14,10,20

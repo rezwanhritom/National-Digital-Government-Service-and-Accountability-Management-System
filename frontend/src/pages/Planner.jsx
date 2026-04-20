@@ -41,6 +41,7 @@ function Planner() {
   const [origin, setOrigin] = useState('');
   const [destination, setDestination] = useState('');
   const [hour, setHour] = useState('');
+  const [timeType, setTimeType] = useState('leave_after');
   const [results, setResults] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
@@ -106,6 +107,7 @@ function Planner() {
         origin: origin.trim(),
         destination: destination.trim(),
         hour: h,
+        time_type: timeType,
       });
       const list = Array.isArray(data?.data) ? data.data : [];
       setResults(list);
@@ -173,6 +175,25 @@ function Planner() {
                       {name}
                     </option>
                   ))}
+                </select>
+              </label>
+
+              <label className="block">
+                <span className="mb-2 block text-sm font-medium text-slate-300">
+                  Trip time mode
+                </span>
+                <select
+                  value={timeType}
+                  onChange={(e) => setTimeType(e.target.value)}
+                  disabled={loading}
+                  className={inputClass}
+                >
+                  <option value="leave_after" className="bg-slate-900">
+                    Leave after (hour = travel context for traffic & crowding)
+                  </option>
+                  <option value="arrive_by" className="bg-slate-900">
+                    Arrive by (hour = latest arrival; only feasible options shown)
+                  </option>
                 </select>
               </label>
 
@@ -257,7 +278,9 @@ function Planner() {
             <div className="flex min-h-[280px] items-center justify-center rounded-2xl border border-white/10 bg-white/5 p-8 backdrop-blur-md">
               <p className="max-w-sm text-center text-slate-400">
                 {hasFetched
-                  ? 'No routes found for this trip. Try a different pair or hour.'
+                  ? timeType === 'arrive_by'
+                    ? 'No feasible routes before your arrival deadline. Try a later arrival hour or different stops.'
+                    : 'No routes found for this trip. Try a different pair or hour.'
                   : 'Enter details to see routes'}
               </p>
             </div>
@@ -305,6 +328,23 @@ function Planner() {
                             ) : null}
                           </div>
                           <p className="mt-2 text-sm text-slate-400">{stopsText}</p>
+                          {row?.explanation ? (
+                            <p className="mt-2 text-xs text-slate-500">{String(row.explanation)}</p>
+                          ) : null}
+                          {row?.time_note ? (
+                            <p className="mt-1 text-xs text-cyan-200/80">{String(row.time_note)}</p>
+                          ) : null}
+                          {Array.isArray(row?.legs) && row.legs.length > 0 ? (
+                            <ul className="mt-3 list-inside list-disc text-xs text-slate-500">
+                              {row.legs.map((leg, li) => (
+                                <li key={`${leg.route}-${leg.from_stop}-${leg.to_stop}-${li}`}>
+                                  {leg.kind === 'transfer'
+                                    ? `Transfer · +${leg.eta} min`
+                                    : `${leg.route}: ${leg.from_stop} → ${leg.to_stop} · ${leg.eta} min · ${crowdLabel(leg.crowd)}`}
+                                </li>
+                              ))}
+                            </ul>
+                          ) : null}
                         </div>
                         <div className="flex shrink-0 flex-col items-end gap-1 sm:flex-row sm:items-center sm:gap-4">
                           <p className="text-white">

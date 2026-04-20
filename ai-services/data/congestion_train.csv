@@ -1,0 +1,901 @@
+segment_key,hour,dow,level
+BRTC|Paltan->Motijheel,0,5,LOW
+Shatabdi|Shahbag->Paltan,4,5,LOW
+BRTC|Agargaon->Farmgate,18,3,MEDIUM
+BRTC|Agargaon->Farmgate,6,1,LOW
+Alif Paribahan|Karwan Bazar->Mohakhali,17,1,HIGH
+Ababil|Airport->Kuril,7,3,HIGH
+Alif Paribahan|Shyamoli->Agargaon,5,5,LOW
+Green Dhaka|Airport->Uttara Sector 12,4,1,MEDIUM
+Raja City|Farmgate->Karwan Bazar,3,0,LOW
+Raja City|Mohakhali->Banani,11,4,MEDIUM
+Alif Paribahan|Gulshan 1->Badda,23,3,LOW
+Supravat|Rampura->Malibagh,2,4,LOW
+Raja City|Banani->Airport,18,1,HIGH
+Alif Paribahan|Gulshan 1->Badda,21,1,MEDIUM
+BRTC|Kazipara->Agargaon,7,6,MEDIUM
+Green Dhaka|Airport->Uttara Sector 12,14,5,MEDIUM
+Himachal|Karwan Bazar->Farmgate,11,2,MEDIUM
+Green Dhaka|Kakoli->Airport,22,5,LOW
+Himachal|Farmgate->Dhanmondi 27,17,5,MEDIUM
+Borak Transport|Banasree->Rampura,12,2,HIGH
+Shatabdi|Shahbag->Paltan,21,2,MEDIUM
+Alif Paribahan|Rampura->Banasree,7,6,MEDIUM
+Projapati|Paltan->Motijheel,12,2,LOW
+Projapati|Paltan->Motijheel,6,5,LOW
+Borak Transport|Demra->Banasree,4,2,LOW
+Green Dhaka|Banani->Kakoli,23,4,LOW
+Supravat|Paltan->Motijheel,11,1,HIGH
+Himachal|Banani->Mohakhali,16,3,MEDIUM
+Alif Paribahan|Badda->Rampura,3,1,LOW
+Ababil|Kuril->Bashundhara,19,0,HIGH
+Borak Transport|Banasree->Rampura,16,2,HIGH
+Alif Paribahan|Agargaon->Farmgate,21,5,LOW
+Green Dhaka|Kakoli->Airport,20,2,MEDIUM
+Ababil|Bashundhara->Notun Bazar,5,3,LOW
+Green Dhaka|Banani->Kakoli,16,6,LOW
+BRTC|Shahbag->Paltan,20,2,HIGH
+Borak Transport|Shahbag->Farmgate,19,1,MEDIUM
+Himachal|Karwan Bazar->Farmgate,17,6,HIGH
+Alif Paribahan|Shyamoli->Agargaon,19,2,HIGH
+BRTC|Paltan->Motijheel,11,6,MEDIUM
+Green Dhaka|Badda->Gulshan 1,1,1,MEDIUM
+BRTC|Kazipara->Agargaon,2,5,LOW
+Alif Paribahan|Banasree->Demra,17,6,MEDIUM
+Borak Transport|Rampura->Malibagh,17,1,HIGH
+Ababil|Kuril->Bashundhara,6,4,MEDIUM
+Shatabdi|Shewrapara->Agargaon,22,2,LOW
+Supravat|Banasree->Rampura,14,4,MEDIUM
+Green Dhaka|Gulshan 1->Gulshan 2,7,0,HIGH
+Shatabdi|Paltan->Motijheel,18,1,MEDIUM
+Alif Paribahan|Rampura->Banasree,7,0,HIGH
+Raja City|Agargaon->Farmgate,2,4,LOW
+Borak Transport|Mouchak->Paltan,6,4,LOW
+Borak Transport|Rampura->Malibagh,7,6,HIGH
+Ababil|Uttara House Building->Airport,6,0,LOW
+Ababil|Bashundhara->Notun Bazar,11,3,MEDIUM
+Alif Paribahan|Badda->Rampura,21,5,MEDIUM
+BRTC|Farmgate->Shahbag,1,3,LOW
+BRTC|Shahbag->Paltan,7,1,MEDIUM
+Ababil|Badda->Rampura,4,3,LOW
+Borak Transport|Banasree->Rampura,7,6,HIGH
+Ababil|Notun Bazar->Badda,17,0,MEDIUM
+Alif Paribahan|Agargaon->Farmgate,2,6,MEDIUM
+Himachal|Farmgate->Dhanmondi 27,13,3,MEDIUM
+Supravat|Paltan->Motijheel,1,1,LOW
+Supravat|Malibagh->Mouchak,8,6,HIGH
+Projapati|Mohammadpur->Dhanmondi 32,13,5,HIGH
+Borak Transport|Mouchak->Paltan,4,1,LOW
+Alif Paribahan|Rampura->Banasree,18,5,HIGH
+Projapati|Paltan->Motijheel,1,0,LOW
+Borak Transport|Shahbag->Farmgate,16,1,LOW
+BRTC|Kazipara->Agargaon,5,0,LOW
+Green Dhaka|Badda->Gulshan 1,12,0,HIGH
+Green Dhaka|Gulshan 1->Gulshan 2,18,4,MEDIUM
+BRTC|Kazipara->Agargaon,13,5,MEDIUM
+Projapati|Paltan->Motijheel,8,1,HIGH
+Projapati|Paltan->Motijheel,7,2,HIGH
+Projapati|Science Lab->Shahbag,14,2,HIGH
+BRTC|Mirpur 10->Kazipara,0,3,LOW
+BRTC|Farmgate->Shahbag,2,4,LOW
+Green Dhaka|Banani->Kakoli,4,2,MEDIUM
+Green Dhaka|Gulshan 1->Gulshan 2,11,2,MEDIUM
+Projapati|Science Lab->Shahbag,19,6,HIGH
+Alif Paribahan|Agargaon->Farmgate,21,6,LOW
+BRTC|Shahbag->Paltan,4,2,LOW
+BRTC|Shahbag->Paltan,23,4,LOW
+Projapati|Mohammadpur->Dhanmondi 32,19,1,HIGH
+Shatabdi|Agargaon->Farmgate,21,5,MEDIUM
+Borak Transport|Shahbag->Farmgate,15,2,HIGH
+Alif Paribahan|Badda->Rampura,2,5,LOW
+Green Dhaka|Airport->Uttara Sector 12,1,0,LOW
+Himachal|Airport->Banani,20,2,MEDIUM
+Ababil|Notun Bazar->Badda,17,5,MEDIUM
+Alif Paribahan|Agargaon->Farmgate,3,0,MEDIUM
+Himachal|Tejgaon->Karwan Bazar,17,0,HIGH
+Himachal|Mohakhali->Tejgaon,13,1,LOW
+Raja City|Banani->Airport,1,2,LOW
+Green Dhaka|Gulshan 1->Gulshan 2,21,0,LOW
+Ababil|Uttara House Building->Airport,19,5,MEDIUM
+Green Dhaka|Badda->Gulshan 1,5,6,MEDIUM
+Ababil|Uttara House Building->Airport,0,1,LOW
+Raja City|Agargaon->Farmgate,13,6,MEDIUM
+Green Dhaka|Gulshan 1->Gulshan 2,8,1,HIGH
+BRTC|Shahbag->Paltan,12,6,LOW
+Borak Transport|Rampura->Malibagh,7,1,HIGH
+Borak Transport|Demra->Banasree,11,2,HIGH
+Shatabdi|Paltan->Motijheel,7,0,HIGH
+Supravat|Paltan->Motijheel,10,2,HIGH
+Green Dhaka|Airport->Uttara Sector 12,11,5,MEDIUM
+Raja City|Agargaon->Farmgate,0,0,MEDIUM
+Green Dhaka|Banani->Kakoli,5,4,MEDIUM
+Green Dhaka|Banani->Kakoli,1,0,LOW
+Raja City|Karwan Bazar->Mohakhali,23,6,LOW
+BRTC|Paltan->Motijheel,12,4,MEDIUM
+Alif Paribahan|Gulshan 1->Badda,22,3,LOW
+Shatabdi|Shewrapara->Agargaon,11,3,LOW
+Raja City|Agargaon->Farmgate,19,2,HIGH
+Himachal|Uttara Sector 10->Airport,23,2,LOW
+Ababil|Uttara House Building->Airport,10,3,HIGH
+Himachal|Airport->Banani,6,3,LOW
+Supravat|Rampura->Malibagh,21,5,MEDIUM
+Projapati|Science Lab->Shahbag,12,4,HIGH
+Projapati|Science Lab->Shahbag,9,1,HIGH
+Raja City|Mirpur 10->Agargaon,14,3,MEDIUM
+Shatabdi|Farmgate->Shahbag,16,3,HIGH
+Himachal|Farmgate->Dhanmondi 27,21,0,LOW
+Raja City|Agargaon->Farmgate,2,6,MEDIUM
+Green Dhaka|Badda->Gulshan 1,21,2,LOW
+Shatabdi|Shewrapara->Agargaon,4,0,LOW
+Borak Transport|Rampura->Malibagh,19,6,HIGH
+Borak Transport|Demra->Banasree,13,5,MEDIUM
+Supravat|Malibagh->Mouchak,15,3,MEDIUM
+Alif Paribahan|Shyamoli->Agargaon,3,6,LOW
+Himachal|Dhanmondi 27->Mohammadpur,22,4,LOW
+Green Dhaka|Gulshan 1->Gulshan 2,3,3,LOW
+Borak Transport|Banasree->Rampura,21,4,MEDIUM
+Projapati|Paltan->Motijheel,14,4,HIGH
+Borak Transport|Shahbag->Farmgate,13,6,MEDIUM
+Ababil|Badda->Rampura,5,5,MEDIUM
+Ababil|Badda->Rampura,8,6,MEDIUM
+Green Dhaka|Airport->Uttara Sector 12,16,3,MEDIUM
+Green Dhaka|Airport->Uttara Sector 12,14,0,MEDIUM
+Green Dhaka|Badda->Gulshan 1,8,2,HIGH
+BRTC|Kazipara->Agargaon,4,1,LOW
+Himachal|Tejgaon->Karwan Bazar,22,1,LOW
+Ababil|Uttara House Building->Airport,10,4,HIGH
+Alif Paribahan|Rampura->Banasree,6,6,LOW
+Alif Paribahan|Farmgate->Karwan Bazar,18,3,HIGH
+Raja City|Mohakhali->Banani,9,6,MEDIUM
+Ababil|Airport->Kuril,17,5,HIGH
+Shatabdi|Shahbag->Paltan,15,1,MEDIUM
+Borak Transport|Mouchak->Paltan,0,3,LOW
+Supravat|Paltan->Motijheel,23,1,MEDIUM
+Himachal|Airport->Banani,19,4,MEDIUM
+Supravat|Mouchak->Paltan,18,4,HIGH
+BRTC|Kazipara->Agargaon,20,3,MEDIUM
+Borak Transport|Banasree->Rampura,5,0,LOW
+Raja City|Mirpur 10->Agargaon,6,3,LOW
+Supravat|Rampura->Malibagh,8,6,HIGH
+Ababil|Airport->Kuril,8,6,MEDIUM
+Alif Paribahan|Farmgate->Karwan Bazar,23,4,LOW
+Raja City|Karwan Bazar->Mohakhali,7,5,MEDIUM
+Alif Paribahan|Gulshan 1->Badda,0,1,LOW
+Alif Paribahan|Farmgate->Karwan Bazar,19,1,HIGH
+Borak Transport|Rampura->Malibagh,21,0,LOW
+Shatabdi|Farmgate->Shahbag,14,5,MEDIUM
+Supravat|Banasree->Rampura,5,4,LOW
+BRTC|Paltan->Motijheel,5,2,LOW
+Alif Paribahan|Karwan Bazar->Mohakhali,9,4,HIGH
+Supravat|Rampura->Malibagh,12,5,LOW
+Green Dhaka|Gulshan 1->Gulshan 2,3,5,LOW
+Himachal|Uttara Sector 10->Airport,18,6,MEDIUM
+Ababil|Kuril->Bashundhara,21,2,LOW
+Raja City|Farmgate->Karwan Bazar,0,6,LOW
+Borak Transport|Mouchak->Paltan,3,3,MEDIUM
+Borak Transport|Demra->Banasree,22,1,LOW
+Green Dhaka|Kakoli->Airport,19,6,HIGH
+Borak Transport|Malibagh->Mouchak,14,3,HIGH
+Green Dhaka|Kakoli->Airport,10,6,MEDIUM
+BRTC|Agargaon->Farmgate,8,3,HIGH
+Borak Transport|Banasree->Rampura,18,4,HIGH
+Raja City|Farmgate->Karwan Bazar,0,3,MEDIUM
+Shatabdi|Mirpur 2->Mirpur 10,15,1,MEDIUM
+Green Dhaka|Banani->Kakoli,10,2,HIGH
+Green Dhaka|Airport->Uttara Sector 12,17,0,HIGH
+Shatabdi|Mirpur 10->Shewrapara,2,1,LOW
+Borak Transport|Mouchak->Paltan,17,6,MEDIUM
+Borak Transport|Rampura->Malibagh,20,5,HIGH
+Alif Paribahan|Farmgate->Karwan Bazar,2,2,LOW
+Green Dhaka|Gulshan 1->Gulshan 2,9,5,HIGH
+Borak Transport|Rampura->Malibagh,17,4,HIGH
+Raja City|Agargaon->Farmgate,11,5,MEDIUM
+Projapati|Shahbag->Paltan,8,1,MEDIUM
+Shatabdi|Mirpur 10->Shewrapara,10,0,HIGH
+Shatabdi|Mirpur 2->Mirpur 10,6,1,LOW
+Green Dhaka|Airport->Uttara Sector 12,23,4,MEDIUM
+Projapati|Mohammadpur->Dhanmondi 32,3,6,LOW
+Shatabdi|Paltan->Motijheel,11,1,MEDIUM
+Himachal|Airport->Banani,8,0,HIGH
+Projapati|Dhanmondi 32->Science Lab,22,1,LOW
+Borak Transport|Mouchak->Paltan,3,6,LOW
+Projapati|Mohammadpur->Dhanmondi 32,15,3,MEDIUM
+Shatabdi|Mirpur 2->Mirpur 10,1,2,MEDIUM
+Borak Transport|Malibagh->Mouchak,3,6,LOW
+Borak Transport|Mouchak->Paltan,2,4,LOW
+Alif Paribahan|Badda->Rampura,4,1,MEDIUM
+Projapati|Science Lab->Shahbag,2,1,LOW
+Ababil|Airport->Kuril,19,4,HIGH
+Shatabdi|Shahbag->Paltan,16,3,MEDIUM
+Ababil|Notun Bazar->Badda,9,6,HIGH
+Ababil|Kuril->Bashundhara,9,4,HIGH
+BRTC|Farmgate->Shahbag,6,5,LOW
+BRTC|Kazipara->Agargaon,5,1,LOW
+BRTC|Mirpur 10->Kazipara,5,0,LOW
+Borak Transport|Rampura->Malibagh,9,0,HIGH
+Projapati|Mohammadpur->Dhanmondi 32,22,6,LOW
+Shatabdi|Paltan->Motijheel,8,6,HIGH
+Shatabdi|Shewrapara->Agargaon,13,0,MEDIUM
+Himachal|Tejgaon->Karwan Bazar,8,6,MEDIUM
+Alif Paribahan|Rampura->Banasree,5,6,LOW
+Projapati|Mohammadpur->Dhanmondi 32,14,0,MEDIUM
+Projapati|Science Lab->Shahbag,22,3,MEDIUM
+Borak Transport|Shahbag->Farmgate,17,3,HIGH
+Alif Paribahan|Gulshan 1->Badda,13,5,MEDIUM
+Green Dhaka|Gulshan 2->Banani,0,0,LOW
+Alif Paribahan|Farmgate->Karwan Bazar,21,6,LOW
+Alif Paribahan|Gulshan 1->Badda,5,3,LOW
+Ababil|Notun Bazar->Badda,8,1,HIGH
+Ababil|Bashundhara->Notun Bazar,20,6,HIGH
+BRTC|Agargaon->Farmgate,15,2,MEDIUM
+Raja City|Mirpur 10->Agargaon,21,0,MEDIUM
+Raja City|Agargaon->Farmgate,13,5,MEDIUM
+Supravat|Paltan->Motijheel,17,0,HIGH
+Projapati|Paltan->Motijheel,8,2,MEDIUM
+Supravat|Paltan->Motijheel,16,6,HIGH
+Borak Transport|Banasree->Rampura,13,0,MEDIUM
+Raja City|Banani->Airport,19,6,HIGH
+Ababil|Notun Bazar->Badda,1,1,LOW
+Himachal|Airport->Banani,9,3,HIGH
+Borak Transport|Mouchak->Paltan,3,0,MEDIUM
+Green Dhaka|Badda->Gulshan 1,22,1,LOW
+Alif Paribahan|Agargaon->Farmgate,17,3,MEDIUM
+BRTC|Paltan->Motijheel,14,0,MEDIUM
+Himachal|Tejgaon->Karwan Bazar,15,5,MEDIUM
+Green Dhaka|Kakoli->Airport,13,6,MEDIUM
+Borak Transport|Rampura->Malibagh,7,3,HIGH
+Supravat|Malibagh->Mouchak,6,4,LOW
+Himachal|Banani->Mohakhali,2,2,MEDIUM
+Ababil|Airport->Kuril,10,6,HIGH
+Alif Paribahan|Shyamoli->Agargaon,9,5,MEDIUM
+Borak Transport|Mouchak->Paltan,4,3,LOW
+Raja City|Karwan Bazar->Mohakhali,10,4,HIGH
+Supravat|Rampura->Malibagh,14,2,HIGH
+Green Dhaka|Badda->Gulshan 1,18,3,HIGH
+Ababil|Uttara House Building->Airport,1,2,MEDIUM
+Supravat|Rampura->Malibagh,12,5,MEDIUM
+Himachal|Tejgaon->Karwan Bazar,15,0,MEDIUM
+Raja City|Agargaon->Farmgate,3,6,MEDIUM
+BRTC|Farmgate->Shahbag,16,3,LOW
+Himachal|Mohakhali->Tejgaon,13,6,MEDIUM
+Himachal|Tejgaon->Karwan Bazar,2,3,MEDIUM
+Green Dhaka|Banani->Kakoli,10,4,HIGH
+BRTC|Kazipara->Agargaon,10,6,HIGH
+Supravat|Rampura->Malibagh,10,5,HIGH
+Borak Transport|Mouchak->Paltan,17,0,HIGH
+Green Dhaka|Badda->Gulshan 1,20,5,HIGH
+Shatabdi|Paltan->Motijheel,23,0,LOW
+BRTC|Farmgate->Shahbag,20,5,HIGH
+Ababil|Notun Bazar->Badda,5,5,LOW
+Alif Paribahan|Karwan Bazar->Mohakhali,1,2,MEDIUM
+Projapati|Dhanmondi 32->Science Lab,11,2,MEDIUM
+Green Dhaka|Gulshan 1->Gulshan 2,16,3,MEDIUM
+Shatabdi|Mirpur 2->Mirpur 10,5,1,LOW
+Supravat|Rampura->Malibagh,19,5,MEDIUM
+Himachal|Mohakhali->Tejgaon,7,3,HIGH
+Borak Transport|Demra->Banasree,8,5,MEDIUM
+Borak Transport|Banasree->Rampura,9,5,HIGH
+BRTC|Mirpur 10->Kazipara,14,2,HIGH
+Projapati|Science Lab->Shahbag,20,3,HIGH
+Borak Transport|Demra->Banasree,9,1,HIGH
+Borak Transport|Malibagh->Mouchak,3,1,LOW
+Raja City|Mohakhali->Banani,18,2,HIGH
+Projapati|Dhanmondi 32->Science Lab,0,6,LOW
+Green Dhaka|Airport->Uttara Sector 12,0,4,MEDIUM
+Alif Paribahan|Badda->Rampura,19,5,HIGH
+Projapati|Mohammadpur->Dhanmondi 32,7,4,HIGH
+Shatabdi|Shahbag->Paltan,20,1,HIGH
+Himachal|Banani->Mohakhali,20,0,HIGH
+Alif Paribahan|Gulshan 1->Badda,9,6,HIGH
+Raja City|Banani->Airport,23,1,LOW
+Projapati|Dhanmondi 32->Science Lab,10,5,MEDIUM
+Shatabdi|Shewrapara->Agargaon,4,6,LOW
+Raja City|Banani->Airport,16,4,HIGH
+Himachal|Farmgate->Dhanmondi 27,8,6,HIGH
+Projapati|Dhanmondi 32->Science Lab,23,6,LOW
+BRTC|Paltan->Motijheel,14,0,MEDIUM
+Shatabdi|Shahbag->Paltan,21,5,LOW
+Supravat|Mouchak->Paltan,17,2,MEDIUM
+Supravat|Mouchak->Paltan,0,2,LOW
+Borak Transport|Demra->Banasree,11,5,MEDIUM
+Green Dhaka|Banani->Kakoli,18,3,HIGH
+Supravat|Banasree->Rampura,3,5,LOW
+Alif Paribahan|Karwan Bazar->Mohakhali,19,4,HIGH
+Shatabdi|Shahbag->Paltan,20,0,HIGH
+Borak Transport|Banasree->Rampura,22,2,LOW
+BRTC|Paltan->Motijheel,4,0,MEDIUM
+Projapati|Science Lab->Shahbag,15,0,MEDIUM
+Himachal|Banani->Mohakhali,12,3,MEDIUM
+Ababil|Airport->Kuril,18,5,HIGH
+Ababil|Airport->Kuril,20,0,HIGH
+Ababil|Uttara House Building->Airport,8,0,HIGH
+Shatabdi|Farmgate->Shahbag,14,3,HIGH
+Raja City|Banani->Airport,3,5,LOW
+Raja City|Mohakhali->Banani,1,3,LOW
+Himachal|Uttara Sector 10->Airport,14,0,MEDIUM
+Alif Paribahan|Farmgate->Karwan Bazar,1,6,LOW
+Himachal|Airport->Banani,18,1,MEDIUM
+Shatabdi|Agargaon->Farmgate,18,1,HIGH
+Shatabdi|Paltan->Motijheel,10,6,MEDIUM
+Alif Paribahan|Shyamoli->Agargaon,8,6,HIGH
+Himachal|Airport->Banani,17,2,HIGH
+BRTC|Paltan->Motijheel,21,6,LOW
+Alif Paribahan|Agargaon->Farmgate,11,6,MEDIUM
+Raja City|Mirpur 10->Agargaon,0,1,LOW
+Himachal|Airport->Banani,23,3,LOW
+Alif Paribahan|Banasree->Demra,15,3,HIGH
+BRTC|Shahbag->Paltan,14,4,MEDIUM
+Alif Paribahan|Gulshan 1->Badda,23,6,MEDIUM
+Projapati|Science Lab->Shahbag,14,5,HIGH
+Alif Paribahan|Rampura->Banasree,15,6,MEDIUM
+BRTC|Shahbag->Paltan,15,5,MEDIUM
+BRTC|Mirpur 10->Kazipara,2,2,LOW
+Alif Paribahan|Banasree->Demra,4,2,LOW
+Raja City|Mirpur 10->Agargaon,12,4,MEDIUM
+Borak Transport|Demra->Banasree,16,4,MEDIUM
+BRTC|Paltan->Motijheel,20,5,HIGH
+Shatabdi|Farmgate->Shahbag,13,3,HIGH
+Ababil|Uttara House Building->Airport,10,6,HIGH
+Ababil|Airport->Kuril,23,0,LOW
+Projapati|Paltan->Motijheel,21,2,LOW
+Himachal|Tejgaon->Karwan Bazar,21,3,LOW
+BRTC|Kazipara->Agargaon,2,3,LOW
+Supravat|Banasree->Rampura,4,4,LOW
+Raja City|Agargaon->Farmgate,21,0,LOW
+Ababil|Kuril->Bashundhara,23,0,MEDIUM
+Projapati|Shahbag->Paltan,11,0,MEDIUM
+Shatabdi|Farmgate->Shahbag,4,5,LOW
+BRTC|Shahbag->Paltan,11,6,MEDIUM
+BRTC|Paltan->Motijheel,8,4,HIGH
+Ababil|Kuril->Bashundhara,17,6,HIGH
+Alif Paribahan|Karwan Bazar->Mohakhali,19,5,HIGH
+Green Dhaka|Kakoli->Airport,0,1,LOW
+Projapati|Shahbag->Paltan,10,2,MEDIUM
+Himachal|Mohakhali->Tejgaon,18,5,MEDIUM
+Himachal|Mohakhali->Tejgaon,23,5,MEDIUM
+BRTC|Agargaon->Farmgate,23,4,LOW
+Ababil|Airport->Kuril,14,2,MEDIUM
+Projapati|Shahbag->Paltan,23,2,MEDIUM
+BRTC|Kazipara->Agargaon,1,1,LOW
+Alif Paribahan|Badda->Rampura,21,0,LOW
+Ababil|Kuril->Bashundhara,15,4,MEDIUM
+Green Dhaka|Kakoli->Airport,6,6,LOW
+Raja City|Karwan Bazar->Mohakhali,13,0,MEDIUM
+Borak Transport|Mouchak->Paltan,16,5,MEDIUM
+Shatabdi|Shahbag->Paltan,12,4,LOW
+Shatabdi|Agargaon->Farmgate,9,1,HIGH
+Green Dhaka|Gulshan 2->Banani,9,2,MEDIUM
+Borak Transport|Paltan->Shahbag,23,3,LOW
+Supravat|Rampura->Malibagh,17,5,MEDIUM
+Raja City|Mohakhali->Banani,2,3,MEDIUM
+Alif Paribahan|Gulshan 1->Badda,13,0,MEDIUM
+BRTC|Mirpur 10->Kazipara,10,4,HIGH
+Supravat|Paltan->Motijheel,22,5,LOW
+BRTC|Paltan->Motijheel,12,0,HIGH
+Himachal|Farmgate->Dhanmondi 27,19,3,HIGH
+Raja City|Banani->Airport,2,3,MEDIUM
+Green Dhaka|Gulshan 1->Gulshan 2,13,4,MEDIUM
+BRTC|Kazipara->Agargaon,12,6,MEDIUM
+Raja City|Farmgate->Karwan Bazar,7,2,HIGH
+BRTC|Mirpur 10->Kazipara,16,5,LOW
+Shatabdi|Mirpur 10->Shewrapara,11,2,MEDIUM
+Himachal|Mohakhali->Tejgaon,7,0,MEDIUM
+Shatabdi|Shewrapara->Agargaon,5,4,LOW
+BRTC|Mirpur 10->Kazipara,5,6,LOW
+Borak Transport|Banasree->Rampura,18,6,HIGH
+Raja City|Mirpur 10->Agargaon,20,2,MEDIUM
+Alif Paribahan|Banasree->Demra,15,3,MEDIUM
+Green Dhaka|Airport->Uttara Sector 12,18,0,HIGH
+BRTC|Mirpur 10->Kazipara,9,3,HIGH
+Alif Paribahan|Rampura->Banasree,11,6,MEDIUM
+BRTC|Agargaon->Farmgate,19,4,HIGH
+Borak Transport|Banasree->Rampura,18,4,HIGH
+Alif Paribahan|Gulshan 1->Badda,14,6,MEDIUM
+Shatabdi|Mirpur 10->Shewrapara,10,4,HIGH
+Himachal|Tejgaon->Karwan Bazar,1,3,LOW
+Raja City|Farmgate->Karwan Bazar,22,0,LOW
+Himachal|Dhanmondi 27->Mohammadpur,1,1,LOW
+Ababil|Notun Bazar->Badda,16,4,MEDIUM
+Raja City|Banani->Airport,11,2,MEDIUM
+Raja City|Farmgate->Karwan Bazar,21,4,LOW
+Raja City|Agargaon->Farmgate,2,2,LOW
+Supravat|Malibagh->Mouchak,9,2,HIGH
+Himachal|Tejgaon->Karwan Bazar,10,0,HIGH
+Himachal|Mohakhali->Tejgaon,11,2,HIGH
+Supravat|Mouchak->Paltan,4,4,LOW
+BRTC|Kazipara->Agargaon,9,4,HIGH
+Raja City|Agargaon->Farmgate,4,5,LOW
+BRTC|Agargaon->Farmgate,20,5,MEDIUM
+Raja City|Banani->Airport,0,2,LOW
+Shatabdi|Farmgate->Shahbag,10,6,HIGH
+Shatabdi|Shahbag->Paltan,4,1,LOW
+BRTC|Farmgate->Shahbag,16,6,MEDIUM
+Alif Paribahan|Mohakhali->Gulshan 1,21,2,MEDIUM
+Himachal|Airport->Banani,19,3,MEDIUM
+Shatabdi|Mirpur 2->Mirpur 10,22,6,LOW
+Himachal|Farmgate->Dhanmondi 27,23,3,LOW
+Raja City|Banani->Airport,21,5,LOW
+Ababil|Notun Bazar->Badda,19,2,HIGH
+Ababil|Badda->Rampura,7,4,HIGH
+Borak Transport|Rampura->Malibagh,6,2,LOW
+Ababil|Notun Bazar->Badda,14,6,MEDIUM
+Supravat|Rampura->Malibagh,16,4,MEDIUM
+Himachal|Karwan Bazar->Farmgate,6,6,LOW
+Green Dhaka|Gulshan 2->Banani,1,5,LOW
+Supravat|Banasree->Rampura,17,0,HIGH
+Himachal|Uttara Sector 10->Airport,9,0,HIGH
+Green Dhaka|Kakoli->Airport,14,4,MEDIUM
+Ababil|Bashundhara->Notun Bazar,2,1,MEDIUM
+Raja City|Karwan Bazar->Mohakhali,0,3,LOW
+Borak Transport|Shahbag->Farmgate,11,1,MEDIUM
+BRTC|Kazipara->Agargaon,11,1,LOW
+BRTC|Farmgate->Shahbag,22,5,LOW
+Himachal|Mohakhali->Tejgaon,4,0,LOW
+Borak Transport|Rampura->Malibagh,22,6,LOW
+Borak Transport|Rampura->Malibagh,14,4,LOW
+BRTC|Kazipara->Agargaon,0,2,LOW
+Himachal|Tejgaon->Karwan Bazar,17,5,HIGH
+Ababil|Kuril->Bashundhara,3,6,LOW
+Projapati|Science Lab->Shahbag,3,0,LOW
+Borak Transport|Demra->Banasree,2,0,MEDIUM
+Borak Transport|Paltan->Shahbag,19,4,MEDIUM
+Green Dhaka|Badda->Gulshan 1,22,1,LOW
+Alif Paribahan|Shyamoli->Agargaon,19,2,HIGH
+Ababil|Airport->Kuril,5,5,LOW
+Raja City|Banani->Airport,2,4,LOW
+Borak Transport|Shahbag->Farmgate,17,0,HIGH
+Borak Transport|Rampura->Malibagh,1,5,LOW
+Supravat|Banasree->Rampura,8,5,MEDIUM
+Alif Paribahan|Banasree->Demra,11,1,MEDIUM
+BRTC|Shahbag->Paltan,18,5,HIGH
+Himachal|Banani->Mohakhali,1,2,LOW
+Himachal|Dhanmondi 27->Mohammadpur,21,3,MEDIUM
+Borak Transport|Malibagh->Mouchak,20,1,HIGH
+Alif Paribahan|Banasree->Demra,22,6,MEDIUM
+Alif Paribahan|Mohakhali->Gulshan 1,9,1,MEDIUM
+Shatabdi|Shewrapara->Agargaon,1,2,MEDIUM
+Supravat|Mouchak->Paltan,17,3,HIGH
+Shatabdi|Mirpur 10->Shewrapara,9,2,HIGH
+Alif Paribahan|Badda->Rampura,20,2,HIGH
+Supravat|Banasree->Rampura,13,3,MEDIUM
+Supravat|Malibagh->Mouchak,10,1,HIGH
+Borak Transport|Paltan->Shahbag,11,6,MEDIUM
+BRTC|Kazipara->Agargaon,23,3,LOW
+Shatabdi|Mirpur 2->Mirpur 10,17,2,HIGH
+BRTC|Kazipara->Agargaon,10,5,MEDIUM
+Ababil|Badda->Rampura,19,5,MEDIUM
+Ababil|Notun Bazar->Badda,11,3,LOW
+Raja City|Mohakhali->Banani,19,3,HIGH
+Alif Paribahan|Rampura->Banasree,2,5,LOW
+Raja City|Banani->Airport,16,6,MEDIUM
+Himachal|Karwan Bazar->Farmgate,0,1,MEDIUM
+Ababil|Notun Bazar->Badda,1,1,LOW
+Raja City|Banani->Airport,11,3,HIGH
+Alif Paribahan|Mohakhali->Gulshan 1,19,1,HIGH
+Supravat|Banasree->Rampura,11,3,MEDIUM
+Himachal|Banani->Mohakhali,16,2,MEDIUM
+Green Dhaka|Airport->Uttara Sector 12,7,0,MEDIUM
+Shatabdi|Mirpur 2->Mirpur 10,15,4,MEDIUM
+Himachal|Uttara Sector 10->Airport,8,6,MEDIUM
+Ababil|Badda->Rampura,6,4,LOW
+Borak Transport|Mouchak->Paltan,6,0,LOW
+BRTC|Mirpur 10->Kazipara,14,1,HIGH
+Ababil|Notun Bazar->Badda,2,6,LOW
+Projapati|Paltan->Motijheel,21,2,LOW
+Projapati|Dhanmondi 32->Science Lab,9,6,MEDIUM
+Himachal|Dhanmondi 27->Mohammadpur,11,4,MEDIUM
+Shatabdi|Shewrapara->Agargaon,4,1,MEDIUM
+Alif Paribahan|Karwan Bazar->Mohakhali,11,4,MEDIUM
+Borak Transport|Banasree->Rampura,17,1,HIGH
+BRTC|Agargaon->Farmgate,2,2,LOW
+Borak Transport|Malibagh->Mouchak,16,3,MEDIUM
+BRTC|Mirpur 10->Kazipara,4,2,LOW
+Ababil|Badda->Rampura,14,5,MEDIUM
+Himachal|Airport->Banani,17,5,HIGH
+Himachal|Airport->Banani,13,4,HIGH
+Alif Paribahan|Rampura->Banasree,3,4,LOW
+Himachal|Farmgate->Dhanmondi 27,5,2,MEDIUM
+Shatabdi|Shahbag->Paltan,11,4,HIGH
+BRTC|Kazipara->Agargaon,8,1,HIGH
+Green Dhaka|Airport->Uttara Sector 12,4,5,LOW
+BRTC|Agargaon->Farmgate,16,5,LOW
+Himachal|Tejgaon->Karwan Bazar,5,5,LOW
+Raja City|Farmgate->Karwan Bazar,18,0,HIGH
+Alif Paribahan|Karwan Bazar->Mohakhali,2,0,MEDIUM
+Green Dhaka|Banani->Kakoli,20,1,HIGH
+Ababil|Airport->Kuril,19,5,MEDIUM
+Projapati|Dhanmondi 32->Science Lab,20,2,HIGH
+Supravat|Paltan->Motijheel,9,3,MEDIUM
+Alif Paribahan|Rampura->Banasree,5,3,LOW
+Borak Transport|Banasree->Rampura,6,2,LOW
+Projapati|Paltan->Motijheel,22,2,LOW
+Raja City|Karwan Bazar->Mohakhali,12,1,MEDIUM
+BRTC|Shahbag->Paltan,10,1,HIGH
+Green Dhaka|Kakoli->Airport,14,1,MEDIUM
+Alif Paribahan|Badda->Rampura,9,3,HIGH
+Ababil|Airport->Kuril,7,6,HIGH
+Raja City|Mirpur 10->Agargaon,18,5,MEDIUM
+Himachal|Karwan Bazar->Farmgate,15,4,MEDIUM
+Projapati|Shahbag->Paltan,15,0,MEDIUM
+Supravat|Mouchak->Paltan,16,3,HIGH
+Shatabdi|Farmgate->Shahbag,18,2,MEDIUM
+Projapati|Mohammadpur->Dhanmondi 32,15,4,HIGH
+Borak Transport|Rampura->Malibagh,9,4,MEDIUM
+BRTC|Shahbag->Paltan,13,1,HIGH
+Raja City|Banani->Airport,12,2,LOW
+Alif Paribahan|Badda->Rampura,18,4,MEDIUM
+Projapati|Mohammadpur->Dhanmondi 32,2,3,LOW
+Green Dhaka|Airport->Uttara Sector 12,19,5,HIGH
+Himachal|Airport->Banani,3,3,LOW
+Raja City|Farmgate->Karwan Bazar,17,2,HIGH
+Shatabdi|Shewrapara->Agargaon,19,4,HIGH
+Alif Paribahan|Gulshan 1->Badda,1,0,LOW
+Raja City|Agargaon->Farmgate,15,4,MEDIUM
+Himachal|Banani->Mohakhali,10,4,HIGH
+Supravat|Mouchak->Paltan,19,5,HIGH
+Raja City|Farmgate->Karwan Bazar,16,6,MEDIUM
+Borak Transport|Mouchak->Paltan,22,4,LOW
+Alif Paribahan|Farmgate->Karwan Bazar,11,2,MEDIUM
+Ababil|Airport->Kuril,18,2,HIGH
+Alif Paribahan|Karwan Bazar->Mohakhali,19,3,HIGH
+Shatabdi|Paltan->Motijheel,23,0,LOW
+Himachal|Farmgate->Dhanmondi 27,16,5,MEDIUM
+Supravat|Rampura->Malibagh,4,6,LOW
+Alif Paribahan|Mohakhali->Gulshan 1,18,5,MEDIUM
+Alif Paribahan|Farmgate->Karwan Bazar,14,2,MEDIUM
+Ababil|Uttara House Building->Airport,22,1,LOW
+Borak Transport|Rampura->Malibagh,23,5,LOW
+Himachal|Banani->Mohakhali,16,1,MEDIUM
+Borak Transport|Malibagh->Mouchak,16,3,MEDIUM
+Himachal|Dhanmondi 27->Mohammadpur,14,4,MEDIUM
+Raja City|Mohakhali->Banani,21,6,MEDIUM
+Green Dhaka|Banani->Kakoli,19,3,MEDIUM
+Green Dhaka|Gulshan 1->Gulshan 2,8,4,HIGH
+Projapati|Science Lab->Shahbag,9,5,MEDIUM
+Borak Transport|Mouchak->Paltan,10,3,HIGH
+Green Dhaka|Airport->Uttara Sector 12,9,0,HIGH
+Supravat|Rampura->Malibagh,12,6,MEDIUM
+Himachal|Mohakhali->Tejgaon,9,0,HIGH
+BRTC|Kazipara->Agargaon,11,3,MEDIUM
+Borak Transport|Malibagh->Mouchak,6,1,MEDIUM
+Green Dhaka|Kakoli->Airport,17,5,MEDIUM
+BRTC|Shahbag->Paltan,19,5,HIGH
+Green Dhaka|Gulshan 1->Gulshan 2,1,5,MEDIUM
+Shatabdi|Shahbag->Paltan,20,1,MEDIUM
+Ababil|Uttara House Building->Airport,10,5,HIGH
+Himachal|Banani->Mohakhali,0,4,MEDIUM
+Himachal|Karwan Bazar->Farmgate,13,5,HIGH
+Borak Transport|Rampura->Malibagh,15,5,LOW
+Projapati|Mohammadpur->Dhanmondi 32,10,2,HIGH
+BRTC|Agargaon->Farmgate,20,4,HIGH
+Alif Paribahan|Mohakhali->Gulshan 1,5,3,MEDIUM
+Himachal|Dhanmondi 27->Mohammadpur,1,6,LOW
+Borak Transport|Paltan->Shahbag,5,5,MEDIUM
+Projapati|Dhanmondi 32->Science Lab,1,0,LOW
+BRTC|Shahbag->Paltan,10,2,HIGH
+Borak Transport|Paltan->Shahbag,4,6,LOW
+Green Dhaka|Kakoli->Airport,6,6,LOW
+Himachal|Karwan Bazar->Farmgate,23,3,LOW
+Shatabdi|Mirpur 2->Mirpur 10,0,5,LOW
+Projapati|Dhanmondi 32->Science Lab,18,5,HIGH
+Himachal|Dhanmondi 27->Mohammadpur,19,6,HIGH
+Supravat|Paltan->Motijheel,13,4,MEDIUM
+Supravat|Paltan->Motijheel,21,0,LOW
+Himachal|Banani->Mohakhali,15,2,HIGH
+Alif Paribahan|Shyamoli->Agargaon,8,3,HIGH
+Green Dhaka|Kakoli->Airport,10,2,HIGH
+Alif Paribahan|Agargaon->Farmgate,8,5,MEDIUM
+Green Dhaka|Badda->Gulshan 1,1,5,LOW
+Projapati|Shahbag->Paltan,5,3,LOW
+Projapati|Shahbag->Paltan,22,0,LOW
+Projapati|Dhanmondi 32->Science Lab,11,4,MEDIUM
+Himachal|Banani->Mohakhali,15,1,MEDIUM
+Supravat|Banasree->Rampura,13,5,MEDIUM
+Borak Transport|Rampura->Malibagh,17,6,HIGH
+Shatabdi|Farmgate->Shahbag,7,5,HIGH
+BRTC|Kazipara->Agargaon,16,3,MEDIUM
+Raja City|Banani->Airport,2,4,LOW
+Borak Transport|Shahbag->Farmgate,6,4,LOW
+Himachal|Farmgate->Dhanmondi 27,10,6,HIGH
+BRTC|Paltan->Motijheel,21,1,LOW
+Borak Transport|Mouchak->Paltan,2,4,LOW
+Alif Paribahan|Rampura->Banasree,14,1,MEDIUM
+Borak Transport|Demra->Banasree,18,0,HIGH
+Projapati|Shahbag->Paltan,23,0,LOW
+Alif Paribahan|Shyamoli->Agargaon,23,1,LOW
+Alif Paribahan|Gulshan 1->Badda,13,2,MEDIUM
+Alif Paribahan|Rampura->Banasree,2,3,LOW
+Ababil|Uttara House Building->Airport,5,6,LOW
+Ababil|Airport->Kuril,11,3,MEDIUM
+Supravat|Rampura->Malibagh,12,0,MEDIUM
+Himachal|Banani->Mohakhali,20,6,MEDIUM
+Himachal|Dhanmondi 27->Mohammadpur,17,3,HIGH
+Shatabdi|Shahbag->Paltan,0,6,LOW
+Projapati|Science Lab->Shahbag,14,5,MEDIUM
+Ababil|Kuril->Bashundhara,17,3,HIGH
+Green Dhaka|Gulshan 1->Gulshan 2,14,2,MEDIUM
+Shatabdi|Mirpur 10->Shewrapara,23,6,LOW
+Ababil|Airport->Kuril,19,6,HIGH
+Alif Paribahan|Farmgate->Karwan Bazar,7,1,MEDIUM
+Alif Paribahan|Mohakhali->Gulshan 1,14,4,MEDIUM
+Alif Paribahan|Badda->Rampura,7,5,MEDIUM
+Ababil|Notun Bazar->Badda,7,4,HIGH
+Alif Paribahan|Rampura->Banasree,4,4,MEDIUM
+Shatabdi|Paltan->Motijheel,23,4,LOW
+Raja City|Mirpur 10->Agargaon,7,2,HIGH
+Shatabdi|Shahbag->Paltan,13,2,MEDIUM
+Himachal|Dhanmondi 27->Mohammadpur,20,5,MEDIUM
+Borak Transport|Paltan->Shahbag,1,2,MEDIUM
+Supravat|Rampura->Malibagh,16,2,MEDIUM
+Ababil|Uttara House Building->Airport,4,2,LOW
+Borak Transport|Rampura->Malibagh,7,6,MEDIUM
+Himachal|Mohakhali->Tejgaon,14,0,MEDIUM
+Ababil|Airport->Kuril,17,4,MEDIUM
+Green Dhaka|Gulshan 1->Gulshan 2,8,1,HIGH
+BRTC|Kazipara->Agargaon,14,6,MEDIUM
+Shatabdi|Mirpur 10->Shewrapara,1,2,LOW
+Alif Paribahan|Gulshan 1->Badda,2,1,MEDIUM
+Shatabdi|Farmgate->Shahbag,15,1,HIGH
+Raja City|Agargaon->Farmgate,9,0,HIGH
+Shatabdi|Mirpur 10->Shewrapara,23,0,MEDIUM
+Borak Transport|Malibagh->Mouchak,7,5,HIGH
+Shatabdi|Agargaon->Farmgate,12,1,MEDIUM
+Projapati|Mohammadpur->Dhanmondi 32,12,3,MEDIUM
+Raja City|Mohakhali->Banani,9,2,HIGH
+Borak Transport|Paltan->Shahbag,14,0,HIGH
+Borak Transport|Rampura->Malibagh,10,1,HIGH
+Ababil|Uttara House Building->Airport,1,4,MEDIUM
+Himachal|Mohakhali->Tejgaon,0,2,LOW
+Ababil|Airport->Kuril,9,1,MEDIUM
+Shatabdi|Paltan->Motijheel,12,4,HIGH
+Borak Transport|Paltan->Shahbag,17,5,HIGH
+Raja City|Farmgate->Karwan Bazar,8,6,HIGH
+Borak Transport|Mouchak->Paltan,14,1,MEDIUM
+Raja City|Mohakhali->Banani,5,1,LOW
+Borak Transport|Mouchak->Paltan,5,4,MEDIUM
+Alif Paribahan|Rampura->Banasree,16,0,HIGH
+BRTC|Mirpur 10->Kazipara,21,0,MEDIUM
+Ababil|Uttara House Building->Airport,4,6,LOW
+Alif Paribahan|Banasree->Demra,22,1,LOW
+Borak Transport|Shahbag->Farmgate,14,2,LOW
+Borak Transport|Malibagh->Mouchak,21,3,LOW
+Ababil|Uttara House Building->Airport,0,0,LOW
+Green Dhaka|Airport->Uttara Sector 12,17,2,MEDIUM
+Ababil|Bashundhara->Notun Bazar,5,0,MEDIUM
+Himachal|Tejgaon->Karwan Bazar,7,1,HIGH
+Green Dhaka|Gulshan 2->Banani,11,2,HIGH
+BRTC|Kazipara->Agargaon,11,3,MEDIUM
+Green Dhaka|Gulshan 1->Gulshan 2,22,1,LOW
+BRTC|Kazipara->Agargaon,20,6,HIGH
+Alif Paribahan|Mohakhali->Gulshan 1,2,3,LOW
+Borak Transport|Rampura->Malibagh,1,5,LOW
+Himachal|Farmgate->Dhanmondi 27,2,3,MEDIUM
+Raja City|Agargaon->Farmgate,18,6,HIGH
+Alif Paribahan|Gulshan 1->Badda,7,1,HIGH
+Borak Transport|Rampura->Malibagh,8,0,HIGH
+Green Dhaka|Airport->Uttara Sector 12,17,4,HIGH
+Himachal|Dhanmondi 27->Mohammadpur,10,0,HIGH
+Himachal|Mohakhali->Tejgaon,22,6,LOW
+BRTC|Mirpur 10->Kazipara,9,1,HIGH
+Supravat|Malibagh->Mouchak,21,4,LOW
+Himachal|Banani->Mohakhali,22,5,LOW
+Raja City|Karwan Bazar->Mohakhali,1,0,LOW
+BRTC|Mirpur 10->Kazipara,10,4,HIGH
+Supravat|Mouchak->Paltan,10,0,HIGH
+Ababil|Badda->Rampura,15,1,MEDIUM
+Supravat|Rampura->Malibagh,13,1,MEDIUM
+Supravat|Rampura->Malibagh,2,6,LOW
+Green Dhaka|Gulshan 1->Gulshan 2,22,0,LOW
+Himachal|Tejgaon->Karwan Bazar,12,5,MEDIUM
+Himachal|Tejgaon->Karwan Bazar,23,3,LOW
+BRTC|Shahbag->Paltan,2,0,MEDIUM
+Ababil|Notun Bazar->Badda,11,6,MEDIUM
+Himachal|Airport->Banani,2,1,LOW
+Ababil|Uttara House Building->Airport,3,0,LOW
+BRTC|Agargaon->Farmgate,19,4,HIGH
+Supravat|Malibagh->Mouchak,0,2,LOW
+BRTC|Kazipara->Agargaon,23,4,MEDIUM
+Green Dhaka|Gulshan 1->Gulshan 2,18,4,MEDIUM
+Supravat|Rampura->Malibagh,5,1,LOW
+Green Dhaka|Kakoli->Airport,15,1,LOW
+Ababil|Bashundhara->Notun Bazar,8,3,HIGH
+BRTC|Mirpur 10->Kazipara,11,2,HIGH
+Borak Transport|Paltan->Shahbag,19,4,MEDIUM
+BRTC|Shahbag->Paltan,4,2,LOW
+Supravat|Mouchak->Paltan,10,6,HIGH
+Raja City|Agargaon->Farmgate,14,2,MEDIUM
+Himachal|Banani->Mohakhali,9,2,HIGH
+Shatabdi|Shewrapara->Agargaon,15,2,MEDIUM
+Supravat|Mouchak->Paltan,10,2,HIGH
+Borak Transport|Mouchak->Paltan,18,6,MEDIUM
+Supravat|Rampura->Malibagh,8,6,HIGH
+Raja City|Banani->Airport,3,4,LOW
+Shatabdi|Mirpur 2->Mirpur 10,21,6,LOW
+Borak Transport|Banasree->Rampura,22,1,LOW
+Projapati|Dhanmondi 32->Science Lab,22,0,MEDIUM
+Ababil|Uttara House Building->Airport,21,3,LOW
+Projapati|Science Lab->Shahbag,7,2,HIGH
+Ababil|Kuril->Bashundhara,12,0,MEDIUM
+Borak Transport|Malibagh->Mouchak,18,3,HIGH
+Ababil|Airport->Kuril,17,0,HIGH
+Raja City|Banani->Airport,22,6,LOW
+BRTC|Kazipara->Agargaon,3,6,LOW
+Raja City|Mohakhali->Banani,5,5,LOW
+Supravat|Paltan->Motijheel,10,6,MEDIUM
+Alif Paribahan|Agargaon->Farmgate,3,2,LOW
+Shatabdi|Shahbag->Paltan,14,2,MEDIUM
+Borak Transport|Shahbag->Farmgate,4,2,MEDIUM
+Borak Transport|Malibagh->Mouchak,3,2,LOW
+BRTC|Kazipara->Agargaon,3,6,MEDIUM
+Himachal|Mohakhali->Tejgaon,11,2,MEDIUM
+Shatabdi|Agargaon->Farmgate,16,3,MEDIUM
+BRTC|Farmgate->Shahbag,14,5,MEDIUM
+Projapati|Paltan->Motijheel,2,2,LOW
+BRTC|Paltan->Motijheel,0,6,LOW
+BRTC|Shahbag->Paltan,21,6,LOW
+Green Dhaka|Gulshan 1->Gulshan 2,16,1,MEDIUM
+Raja City|Agargaon->Farmgate,17,3,HIGH
+Shatabdi|Paltan->Motijheel,12,5,LOW
+Ababil|Bashundhara->Notun Bazar,12,0,MEDIUM
+Shatabdi|Shewrapara->Agargaon,14,4,MEDIUM
+Alif Paribahan|Shyamoli->Agargaon,22,1,LOW
+Alif Paribahan|Banasree->Demra,18,0,HIGH
+Shatabdi|Mirpur 2->Mirpur 10,11,2,MEDIUM
+BRTC|Paltan->Motijheel,8,5,HIGH
+Projapati|Paltan->Motijheel,19,3,HIGH
+BRTC|Paltan->Motijheel,11,2,HIGH
+Himachal|Dhanmondi 27->Mohammadpur,21,5,MEDIUM
+BRTC|Kazipara->Agargaon,21,1,LOW
+Green Dhaka|Badda->Gulshan 1,9,0,MEDIUM
+Himachal|Mohakhali->Tejgaon,16,3,MEDIUM
+Himachal|Banani->Mohakhali,18,3,HIGH
+Borak Transport|Mouchak->Paltan,20,4,HIGH
+Himachal|Dhanmondi 27->Mohammadpur,17,1,HIGH
+Himachal|Banani->Mohakhali,5,2,MEDIUM
+Alif Paribahan|Badda->Rampura,11,0,MEDIUM
+Shatabdi|Mirpur 10->Shewrapara,12,4,MEDIUM
+Borak Transport|Paltan->Shahbag,13,5,MEDIUM
+Ababil|Notun Bazar->Badda,15,1,LOW
+Alif Paribahan|Karwan Bazar->Mohakhali,7,2,MEDIUM
+Shatabdi|Shahbag->Paltan,17,2,MEDIUM
+Borak Transport|Demra->Banasree,18,5,HIGH
+Borak Transport|Paltan->Shahbag,17,4,MEDIUM
+BRTC|Paltan->Motijheel,8,6,HIGH
+Raja City|Banani->Airport,17,6,HIGH
+Ababil|Notun Bazar->Badda,17,1,HIGH
+BRTC|Shahbag->Paltan,23,6,LOW
+Green Dhaka|Gulshan 1->Gulshan 2,9,6,HIGH
+Ababil|Badda->Rampura,8,2,HIGH
+BRTC|Agargaon->Farmgate,14,6,HIGH
+Green Dhaka|Badda->Gulshan 1,6,6,LOW
+Raja City|Karwan Bazar->Mohakhali,22,4,LOW
+Himachal|Farmgate->Dhanmondi 27,19,1,HIGH
+Shatabdi|Agargaon->Farmgate,1,4,LOW
+Green Dhaka|Airport->Uttara Sector 12,19,4,MEDIUM
+Projapati|Dhanmondi 32->Science Lab,9,4,HIGH
+BRTC|Farmgate->Shahbag,4,6,LOW
+Alif Paribahan|Rampura->Banasree,8,6,HIGH
+Himachal|Airport->Banani,7,1,HIGH
+Green Dhaka|Gulshan 1->Gulshan 2,21,3,LOW
+Green Dhaka|Kakoli->Airport,20,3,HIGH
+BRTC|Mirpur 10->Kazipara,20,6,HIGH
+BRTC|Agargaon->Farmgate,12,4,MEDIUM
+Supravat|Banasree->Rampura,14,3,MEDIUM
+Alif Paribahan|Shyamoli->Agargaon,23,0,LOW
+Borak Transport|Demra->Banasree,20,5,HIGH
+Alif Paribahan|Banasree->Demra,17,3,HIGH
+Ababil|Kuril->Bashundhara,6,3,LOW
+Projapati|Mohammadpur->Dhanmondi 32,10,4,HIGH
+Borak Transport|Mouchak->Paltan,10,5,HIGH
+Alif Paribahan|Gulshan 1->Badda,3,5,LOW
+Borak Transport|Demra->Banasree,0,0,MEDIUM
+Himachal|Karwan Bazar->Farmgate,14,3,LOW
+Ababil|Kuril->Bashundhara,6,5,MEDIUM
+Projapati|Science Lab->Shahbag,5,6,MEDIUM
+Green Dhaka|Airport->Uttara Sector 12,2,5,LOW
+BRTC|Kazipara->Agargaon,11,5,MEDIUM
+Himachal|Farmgate->Dhanmondi 27,1,3,LOW
+Shatabdi|Paltan->Motijheel,13,5,LOW
+BRTC|Farmgate->Shahbag,0,1,LOW
+Himachal|Airport->Banani,18,1,HIGH
+Ababil|Notun Bazar->Badda,0,0,LOW
+Himachal|Uttara Sector 10->Airport,13,5,LOW
+BRTC|Mirpur 10->Kazipara,7,3,MEDIUM
+BRTC|Shahbag->Paltan,3,2,LOW
+Projapati|Science Lab->Shahbag,4,3,MEDIUM
+Himachal|Banani->Mohakhali,20,5,MEDIUM
+Alif Paribahan|Agargaon->Farmgate,19,5,MEDIUM
+Raja City|Karwan Bazar->Mohakhali,23,1,LOW
+Himachal|Tejgaon->Karwan Bazar,13,4,MEDIUM
+Shatabdi|Farmgate->Shahbag,2,0,LOW
+Himachal|Uttara Sector 10->Airport,18,5,MEDIUM
+Ababil|Kuril->Bashundhara,10,6,MEDIUM
+Green Dhaka|Airport->Uttara Sector 12,20,0,HIGH
+Projapati|Mohammadpur->Dhanmondi 32,22,0,MEDIUM
+Projapati|Science Lab->Shahbag,6,4,LOW
+Shatabdi|Mirpur 10->Shewrapara,23,3,LOW
+Alif Paribahan|Badda->Rampura,7,3,HIGH
+Green Dhaka|Badda->Gulshan 1,15,5,MEDIUM
+Alif Paribahan|Agargaon->Farmgate,11,2,MEDIUM
+Ababil|Airport->Kuril,11,4,MEDIUM
+Borak Transport|Rampura->Malibagh,2,0,LOW
+Alif Paribahan|Agargaon->Farmgate,8,1,MEDIUM
+Alif Paribahan|Rampura->Banasree,12,4,MEDIUM
+Borak Transport|Shahbag->Farmgate,13,3,MEDIUM
+BRTC|Kazipara->Agargaon,20,4,HIGH
+Himachal|Tejgaon->Karwan Bazar,8,0,HIGH
+Shatabdi|Agargaon->Farmgate,4,4,LOW
+Alif Paribahan|Banasree->Demra,9,5,HIGH
+Green Dhaka|Badda->Gulshan 1,1,1,LOW
+Ababil|Bashundhara->Notun Bazar,3,3,LOW
+Alif Paribahan|Rampura->Banasree,9,5,HIGH
+Himachal|Dhanmondi 27->Mohammadpur,3,0,LOW
+Alif Paribahan|Agargaon->Farmgate,5,3,MEDIUM
+Green Dhaka|Banani->Kakoli,5,2,LOW
+Green Dhaka|Kakoli->Airport,23,0,MEDIUM
+Alif Paribahan|Karwan Bazar->Mohakhali,10,6,MEDIUM
+Alif Paribahan|Banasree->Demra,8,5,HIGH
+BRTC|Mirpur 10->Kazipara,15,3,MEDIUM
+Alif Paribahan|Rampura->Banasree,15,6,MEDIUM
+Supravat|Banasree->Rampura,5,2,MEDIUM
+BRTC|Paltan->Motijheel,7,5,HIGH
+Alif Paribahan|Gulshan 1->Badda,0,1,LOW
+Raja City|Banani->Airport,12,1,MEDIUM
+Alif Paribahan|Mohakhali->Gulshan 1,17,6,HIGH
+Ababil|Airport->Kuril,7,2,HIGH
+Projapati|Paltan->Motijheel,8,6,MEDIUM
+Supravat|Banasree->Rampura,3,4,LOW
+Alif Paribahan|Badda->Rampura,5,1,MEDIUM
+Alif Paribahan|Gulshan 1->Badda,12,0,HIGH
+Projapati|Mohammadpur->Dhanmondi 32,9,2,MEDIUM
+Borak Transport|Demra->Banasree,0,2,LOW
+Projapati|Science Lab->Shahbag,23,4,LOW
+Supravat|Banasree->Rampura,18,3,HIGH
+Shatabdi|Shewrapara->Agargaon,23,4,MEDIUM
+Green Dhaka|Gulshan 1->Gulshan 2,4,0,MEDIUM
+Alif Paribahan|Karwan Bazar->Mohakhali,7,4,HIGH
+Alif Paribahan|Agargaon->Farmgate,10,0,HIGH
+Supravat|Rampura->Malibagh,23,5,LOW
+Shatabdi|Agargaon->Farmgate,16,1,MEDIUM
+Alif Paribahan|Rampura->Banasree,4,5,LOW
+Alif Paribahan|Gulshan 1->Badda,7,6,HIGH
+Supravat|Banasree->Rampura,14,5,LOW
+BRTC|Farmgate->Shahbag,16,1,MEDIUM
+Supravat|Mouchak->Paltan,2,4,LOW
+Ababil|Bashundhara->Notun Bazar,21,1,LOW
+Green Dhaka|Banani->Kakoli,10,6,MEDIUM
+Raja City|Mirpur 10->Agargaon,10,3,HIGH
+BRTC|Mirpur 10->Kazipara,6,1,MEDIUM
+BRTC|Shahbag->Paltan,4,0,LOW
+Borak Transport|Banasree->Rampura,10,3,MEDIUM
+Raja City|Mohakhali->Banani,6,3,LOW
+Green Dhaka|Banani->Kakoli,3,0,LOW
+Projapati|Science Lab->Shahbag,22,5,LOW
+Shatabdi|Farmgate->Shahbag,10,1,MEDIUM
+Green Dhaka|Gulshan 1->Gulshan 2,11,3,MEDIUM
+Projapati|Science Lab->Shahbag,8,6,HIGH
+Alif Paribahan|Karwan Bazar->Mohakhali,12,6,MEDIUM
+Green Dhaka|Gulshan 1->Gulshan 2,3,3,LOW
+Himachal|Banani->Mohakhali,3,0,LOW
+Shatabdi|Shahbag->Paltan,4,1,MEDIUM
+Supravat|Banasree->Rampura,21,5,MEDIUM
+BRTC|Kazipara->Agargaon,18,4,HIGH
+BRTC|Mirpur 10->Kazipara,0,0,LOW
+Ababil|Notun Bazar->Badda,4,0,MEDIUM
+Raja City|Agargaon->Farmgate,3,0,MEDIUM
+Alif Paribahan|Badda->Rampura,5,4,LOW
+Supravat|Mouchak->Paltan,15,0,MEDIUM
+Ababil|Kuril->Bashundhara,5,2,LOW
+Shatabdi|Mirpur 2->Mirpur 10,8,2,HIGH
+Himachal|Tejgaon->Karwan Bazar,1,4,LOW
+Green Dhaka|Gulshan 1->Gulshan 2,20,2,HIGH
+Borak Transport|Malibagh->Mouchak,1,0,LOW
+Himachal|Banani->Mohakhali,13,1,MEDIUM
+Green Dhaka|Gulshan 1->Gulshan 2,20,6,HIGH
+Alif Paribahan|Farmgate->Karwan Bazar,12,6,MEDIUM
+Borak Transport|Malibagh->Mouchak,17,6,HIGH
+Borak Transport|Shahbag->Farmgate,10,3,HIGH
+Alif Paribahan|Karwan Bazar->Mohakhali,10,4,HIGH
+Green Dhaka|Airport->Uttara Sector 12,1,6,MEDIUM
+Raja City|Mohakhali->Banani,18,1,HIGH
+BRTC|Farmgate->Shahbag,7,5,MEDIUM

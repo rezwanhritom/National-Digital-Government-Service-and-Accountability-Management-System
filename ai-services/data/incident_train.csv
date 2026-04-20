@@ -1,0 +1,51 @@
+text,location,category,severity
+bus engine failure near shyamoli,Shyamoli,breakdown,HIGH
+minor scratch no injury,Farmgate,other,LOW
+driver speeding and honking constantly,Mohakhali,reckless_driving,MEDIUM
+too many people cannot board,Badda,overcrowding,HIGH
+accident between bus and rickshaw,Karwan Bazar,accident,HIGH
+road closed by police barricade,Shahbag,road_blockage,HIGH
+broken down bus blocking lane,Rampura,breakdown,MEDIUM
+passengers standing in aisle entire trip,Uttara Sector 10,overcrowding,MEDIUM
+unsafe overtaking on flyover,Airport,reckless_driving,HIGH
+pothole caused sudden brake,Agargaon,other,LOW
+traffic jam no movement 30 min,Motijheel,road_blockage,MEDIUM
+collision two buses minor injuries,Gulshan 1,accident,HIGH
+engine smoke inside cabin,Dhanmondi 27,breakdown,HIGH
+crowded beyond capacity unsafe,Mouchak,overcrowding,HIGH
+driver using phone while driving,Paltan,reckless_driving,HIGH
+construction blocking half road,Tejgaon,road_blockage,MEDIUM
+flat tire replaced quickly,Mirpur 10,breakdown,LOW
+slight delay no hazard,Kazipara,other,LOW
+accident with pedestrian,Science Lab,accident,HIGH
+waterlogging after rain,Banani,road_blockage,MEDIUM
+bus door would not close properly,Banasree,breakdown,MEDIUM
+rush hour crush at door,Notun Bazar,overcrowding,HIGH
+ran red light almost hit car,Kuril,reckless_driving,HIGH
+tree fallen on road,Bashundhara,road_blockage,HIGH
+scheduled maintenance delay only,Malibagh,other,LOW
+rear ended at low speed,Mouchak,accident,MEDIUM
+oil leak on road surface,Farmgate,breakdown,MEDIUM
+cannot breathe too packed,Shahbag,overcrowding,HIGH
+aggressive lane changes,Gulshan 2,reckless_driving,MEDIUM
+vip movement road closed,Paltan,road_blockage,HIGH
+minor fender bender cleared fast,Kakoli,accident,LOW
+bus stalled smoke from engine,Shyamoli,breakdown,HIGH
+engine died middle of road,Farmgate,breakdown,HIGH
+cannot start bus battery dead,Mohakhali,breakdown,MEDIUM
+transmission fault grinding noise,Badda,breakdown,MEDIUM
+overheated radiator leak,Rampura,breakdown,HIGH
+too many passengers standing,Agargaon,overcrowding,HIGH
+people hanging from door,Karwan Bazar,overcrowding,HIGH
+full bus skipped my stop twice,Uttara Sector 10,overcrowding,MEDIUM
+vip escort road closed,Paltan,road_blockage,HIGH
+police checkpoint long queue,Shahbag,road_blockage,MEDIUM
+marathon route closed,Motijheel,road_blockage,MEDIUM
+illegal racing between buses,Airport,reckless_driving,HIGH
+bus swerved into cycle lane,Banani,reckless_driving,HIGH
+minor bump no injuries,Gulshan 1,accident,LOW
+head on collision serious,Malibagh,accident,HIGH
+rickshaw hit bus mirror,Science Lab,accident,LOW
+nothing serious small delay,Dhanmondi 32,other,LOW
+lost bag reported to driver,Mohammadpur,other,LOW
+door sensor fault delay,Demra,breakdown,LOW

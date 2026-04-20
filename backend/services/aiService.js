@@ -42,3 +42,31 @@ export const getImpact = async (payload) => {
   const { data } = await getAiClient().post('/incidents/impact', payload);
   return data;
 };
+
+/**
+ * Aggregate congestion index for commute planner (HIGH/MEDIUM/LOW).
+ * Returns null if AI service is unavailable or endpoint missing.
+ */
+export const getPlannerTrafficLevel = async (payload) => {
+  try {
+    const { data } = await getAiClient().post('/congestion/planner-traffic', payload ?? {});
+    return data?.traffic_level ?? null;
+  } catch {
+    return null;
+  }
+};
+
+export const predictCongestion = async (payload) => {
+  const { data } = await getAiClient().post('/congestion/predict', payload);
+  return data;
+};
+
+export const getCongestionCurrent = async (params = {}) => {
+  const { data } = await getAiClient().get('/congestion/current', { params });
+  return data;
+};
+
+export const getCongestionForecast = async (params) => {
+  const { data } = await getAiClient().get('/congestion/forecast', { params });
+  return data;
+};

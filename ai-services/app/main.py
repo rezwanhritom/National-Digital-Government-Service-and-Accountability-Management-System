@@ -20,7 +20,7 @@ if str(_ROOT) not in sys.path:
 
 import ml_paths  # noqa: E402
 
-from app.api import congestion, incidents
+from app.api import congestion as congestion_api, incidents as incidents_api
 
 eta_model = None
 crowd_model = None
@@ -46,6 +46,8 @@ async def lifespan(app: FastAPI):
             "python ai-services/training/train_eta.py && "
             "python ai-services/training/train_crowd.py"
         ) from exc
+    incidents_api.load_incident_artifacts()
+    congestion_api.load_congestion_artifacts()
     yield
 
 
@@ -151,8 +153,8 @@ def predict_crowding(body: CrowdRequest) -> dict:
     return {"level": str(level)}
 
 
-app.include_router(incidents.router, prefix="/incidents", tags=["Incidents"])
-app.include_router(congestion.router, prefix="/congestion", tags=["Congestion"])
+app.include_router(incidents_api.router, prefix="/incidents", tags=["Incidents"])
+app.include_router(congestion_api.router, prefix="/congestion", tags=["Congestion"])
 
 
 @app.get("/health")

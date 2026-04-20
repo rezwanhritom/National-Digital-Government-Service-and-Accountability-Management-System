@@ -32,7 +32,7 @@ export const getStops = async (req, res, next) => {
 
 export const postCommute = async (req, res, next) => {
   try {
-    const { origin, destination, hour: hourRaw } = req.body ?? {};
+    const { origin, destination, hour: hourRaw, time_type: timeTypeRaw } = req.body ?? {};
 
     if (typeof origin !== 'string' || !origin.trim()) {
       return res.status(400).json({ message: 'origin is required (non-empty string)' });
@@ -48,10 +48,16 @@ export const postCommute = async (req, res, next) => {
       return res.status(400).json({ message: hourParsed.error });
     }
 
+    const tt =
+      typeof timeTypeRaw === 'string' && timeTypeRaw.trim().toLowerCase() === 'arrive_by'
+        ? 'arrive_by'
+        : 'leave_after';
+
     const data = await planCommute({
       origin: origin.trim(),
       destination: destination.trim(),
       hour: hourParsed.hour,
+      time_type: tt,
     });
 
     return res.json({ data });
