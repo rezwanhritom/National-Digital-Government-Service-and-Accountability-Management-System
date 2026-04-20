@@ -78,7 +78,21 @@ flowchart LR
 ```
 
 1. **MongoDB** running and `MONGO_URI` correct in `backend/.env`.
-2. **FastAPI:** `cd ai-services` → set `PYTHONPATH=.` → `uvicorn app.main:app --reload --port 8000`.
+2. **FastAPI** (from folder `ai-services/`):
+
+   Use **`python -m uvicorn`** so you do not rely on the `uvicorn` executable being on your PATH (common on Windows after `pip install --user`):
+
+   ```bash
+   python -m uvicorn app.main:app --reload --host 0.0.0.0 --port 8000
+   ```
+
+   **PowerShell** (if imports fail, set the project root on `PYTHONPATH`):
+
+   ```powershell
+   $env:PYTHONPATH = "."
+   python -m uvicorn app.main:app --reload --host 0.0.0.0 --port 8000
+   ```
+
 3. **Backend:** `cd backend` → `npm install` → ensure `backend/.env` has `MONGO_URI`, `AI_SERVICE_URL=http://localhost:8000`, etc. → `npm run dev`.
 4. **Frontend:** `cd frontend` → `npm install` → ensure `frontend/.env` has `VITE_API_URL` if needed → `npm run dev`.
 
@@ -105,6 +119,7 @@ Checks:
 
 | Problem | Check |
 |---------|--------|
+| `uvicorn` is not recognized (Windows) | Use `python -m uvicorn ...` from `ai-services/` instead of bare `uvicorn` |
 | Backend exits immediately | `MONGO_URI` wrong or Mongo down |
 | 503 / “AI_SERVICE_URL” | Backend `.env` missing `AI_SERVICE_URL` or FastAPI not running |
 | ETA 400 “Unknown route” | Stop/route spelling must match `routes.json` and training data |
