@@ -6,6 +6,8 @@ import axios from 'axios';
 import { getAllStops, planCommute } from '../services/plannerService.js';
 import fleetSimulationService from '../services/fleetSimulationService.js';
 
+const savedCommutes = [];
+
 function parseHour(value) {
   const n = Number(value);
   if (!Number.isInteger(n) || n < 0 || n > 23) {
@@ -203,6 +205,38 @@ export const postSimulationSessionOnboard = async (req, res, next) => {
     const data = await fleetSimulationService.confirmOnboard(sessionId);
     if (!data) return res.status(404).json({ message: 'Session not found' });
     return res.json({ data });
+  } catch (error) {
+    next(error);
+  }
+};
+
+export const postFavoriteCommute = async (req, res, next) => {
+  try {
+    const { label, route_name: routeName, origin, destination, preference, payload } = req.body ?? {};
+    if (!routeName || !origin || !destination) {
+      return res.status(400).json({ message: 'route_name, origin, and destination are required' });
+    }
+    const row = {
+      id: `fav-${Date.now()}-${Math.random().toString(36).slice(2, 8)}`,
+      label: String(label || `${origin} → ${destination}`).trim(),
+      route_name: String(routeName).trim(),
+      origin: String(origin).trim(),
+      destination: String(destination).trim(),
+      preference: String(preference || 'fastest').trim(),
+      payload: payload ?? null,
+      created_at: new Date().toISOString(),
+    };
+    savedCommutes.unshift(row);
+    if (savedCommutes.length > 200) savedCommutes.length = 200;
+    return res.status(201).json({ data: row });
+  } catch (error) {
+    next(error);
+  }
+};
+
+export const getFavoriteCommutes = async (req, res, next) => {
+  try {
+    return res.json({ data: savedCommutes });
   } catch (error) {
     next(error);
   }

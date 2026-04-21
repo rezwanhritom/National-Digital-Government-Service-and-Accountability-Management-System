@@ -35,6 +35,8 @@ const ROUTE_GEOMETRIES_PATH = path.join(
 const CROWD_RANK = { LOW: 0, MEDIUM: 1, HIGH: 2 };
 /** Extra minutes charged for alighting and boarding another line at the same stop. */
 const TRANSFER_PENALTY_MIN = 5;
+const WALKING_MAX_KM = 1.2;
+const WALKING_MIN_PER_KM = 12;
 
 let routesCache = null;
 let stopsGeoCache = null;
@@ -260,6 +262,37 @@ function pointsForStops(stopNames, stopGeoMap) {
   return out;
 }
 
+function haversineKm(aLat, aLon, bLat, bLon) {
+  const toRad = (d) => (d * Math.PI) / 180;
+  const dLat = toRad(bLat - aLat);
+  const dLon = toRad(bLon - aLon);
+  const x =
+    Math.sin(dLat / 2) ** 2 +
+    Math.cos(toRad(aLat)) * Math.cos(toRad(bLat)) * Math.sin(dLon / 2) ** 2;
+  return 6371 * 2 * Math.atan2(Math.sqrt(x), Math.sqrt(1 - x));
+}
+
+function buildWalkAdjacency(stopGeoMap) {
+  const names = Array.from(stopGeoMap.keys());
+  const adj = new Map();
+  for (const s of names) adj.set(s, []);
+  for (let i = 0; i < names.length; i += 1) {
+    const a = names[i];
+    const ga = stopGeoMap.get(a);
+    for (let j = i + 1; j < names.length; j += 1) {
+      const b = names[j];
+      const gb = stopGeoMap.get(b);
+      const km = haversineKm(ga.lat, ga.lon, gb.lat, gb.lon);
+      if (km <= WALKING_MAX_KM) {
+        const eta = Math.max(1, Math.round(km * WALKING_MIN_PER_KM));
+        adj.get(a).push({ toStop: b, km, eta });
+        adj.get(b).push({ toStop: a, km, eta });
+      }
+    }
+  }
+  return adj;
+}
+
 function stateKey(stop, route) {
   return `${stop}\0${route ?? ''}`;
 }
@@ -298,6 +331,8 @@ function routesServingStop(routes, stop) {
  */
 export async function findPathsWithTransfers(origin, destination, hour, trafficLevel, segmentTraffic = new Map()) {
   const routes = await loadRoutesDataset();
+  const stopGeoMap = await loadStopsGeoMap();
+  const walkAdjacency = buildWalkAdjacency(stopGeoMap);
   const originTrim = origin.trim();
   const destTrim = destination.trim();
 
@@ -307,7 +342,7 @@ export async function findPathsWithTransfers(origin, destination, hour, trafficL
 
   /** @type {Map<string, number>} */
   const dist = new Map();
-  /** @type {Map<string, { prevKey: string, leg: { from_stop: string, to_stop: string, route: string, eta: number, crowd: string, kind: 'ride'|'transfer' } } | null>} */
+  /** @type {Map<string, { prevKey: string, leg: { from_stop: string, to_stop: string, route: string|null, eta: number, crowd: string, kind: 'ride'|'transfer'|'walk', distance_km?: number } } | null>} */
   const prev = new Map();
 
   /** @type {Array<{ key: string, cost: number }>} */
@@ -456,6 +491,29 @@ export async function findPathsWithTransfers(origin, destination, hour, trafficL
         }
       }
     }
+
+    // Optional walking edges between nearby stops; after walking you're unboarded (route=null).
+    const walks = walkAdjacency.get(uStop) ?? [];
+    for (const w of walks) {
+      const vKey = stateKey(w.toStop, null);
+      const newDist = uCost + w.eta;
+      if (!dist.has(vKey) || newDist < dist.get(vKey)) {
+        dist.set(vKey, newDist);
+        prev.set(vKey, {
+          prevKey: uKey,
+          leg: {
+            from_stop: uStop,
+            to_stop: w.toStop,
+            route: null,
+            eta: w.eta,
+            crowd: 'LOW',
+            kind: 'walk',
+            distance_km: Number(w.km.toFixed(2)),
+          },
+        });
+        push(vKey, newDist);
+      }
+    }
   }
 
   // Collect all goal states (destination, any route)
@@ -491,15 +549,18 @@ export async function findPathsWithTransfers(origin, destination, hour, trafficL
     legs.reverse();
 
     const rideLegs = legs.filter((l) => l.kind === 'ride');
+    const walkLegs = legs.filter((l) => l.kind === 'walk');
     const sig = rideLegs.map((l) => `${l.route}:${l.from_stop}->${l.to_stop}`).join('|');
     if (seenPathSigs.has(sig)) continue;
     seenPathSigs.add(sig);
 
     const transfers = legs.filter((l) => l.kind === 'transfer').length;
     const linesUsed = [...new Set(rideLegs.map((l) => l.route))];
+    const walkMinutes = walkLegs.reduce((n, l) => n + Number(l.eta || 0), 0);
     const explanationParts = [
       `${linesUsed.join(' → ')} · ${rideLegs.length} segment(s)`,
       transfers > 0 ? `${transfers} transfer(s) included` : 'direct or single-line',
+      walkMinutes > 0 ? `~${walkMinutes} min walking` : 'no walking needed',
     ];
     const explanation = explanationParts.join(' · ');
 
@@ -509,6 +570,8 @@ export async function findPathsWithTransfers(origin, destination, hour, trafficL
       explanation,
       linesUsed,
       transferCount: transfers,
+      walkCount: walkLegs.length,
+      walkMinutes,
     });
   }
 
@@ -548,16 +611,16 @@ export function evaluateTimeType(timeType, hour, minute, totalEtaMinutes) {
   };
 }
 
-function computeScore({ eta, transferCount, crowd, preference }) {
+function computeScore({ eta, transferCount, crowd, walkMinutes, preference }) {
   const crowdPenalty = CROWD_RANK[crowd] ?? 1;
   if (preference === 'less_crowded') {
-    return crowdPenalty * 100 + eta + transferCount * 8;
+    return crowdPenalty * 100 + eta + transferCount * 8 + walkMinutes * 0.5;
   }
   if (preference === 'fewer_transfers') {
-    return transferCount * 120 + eta + crowdPenalty * 12;
+    return transferCount * 120 + eta + crowdPenalty * 12 + walkMinutes;
   }
   // fastest
-  return eta + transferCount * 10 + crowdPenalty * 5;
+  return eta + transferCount * 10 + crowdPenalty * 5 + walkMinutes;
 }
 
 /**
@@ -640,10 +703,13 @@ export async function planCommute({
       suggested_departure_time: timeEval.suggested_departure_time,
       time_note: timeEval.note,
       transfer_count: p.transferCount,
+      walk_count: p.walkCount,
+      walk_minutes: p.walkMinutes,
       score: computeScore({
         eta: Math.round(p.totalEta),
         transferCount: p.transferCount,
         crowd: finalCrowd,
+        walkMinutes: p.walkMinutes,
         preference,
       }),
       map_segments: mapSegments,

@@ -146,9 +146,9 @@ This phase implements the **full cycle / loop system**: many buses per route typ
 
 ### Phase 6 — Optional polish & integration
 
-- [ ] **6.1** **Favorite / save commute** payload stub (wire to alerts module when ready).  
-- [ ] **6.2** **Walking** edges between nearby stops (small graph extension) if you want walking in the score.  
-- [ ] **6.3** Update [`feature-ai-powered-commute-planner.md`](./feature-ai-powered-commute-planner.md) to reflect new flows and files.
+- [x] **6.1** **Favorite / save commute** payload stub (wire to alerts module when ready). *(Implemented in-memory stub API: `POST/GET /api/planner/favorites` and planner UI “Save Best Route”.)*  
+- [x] **6.2** **Walking** edges between nearby stops (small graph extension) if you want walking in the score. *(Implemented walking edges in planner graph with distance-based walking ETA; score now includes `walk_minutes`.)*  
+- [x] **6.3** Update [`feature-ai-powered-commute-planner.md`](./feature-ai-powered-commute-planner.md) to reflect new flows and files. *(Updated in this phase-complete pass.)*
 
 **Exit criteria:** Planner doc matches code; optional items clearly marked done or deferred.
 
@@ -173,3 +173,128 @@ When phases **1–5** (and chosen items in **6**) are stable — including **fle
 ## Dependency note (geometry vs fleet)
 
 **Phase 4** needs a **polyline** per pattern to move buses; **minimum** path is: complete **Phase 3** first, or stub straight-line segments between stops until full `route_geometries.json` exists. If you must parallelize, implement fleet against **stop-to-stop geodesics** first, then swap in real polylines when ready.
+
+---
+
+## Updated end-to-end workflow (implemented)
+
+1. User submits planner form (`origin`, `destination`, `time/time_type`, `preference`).
+2. Backend builds candidate paths with:
+   - ride edges (ETA + crowding),
+   - transfer edges (+ fixed transfer minutes),
+   - walking edges between nearby stops (distance → walking minutes).
+3. For each ride segment, backend applies segment-level congestion (`/congestion/predict`) before ETA call.
+4. Backend returns ranked options with:
+   - `eta`, `crowd`, `transfer_count`, `walk_minutes`, `score`,
+   - route map segments + landmarks.
+5. UI renders route cards + map polylines + landmark markers.
+6. User can start simulated tracking:
+   - `POST /api/planner/sim/session` (bind nearest active bus),
+   - poll `GET /api/planner/sim/session/:session_id` for ETA to user,
+   - `POST /api/planner/sim/session/:session_id/onboard` to switch to destination ETA.
+7. Fleet simulation runs independently:
+   - many buses per route,
+   - staggered departures and per-bus shifts,
+   - loop history persisted for ML reuse.
+
+---
+
+## File responsibilities (what each part does)
+
+### Core planner pathing and ranking
+
+- `backend/services/plannerService.js`
+  - builds path graph and computes route options,
+  - adds transfer + walking edges,
+  - injects segment-level congestion into ETA calls,
+  - computes ranking score,
+  - attaches map segments + landmarks for UI.
+
+- `backend/controllers/plannerController.js`
+  - validates commute request body (`time`/`hour`, `time_type`, `preference`),
+  - exposes planner, simulation, and favorites endpoints.
+
+- `backend/routes/plannerRoutes.js`
+  - endpoint registry for planner:
+    - commute/stops,
+    - simulation fleet/session/history,
+    - favorites.
+
+### Fleet simulation and loop history
+
+- `backend/services/fleetSimulationService.js`
+  - generates fleet (>20 buses per route pattern),
+  - simulates position, shift window, loop lifecycle,
+  - persists loop history (`ai-services/data/history/fleet_loop_history.jsonl`),
+  - manages session-based “ETA to you / ETA to destination” tracking.
+
+### Frontend planner UI
+
+- `frontend/src/pages/Planner.jsx`
+  - planner form + ranked results,
+  - route map rendering (polylines + landmarks),
+  - tracking controls (track bus, confirm onboard),
+  - “Save Best Route” action.
+
+### Data and AI artifacts
+
+- `ai-services/data/routes.json`
+  - transit network topology with forward + `(Return)` patterns.
+- `ai-services/data/stops.json`
+  - stop coordinates for map and simulated movement.
+- `ai-services/data/route_geometries.json`
+  - route-level landmark metadata (extensible toward richer geometry).
+- `ai-services/data/history/fleet_loop_history.jsonl`
+  - append-only loop history for future model training.
+- `ai-services/data/eta_dataset.csv`, `crowd_dataset.csv`
+  - training data used by ETA/crowding training scripts.
+- `ai-services/models/*.pkl`, `ai-services/encoders/*.pkl`
+  - runtime-loaded model artifacts.
+
+---
+
+## Calculation logic (how outputs are computed)
+
+### Route search
+
+- State model: `(stop, currentRoute|null)`.
+- Ride edge cost: ETA returned by AI service for that segment.
+- Transfer edge cost: fixed `TRANSFER_PENALTY_MIN` (same-stop route swap).
+- Walking edge cost:
+  - stop pairs within threshold distance,
+  - minutes = `distance_km * WALKING_MIN_PER_KM`.
+
+### Congestion + ETA
+
+- Planner asks congestion service for segment keys.
+- Segment-specific traffic level (`LOW/MEDIUM/HIGH`) is injected into ETA requests.
+- If congestion call fails, global hourly traffic fallback is used.
+
+### Crowding
+
+- For each ride segment, crowd level is predicted at destination stop.
+- Route-level crowd shown in card = worst crowd across ride segments.
+
+### Time handling
+
+- Accepts `time` (`HH:MM`) or legacy `hour`.
+- `arrive_by` mode computes feasible departures and suggested departure time.
+
+### Ranking score
+
+- Score combines:
+  - total ETA,
+  - transfers,
+  - crowd penalty,
+  - walking minutes.
+- Preference modes adjust weights:
+  - `fastest`,
+  - `less_crowded`,
+  - `fewer_transfers`.
+
+### Tracking ETA
+
+- Session bind picks nearest active bus on the selected route segment.
+- Pre-onboard: `eta_to_user_min`.
+- Post-onboard: `eta_to_destination_min`.
+- UI polls session endpoint every few seconds for live updates.

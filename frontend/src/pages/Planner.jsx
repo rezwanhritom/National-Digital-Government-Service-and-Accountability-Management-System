@@ -1,6 +1,5 @@
 import { useEffect, useMemo, useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
-import { CircleMarker, MapContainer, Polyline, TileLayer, Tooltip } from 'react-leaflet';
 import api from '../services/api';
 
 const inputClass =
@@ -35,13 +34,14 @@ const routeItemVariants = {
   },
 };
 
-const DHAKA_CENTER = [23.8103, 90.4125];
+function cleanRouteName(name) {
+  const s = String(name ?? '').trim();
+  if (!s) return 'Route';
+  return s.replace(/\s*\(Return\)\s*$/i, '');
+}
 
-function crowdLineColor(crowd) {
-  const key = String(crowd ?? '').toUpperCase();
-  if (key === 'HIGH') return '#ef4444';
-  if (key === 'MEDIUM') return '#eab308';
-  return '#22c55e';
+function isReturnRoute(name) {
+  return /\(Return\)\s*$/i.test(String(name ?? '').trim());
 }
 
 function Planner() {
@@ -57,6 +57,7 @@ function Planner() {
   const [simSession, setSimSession] = useState(null);
   const [simLoading, setSimLoading] = useState(false);
   const [simError, setSimError] = useState('');
+  const [saveMessage, setSaveMessage] = useState('');
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
   const [hasFetched, setHasFetched] = useState(false);
@@ -99,33 +100,12 @@ function Planner() {
     });
   }, [results]);
 
-  const bestRouteMapSegments = useMemo(() => {
-    if (!sortedRoutes.length) return [];
-    const segments = sortedRoutes[0]?.map_segments;
-    return Array.isArray(segments) ? segments.filter((s) => Array.isArray(s?.polyline) && s.polyline.length > 1) : [];
-  }, [sortedRoutes]);
-
-  const bestRouteLandmarks = useMemo(() => {
-    const dedupe = new Map();
-    for (const seg of bestRouteMapSegments) {
-      const landmarks = Array.isArray(seg?.landmarks) ? seg.landmarks : [];
-      for (const lm of landmarks) {
-        const name = String(lm?.name ?? '').trim();
-        const lat = Number(lm?.lat);
-        const lon = Number(lm?.lon);
-        if (!name || !Number.isFinite(lat) || !Number.isFinite(lon)) continue;
-        const key = `${name}|${lat.toFixed(4)}|${lon.toFixed(4)}`;
-        if (!dedupe.has(key)) dedupe.set(key, { name, lat, lon });
-      }
-    }
-    return Array.from(dedupe.values());
-  }, [bestRouteMapSegments]);
-
   const handlePlanRoute = async () => {
     setError('');
     setResults([]);
     setSimSession(null);
     setSimError('');
+    setSaveMessage('');
 
     if (!origin?.trim() || !destination?.trim()) {
       setError('Please select both origin and destination.');
@@ -192,6 +172,26 @@ function Planner() {
       setSimError(String(msg));
     } finally {
       setSimLoading(false);
+    }
+  };
+
+  const handleSaveBestRoute = async () => {
+    if (!sortedRoutes.length) return;
+    const best = sortedRoutes[0];
+    setSaveMessage('');
+    try {
+      await api.post('/planner/favorites', {
+        label: `${origin} -> ${destination}`,
+        route_name: best?.route,
+        origin,
+        destination,
+        preference,
+        payload: best,
+      });
+      setSaveMessage('Best route saved.');
+    } catch (err) {
+      const msg = err.response?.data?.message || err.message || 'Could not save route.';
+      setSaveMessage(String(msg));
     }
   };
 
@@ -372,40 +372,6 @@ function Planner() {
         </div>
 
         <div className="space-y-6">
-          {bestRouteMapSegments.length > 0 ? (
-            <div className="h-[280px] w-full overflow-hidden rounded-2xl border border-white/10 bg-slate-900/80">
-              <MapContainer center={DHAKA_CENTER} zoom={12} className="h-full w-full" scrollWheelZoom>
-                <TileLayer
-                  attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OSM</a>'
-                  url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-                />
-                {bestRouteMapSegments.map((seg, idx) => (
-                  <Polyline
-                    key={`${seg.route}-${seg.from_stop}-${seg.to_stop}-${idx}`}
-                    positions={seg.polyline}
-                    pathOptions={{ color: crowdLineColor(seg.crowd), weight: 5, opacity: 0.9 }}
-                  >
-                    <Tooltip sticky>
-                      {seg.route}: {seg.from_stop} → {seg.to_stop} ({crowdLabel(seg.crowd)})
-                    </Tooltip>
-                  </Polyline>
-                ))}
-                {bestRouteLandmarks.map((lm, idx) => (
-                  <CircleMarker
-                    key={`${lm.name}-${idx}`}
-                    center={[lm.lat, lm.lon]}
-                    radius={4}
-                    pathOptions={{ color: '#38bdf8', fillColor: '#22d3ee', fillOpacity: 0.9 }}
-                  >
-                    <Tooltip direction="top" offset={[0, -2]} opacity={0.95}>
-                      Landmark: {lm.name}
-                    </Tooltip>
-                  </CircleMarker>
-                ))}
-              </MapContainer>
-            </div>
-          ) : null}
-
           {loading ? (
             <div className="flex min-h-[280px] items-center justify-center rounded-2xl border border-white/10 bg-white/5 p-8 backdrop-blur-md">
               <motion.p
@@ -435,16 +401,26 @@ function Planner() {
               <div className="rounded-2xl border border-cyan-500/20 bg-cyan-950/20 p-4 text-sm text-cyan-100">
                 <div className="flex flex-wrap items-center justify-between gap-3">
                   <p>Simulation tracking for the best option (ETA to you, then ETA to destination).</p>
-                  <button
-                    type="button"
-                    onClick={handleTrackBestRoute}
-                    disabled={simLoading}
-                    className="rounded-lg bg-cyan-500 px-3 py-2 text-xs font-semibold text-slate-950 transition hover:bg-cyan-400 disabled:opacity-60"
-                  >
-                    {simLoading ? 'Starting…' : 'Track Best Bus'}
-                  </button>
+                  <div className="flex flex-wrap items-center gap-2">
+                    <button
+                      type="button"
+                      onClick={handleSaveBestRoute}
+                      className="rounded-lg bg-emerald-500 px-3 py-2 text-xs font-semibold text-slate-950 transition hover:bg-emerald-400"
+                    >
+                      Save Best Route
+                    </button>
+                    <button
+                      type="button"
+                      onClick={handleTrackBestRoute}
+                      disabled={simLoading}
+                      className="rounded-lg bg-cyan-500 px-3 py-2 text-xs font-semibold text-slate-950 transition hover:bg-cyan-400 disabled:opacity-60"
+                    >
+                      {simLoading ? 'Starting…' : 'Track Best Bus'}
+                    </button>
+                  </div>
                 </div>
                 {simError ? <p className="mt-2 text-rose-200">{simError}</p> : null}
+                {saveMessage ? <p className="mt-2 text-emerald-200">{saveMessage}</p> : null}
                 {simSession ? (
                   <div className="mt-3 grid grid-cols-1 gap-2 text-xs md:grid-cols-2">
                     <p>
@@ -492,6 +468,10 @@ function Planner() {
                 const stopsText = Array.isArray(row?.stops)
                   ? row.stops.join(' → ')
                   : '';
+                const lines = Array.isArray(row?.lines) ? row.lines : [];
+                const lineCount = lines.length;
+                const primaryLine = cleanRouteName(lines[0] ?? row?.route);
+                const hasReturn = lines.some((ln) => isReturnRoute(ln));
                 const eta = row?.eta;
                 const etaLabel = Number.isFinite(Number(eta))
                   ? `${Number(eta)} min`
@@ -510,19 +490,54 @@ function Planner() {
                     variants={routeItemVariants}
                   >
                     <div className="rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur-md transition duration-300 hover:-translate-y-2 hover:shadow-xl">
-                      <div className="flex flex-wrap items-start justify-between gap-3">
-                        <div className="min-w-0 flex-1">
-                          <div className="flex flex-wrap items-center gap-2">
+                      <div className="space-y-3">
+                        <div className="flex flex-wrap items-center gap-2">
                             <h3 className="text-lg font-semibold text-white">
-                              {row?.route ?? 'Route'}
+                              {primaryLine}
                             </h3>
+                            {lineCount > 1 ? (
+                              <span className="rounded bg-indigo-500/20 px-2 py-1 text-xs text-indigo-300">
+                                {lineCount} lines
+                              </span>
+                            ) : null}
+                            {hasReturn ? (
+                              <span className="rounded bg-amber-500/20 px-2 py-1 text-xs text-amber-300">
+                                Return direction
+                              </span>
+                            ) : null}
                             {isBest ? (
                               <span className="rounded bg-green-500/20 px-2 py-1 text-xs text-green-400">
                                 Best Option ({preferenceLabel})
                               </span>
                             ) : null}
-                          </div>
-                          <p className="mt-2 text-sm text-slate-400">{stopsText}</p>
+                        </div>
+
+                        <div className="flex flex-wrap items-center gap-x-4 gap-y-1 text-sm">
+                          <p className="text-white">
+                            <span className="text-slate-400">ETA </span>
+                            <span className="font-bold">{etaLabel}</span>
+                          </p>
+                          <p className={crowdTextClass(row?.crowd)}>
+                            <span className="text-slate-500">Crowd </span>
+                            <span className="font-semibold">{crowdLabel(row?.crowd)}</span>
+                          </p>
+                          <p className="text-slate-200">
+                            <span className="text-slate-500">Transfers </span>
+                            <span className="font-semibold">{Number(row?.transfer_count ?? 0)}</span>
+                          </p>
+                          <p className="text-slate-200">
+                            <span className="text-slate-500">Walk </span>
+                            <span className="font-semibold">{Number(row?.walk_minutes ?? 0)} min</span>
+                          </p>
+                        </div>
+
+                        <div className="min-w-0">
+                          <p className="text-sm text-slate-400">{stopsText}</p>
+                          {lineCount > 1 ? (
+                            <p className="mt-1 text-xs text-slate-500">
+                              Lines: {lines.map((ln) => cleanRouteName(ln)).join(' · ')}
+                            </p>
+                          ) : null}
                           {row?.explanation ? (
                             <p className="mt-2 text-xs text-slate-500">{String(row.explanation)}</p>
                           ) : null}
@@ -540,27 +555,13 @@ function Planner() {
                                 <li key={`${leg.route}-${leg.from_stop}-${leg.to_stop}-${li}`}>
                                   {leg.kind === 'transfer'
                                     ? `Transfer · +${leg.eta} min`
+                                    : leg.kind === 'walk'
+                                      ? `Walk: ${leg.from_stop} -> ${leg.to_stop} · ${leg.eta} min`
                                     : `${leg.route}: ${leg.from_stop} → ${leg.to_stop} · ${leg.eta} min · ${crowdLabel(leg.crowd)}`}
                                 </li>
                               ))}
                             </ul>
                           ) : null}
-                        </div>
-                        <div className="flex shrink-0 flex-col items-end gap-1 sm:flex-row sm:items-center sm:gap-4">
-                          <p className="text-white">
-                            <span className="text-slate-400">ETA </span>
-                            <span className="font-bold">{etaLabel}</span>
-                          </p>
-                          <p className={crowdTextClass(row?.crowd)}>
-                            <span className="text-slate-500">Crowd </span>
-                            <span className="font-semibold">
-                              {crowdLabel(row?.crowd)}
-                            </span>
-                          </p>
-                          <p className="text-slate-200">
-                            <span className="text-slate-500">Transfers </span>
-                            <span className="font-semibold">{Number(row?.transfer_count ?? 0)}</span>
-                          </p>
                         </div>
                       </div>
                     </div>
