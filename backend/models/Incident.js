@@ -9,6 +9,7 @@ const incidentSchema = new mongoose.Schema(
     },
     busId: { type: String, trim: true },
     routeId: { type: String, trim: true },
+    area: { type: String, required: true, trim: true },
     location: {
       type: {
         type: String,

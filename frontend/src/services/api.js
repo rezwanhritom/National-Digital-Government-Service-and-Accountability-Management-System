@@ -43,6 +43,10 @@ export const submitIncident = (formData) => {
   });
 };
 
+export const getIncidentAreas = () => {
+  return api.get('/incidents/areas');
+};
+
 export const getIncidents = (params) => {
   return api.get('/incidents', { params });
 };

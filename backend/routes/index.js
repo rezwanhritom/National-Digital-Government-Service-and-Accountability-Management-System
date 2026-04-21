@@ -3,7 +3,14 @@ import multer from 'multer';
 import { classifyIncident, getCrowding, getETA, getImpact } from '../services/aiService.js';
 import { getNearbyStops, searchStops } from '../controllers/stopsController.js';
 import { getUpcomingBuses, getLiveBusLocations, getBusLocation } from '../controllers/busesController.js';
-import { submitIncident, getIncidents, updateIncidentStatus, getDashboardStats, getIncidentsHeatmap } from '../controllers/incidentsController.js';
+import {
+  submitIncident,
+  getIncidentAreas,
+  getIncidents,
+  updateIncidentStatus,
+  getDashboardStats,
+  getIncidentsHeatmap,
+} from '../controllers/incidentsController.js';
 // import exampleRoutes from './exampleRoutes.js';
 
 const router = Router();
@@ -67,6 +74,7 @@ router.get('/buses/live', getLiveBusLocations);
 router.get('/buses/:bus_id/location', getBusLocation);
 
 // Incidents routes
+router.get('/incidents/areas', getIncidentAreas);
 router.post('/incidents/submit', upload.array('media', 5), submitIncident); // Allow up to 5 files
 router.get('/incidents', getIncidents);
 router.patch('/incidents/:id/status', updateIncidentStatus);

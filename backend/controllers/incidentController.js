@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { classifyIncident as classifyIncidentWithAi, getImpact } from '../services/aiService.js';
 import {
-  findAffectedRouteNames,
+  deriveIncidentGeoContext,
   loadRoutesDataset,
   pickReroutes,
 } from '../services/incidentImpactService.js';
@@ -12,13 +12,24 @@ import {
  * @param {string} severityRaw
  * @param {string[]} affectedRouteNames
  */
-function assignAuthority(categoryRaw, severityRaw, affectedRouteNames = []) {
+function assignAuthority(categoryRaw, severityRaw, affectedRouteNames = [], geoContext = null) {
   const category = String(categoryRaw ?? '').toLowerCase().replace(/\s+/g, '_');
   const severity = String(severityRaw ?? '').toUpperCase();
   const primary =
     Array.isArray(affectedRouteNames) && affectedRouteNames.length > 0
       ? affectedRouteNames[0]
       : null;
+  const zone = String(geoContext?.zone ?? '').toLowerCase();
+  const networkStatus = String(geoContext?.network_status ?? '').toLowerCase();
+
+  if (networkStatus === 'out_of_network') {
+    return 'City command verification desk (outside transit corridor)';
+  }
+  if (zone === 'busy' && severity !== 'LOW') {
+    return primary
+      ? `Urban traffic control priority queue (${primary})`
+      : 'Urban traffic control priority queue';
+  }
 
   if (category === 'road_blockage' || category === 'accident') {
     if (severity === 'HIGH') {
@@ -45,17 +56,30 @@ function assignAuthority(categoryRaw, severityRaw, affectedRouteNames = []) {
 
 export const classifyIncident = async (req, res, next) => {
   try {
-    const { description, location } = req.body ?? {};
+    const { description } = req.body ?? {};
 
     if (typeof description !== 'string' || !description.trim()) {
       return res.status(400).json({ message: 'description is required (non-empty string)' });
     }
-    if (typeof location !== 'string' || !location.trim()) {
-      return res.status(400).json({ message: 'location is required (non-empty string)' });
+
+    const geo = await deriveIncidentGeoContext(req.body ?? {});
+    if (!geo.location) {
+      return res.status(400).json({
+        message: 'location text or valid coordinates (latitude/longitude) are required',
+      });
+    }
+    if (geo.network_status === 'out_of_network') {
+      return res.status(422).json({
+        message:
+          'incident location appears outside known transit network. submit a point closer to transit corridors or provide a valid stop location',
+        network_status: geo.network_status,
+        nearest_stop: geo.nearest_stop,
+        nearest_route_segment: geo.nearest_route_segment,
+      });
     }
 
     const trimmedDesc = description.trim();
-    const trimmedLoc = location.trim();
+    const trimmedLoc = geo.location;
 
     const ai = await classifyIncidentWithAi({
       text: trimmedDesc,
@@ -64,15 +88,20 @@ export const classifyIncident = async (req, res, next) => {
     const category = ai.category;
     const severity = ai.severity;
 
-    const routes = await loadRoutesDataset();
-    const affectedPreview = [...new Set(findAffectedRouteNames(routes, trimmedLoc))];
-    const assigned_to = assignAuthority(category, severity, affectedPreview);
+    const affectedPreview = geo.affected_routes;
+    const assigned_to = assignAuthority(category, severity, affectedPreview, geo);
 
     return res.json({
       category,
       severity,
       assigned_to,
       location: trimmedLoc,
+      network_status: geo.network_status,
+      zone: geo.zone,
+      area: geo.area,
+      nearest_stop: geo.nearest_stop,
+      nearest_route_segment: geo.nearest_route_segment,
+      affected_routes: affectedPreview,
     });
   } catch (error) {
     if (axios.isAxiosError(error)) {
@@ -95,11 +124,8 @@ export const classifyIncident = async (req, res, next) => {
 
 export const estimateImpact = async (req, res, next) => {
   try {
-    const { location, category, severity, hour: hourRaw } = req.body ?? {};
+    const { category, severity, hour: hourRaw } = req.body ?? {};
 
-    if (typeof location !== 'string' || !location.trim()) {
-      return res.status(400).json({ message: 'location is required (non-empty string)' });
-    }
     if (category === undefined || category === null || String(category).trim() === '') {
       return res.status(400).json({ message: 'category is required' });
     }
@@ -107,9 +133,25 @@ export const estimateImpact = async (req, res, next) => {
       return res.status(400).json({ message: 'severity is required' });
     }
 
-    const trimmedLoc = location.trim();
+    const geo = await deriveIncidentGeoContext(req.body ?? {});
+    if (!geo.location) {
+      return res.status(400).json({
+        message: 'location text or valid coordinates (latitude/longitude) are required',
+      });
+    }
+    if (geo.network_status === 'out_of_network') {
+      return res.status(422).json({
+        message:
+          'incident location appears outside known transit network. submit a point closer to transit corridors or provide a valid stop location',
+        network_status: geo.network_status,
+        nearest_stop: geo.nearest_stop,
+        nearest_route_segment: geo.nearest_route_segment,
+      });
+    }
+
+    const trimmedLoc = geo.location;
     const routes = await loadRoutesDataset();
-    const affected_routes = [...new Set(findAffectedRouteNames(routes, trimmedLoc))];
+    const affected_routes = geo.affected_routes;
     const allNames = routes
       .map((r) => r?.name)
       .filter((n) => typeof n === 'string' && n.trim())
@@ -138,6 +180,11 @@ export const estimateImpact = async (req, res, next) => {
       delay,
       recovery_time,
       reroutes,
+      network_status: geo.network_status,
+      zone: geo.zone,
+      area: geo.area,
+      nearest_stop: geo.nearest_stop,
+      nearest_route_segment: geo.nearest_route_segment,
     });
   } catch (error) {
     if (error.code === 'ENOENT') {

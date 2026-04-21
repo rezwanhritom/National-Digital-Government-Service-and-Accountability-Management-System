@@ -1,17 +1,55 @@
 import Incident from '../models/Incident.js';
 import { classifyIncident } from '../services/aiService.js';
 import mongoose from 'mongoose';
+import {
+  buildIncidentAreasFromStops,
+  deriveIncidentGeoContext,
+  loadStopsDataset,
+} from '../services/incidentImpactService.js';
+
+export const getIncidentAreas = async (req, res, next) => {
+  try {
+    const stops = await loadStopsDataset();
+    const areas = buildIncidentAreasFromStops(stops);
+    return res.json({ areas });
+  } catch (error) {
+    next(error);
+  }
+};
 
 // Submit a new incident
 export const submitIncident = async (req, res, next) => {
   try {
-    const { category, busId, routeId, latitude, longitude, description } = req.body;
+    const { category, busId, routeId, latitude, longitude, description, area: areaRaw } = req.body;
+    const lat = Number(latitude);
+    const lon = Number(longitude);
+    if (!Number.isFinite(lat) || !Number.isFinite(lon)) {
+      return res.status(400).json({ message: 'Valid latitude and longitude are required' });
+    }
 
     // Handle file uploads
     const media = [];
     if (req.files) {
       req.files.forEach(file => {
         media.push(file.path); // Assuming multer saves to disk
+      });
+    }
+
+    const geo = await deriveIncidentGeoContext({ latitude: lat, longitude: lon });
+    const stops = await loadStopsDataset();
+    const areas = buildIncidentAreasFromStops(stops);
+    const areaSet = new Set(areas.map((a) => a.area));
+    const requestedArea = String(areaRaw ?? '').trim();
+    const autoArea = String(geo?.area ?? '').trim();
+    const finalArea = areaSet.has(autoArea)
+      ? autoArea
+      : requestedArea && areaSet.has(requestedArea)
+        ? requestedArea
+        : null;
+    if (!finalArea) {
+      return res.status(422).json({
+        message: 'Unable to resolve area from coordinates. Please choose a valid area.',
+        available_areas: [...areaSet],
       });
     }
 
@@ -23,6 +61,8 @@ export const submitIncident = async (req, res, next) => {
         incident: {
           id: `mock-${Date.now()}`,
           category,
+          area: finalArea,
+          nearest_stop: geo?.nearest_stop ?? null,
           status: 'pending',
           createdAt: new Date().toISOString(),
         },
@@ -36,8 +76,9 @@ export const submitIncident = async (req, res, next) => {
       routeId,
       location: {
         type: 'Point',
-        coordinates: [parseFloat(longitude), parseFloat(latitude)],
+        coordinates: [lon, lat],
       },
+      area: finalArea,
       description,
       media,
       submittedBy: req.user ? req.user._id : null, // Assuming auth middleware sets req.user
@@ -48,9 +89,8 @@ export const submitIncident = async (req, res, next) => {
     // Optionally, classify with AI
     try {
       const classification = await classifyIncident({
-        description,
-        category,
-        // Add other fields if needed
+        text: description,
+        location: geo?.location || finalArea,
       });
       incident.aiClassification = classification;
       await incident.save();
@@ -64,6 +104,8 @@ export const submitIncident = async (req, res, next) => {
       incident: {
         id: incident._id,
         category: incident.category,
+        area: incident.area,
+        nearest_stop: geo?.nearest_stop ?? null,
         status: incident.status,
         createdAt: incident.createdAt,
       },

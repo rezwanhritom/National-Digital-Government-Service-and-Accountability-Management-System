@@ -1,10 +1,29 @@
-import { useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { motion } from 'framer-motion';
-import { submitIncident as submitIncidentAPI } from '../services/api';
+import { CircleMarker, MapContainer, TileLayer, Tooltip, useMapEvents } from 'react-leaflet';
+import { getIncidentAreas, submitIncident as submitIncidentAPI } from '../services/api';
+
+const DHAKA_CENTER = [23.8103, 90.4125];
+
+function distanceSquared(lat1, lng1, lat2, lng2) {
+  const dLat = lat1 - lat2;
+  const dLng = lng1 - lng2;
+  return dLat * dLat + dLng * dLng;
+}
+
+function LocationPicker({ onPick }) {
+  useMapEvents({
+    click(event) {
+      onPick(event.latlng.lat, event.latlng.lng);
+    },
+  });
+  return null;
+}
 
 function Incident() {
   const [formData, setFormData] = useState({
     category: '',
+    area: '',
     busId: '',
     routeId: '',
     latitude: '',
@@ -12,12 +31,54 @@ function Incident() {
     description: '',
   });
   const [media, setMedia] = useState([]);
+  const [areas, setAreas] = useState([]);
+  const [loadingAreas, setLoadingAreas] = useState(false);
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState('');
+  const [error, setError] = useState('');
+
+  const nearestAreaName = useMemo(() => {
+    const lat = Number(formData.latitude);
+    const lng = Number(formData.longitude);
+    if (!Number.isFinite(lat) || !Number.isFinite(lng) || !areas.length) return '';
+    let best = null;
+    for (const area of areas) {
+      const centerLat = Number(area?.center?.lat);
+      const centerLng = Number(area?.center?.lng);
+      if (!Number.isFinite(centerLat) || !Number.isFinite(centerLng)) continue;
+      const score = distanceSquared(lat, lng, centerLat, centerLng);
+      if (!best || score < best.score) {
+        best = { name: area.area, score };
+      }
+    }
+    return best?.name ?? '';
+  }, [areas, formData.latitude, formData.longitude]);
+
+  useEffect(() => {
+    const loadAreas = async () => {
+      setLoadingAreas(true);
+      try {
+        const { data } = await getIncidentAreas();
+        const list = Array.isArray(data?.areas) ? data.areas : [];
+        setAreas(list);
+      } catch (err) {
+        setError(err.response?.data?.message || err.message || 'Failed to load available areas');
+      } finally {
+        setLoadingAreas(false);
+      }
+    };
+    loadAreas();
+  }, []);
+
+  useEffect(() => {
+    if (nearestAreaName) {
+      setFormData((prev) => (prev.area === nearestAreaName ? prev : { ...prev, area: nearestAreaName }));
+    }
+  }, [nearestAreaName]);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-    setFormData(prev => ({ ...prev, [name]: value }));
+    setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
   const handleFileChange = (e) => {
@@ -28,7 +89,7 @@ function Incident() {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(
         (position) => {
-          setFormData(prev => ({
+          setFormData((prev) => ({
             ...prev,
             latitude: position.coords.latitude.toString(),
             longitude: position.coords.longitude.toString(),
@@ -44,6 +105,14 @@ function Incident() {
     }
   };
 
+  const handleMapPick = (lat, lng) => {
+    setFormData((prev) => ({
+      ...prev,
+      latitude: lat.toFixed(6),
+      longitude: lng.toFixed(6),
+    }));
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
@@ -51,10 +120,10 @@ function Incident() {
 
     try {
       const submitData = new FormData();
-      Object.keys(formData).forEach(key => {
+      Object.keys(formData).forEach((key) => {
         submitData.append(key, formData[key]);
       });
-      media.forEach(file => {
+      media.forEach((file) => {
         submitData.append('media', file);
       });
 
@@ -64,6 +133,7 @@ function Incident() {
       // Reset form
       setFormData({
         category: '',
+        area: '',
         busId: '',
         routeId: '',
         latitude: '',
@@ -100,13 +170,39 @@ function Incident() {
             required
             className="w-full px-3 py-2 bg-white/10 border border-white/20 rounded-lg text-white placeholder-slate-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
           >
-            <option value="">Select a category</option>
-            <option value="breakdown">Bus Breakdown</option>
-            <option value="unsafe_driving">Unsafe Driving</option>
-            <option value="overcrowding">Overcrowding</option>
-            <option value="road_blockage">Road Blockage</option>
-            <option value="other">Other</option>
+            <option className="bg-white text-slate-900" value="">Select a category</option>
+            <option className="bg-white text-slate-900" value="breakdown">Bus Breakdown</option>
+            <option className="bg-white text-slate-900" value="unsafe_driving">Unsafe Driving</option>
+            <option className="bg-white text-slate-900" value="overcrowding">Overcrowding</option>
+            <option className="bg-white text-slate-900" value="road_blockage">Road Blockage</option>
+            <option className="bg-white text-slate-900" value="other">Other</option>
           </select>
+        </div>
+
+        <div>
+          <label className="block text-sm font-medium text-slate-200 mb-2">
+            Area *
+          </label>
+          <select
+            name="area"
+            value={formData.area}
+            onChange={handleInputChange}
+            required
+            disabled={loadingAreas || !areas.length}
+            className="w-full px-3 py-2 bg-white/10 border border-white/20 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-blue-500 disabled:opacity-60"
+          >
+            <option className="bg-white text-slate-900" value="">
+              {loadingAreas ? 'Loading areas...' : 'Select area'}
+            </option>
+            {areas.map((a) => (
+              <option key={a.area} className="bg-white text-slate-900" value={a.area}>
+                {a.area}
+              </option>
+            ))}
+          </select>
+          <p className="mt-2 text-xs text-slate-300">
+            Auto-selects nearest area when coordinates are set (manual input, current location, or map click).
+          </p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -171,7 +267,34 @@ function Incident() {
               Get Current Location
             </button>
           </div>
+          <p className="mt-2 text-xs text-slate-300">
+            {nearestAreaName ? `Nearest area from coordinates: ${nearestAreaName}` : 'Set coordinates to auto-detect nearest area.'}
+          </p>
         </div>
+
+        <div className="h-[320px] overflow-hidden rounded-lg border border-white/20 bg-slate-900/70">
+          <MapContainer center={DHAKA_CENTER} zoom={12} className="h-full w-full" scrollWheelZoom>
+            <TileLayer
+              attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OSM</a>'
+              url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+            />
+            <LocationPicker onPick={handleMapPick} />
+            {Number.isFinite(Number(formData.latitude)) && Number.isFinite(Number(formData.longitude)) ? (
+              <CircleMarker
+                center={[Number(formData.latitude), Number(formData.longitude)]}
+                radius={7}
+                pathOptions={{ color: '#ef4444', fillColor: '#f87171', fillOpacity: 0.9 }}
+              >
+                <Tooltip>
+                  Selected incident point
+                </Tooltip>
+              </CircleMarker>
+            ) : null}
+          </MapContainer>
+        </div>
+        <p className="text-xs text-slate-300">
+          Click on the map to set incident coordinates.
+        </p>
 
         <div>
           <label className="block text-sm font-medium text-slate-200 mb-2">
@@ -218,6 +341,11 @@ function Incident() {
       {message && (
         <div className={`mt-6 p-4 rounded-lg ${message.includes('successfully') ? 'bg-green-600/20 border border-green-500' : 'bg-red-600/20 border border-red-500'}`}>
           <p className="text-white">{message}</p>
+        </div>
+      )}
+      {error && (
+        <div className="mt-3 rounded-lg border border-red-500/40 bg-red-600/20 p-3">
+          <p className="text-white">{error}</p>
         </div>
       )}
     </motion.section>
