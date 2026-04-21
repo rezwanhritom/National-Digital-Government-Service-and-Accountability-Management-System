@@ -49,3 +49,13 @@ rickshaw hit bus mirror,Science Lab,accident,LOW
 nothing serious small delay,Dhanmondi 32,other,LOW
 lost bag reported to driver,Mohammadpur,other,LOW
 door sensor fault delay,Demra,breakdown,LOW
+bus arrived late but service normal,Mirpur 2,other,MEDIUM
+ticket machine not working but bus moving,Agargaon,other,MEDIUM
+ac not cooling passengers uncomfortable,Banani,other,MEDIUM
+route announcement speaker silent,Motijheel,other,LOW
+conductor reported fare dispute no danger,Badda,other,LOW
+bus stopped briefly for mechanical check,Uttara House Building,other,MEDIUM
+driver braking harshly in traffic,Gulshan 2,reckless_driving,MEDIUM
+unsafe overtake near intersection,Rampura,reckless_driving,MEDIUM
+crowded but manageable standing load,Farmgate,overcrowding,MEDIUM
+lane blocked by delivery truck,Malibagh,road_blockage,MEDIUM

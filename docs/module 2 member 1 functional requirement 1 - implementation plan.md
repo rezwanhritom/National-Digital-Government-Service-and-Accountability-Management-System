@@ -45,17 +45,17 @@ This plan tracks only the above feature. It does not include unrelated modules/f
 
 ## Phase 2 - Classification quality and trust
 
-- `[ ]` Expand and rebalance incident training dataset.
-- `[ ]` Return classification confidence scores in API response.
-- `[ ]` Add confidence threshold handling (auto-route vs manual review).
-- `[ ]` Add error categories for ambiguous/insufficient input.
-- `[ ]` Add model quality checkpoints (precision/recall by category, severity accuracy).
+- `[x]` Expand and rebalance incident training dataset.
+- `[x]` Return classification confidence scores in API response.
+- `[x]` Add confidence threshold handling (auto-route vs manual review).
+- `[x]` Add error categories for ambiguous/insufficient input.
+- `[x]` Add model quality checkpoints (precision/recall by category, severity accuracy).
 
 **Exit criteria:** Classification quality is measurable, explainable, and review-safe.
 
 ---
 
-## Phase 3 - Operator workflow (real routing, not string only)
+## Phase 3 - Operator workflow (deferred intentionally)
 
 - `[ ]` Persist incidents in database with lifecycle states (`open`, `assigned`, `acknowledged`, `resolved`).
 - `[ ]` Map `assigned_to` to real operator/team queues.
@@ -67,7 +67,7 @@ This plan tracks only the above feature. It does not include unrelated modules/f
 
 ---
 
-## Phase 4 - User-facing and control-plane readiness
+## Phase 4 - UI/admin/auth integration (deferred intentionally)
 
 - `[ ]` Align report form and classify flow with one clear product journey.
 - `[ ]` Add admin rule configuration for authority mapping (category/severity/zone matrix).
@@ -93,10 +93,10 @@ This plan tracks only the above feature. It does not include unrelated modules/f
 ## Suggested implementation order
 
 1. Phase 1 (route/zone accuracy)
-2. Phase 3 (real operator workflow)
-3. Phase 2 (confidence + quality controls)
-4. Phase 5 (hardening + observability)
-5. Phase 4 (admin and UX refinements)
+2. Phase 2 (confidence + quality controls)
+3. Phase 5 (core hardening + observability)
+4. Phase 3 (operator workflow, when you start that track)
+5. Phase 4 (admin/auth/ui, when you choose to include it)
 
 ---
 
@@ -105,4 +105,6 @@ This plan tracks only the above feature. It does not include unrelated modules/f
 - 2026-04-21: Initial FR-only implementation plan created.
 - 2026-04-21: Phase 1 backend implementation started; geo input, nearest-stop context, zone-aware routing, and out-of-network validation added.
 - 2026-04-21: Incident report flow updated with allowed-area selection, nearest-area auto-resolution from coordinates, and map-based coordinate picking.
+- 2026-04-21: Phase 2 classify API — confidence passthrough, env thresholds, manual-review routing, ambiguous-input `error_code`.
+- 2026-04-21: Phase 2 training updated — dataset rebalancing by (category,severity) and saved precision/recall metrics JSON.
 
