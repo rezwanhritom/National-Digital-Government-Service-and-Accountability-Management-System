@@ -6,6 +6,8 @@ import Incident from './pages/Incident';
 import Planner from './pages/Planner';
 import CongestionMap from './pages/CongestionMap';
 import NearbyLive from './pages/NearbyLive';
+import FleetPerformance from './pages/FleetPerformance';
+import Observability from './pages/Observability';
 
 function App() {
   return (
@@ -18,6 +20,8 @@ function App() {
           <Route path="/incident" element={<Incident />} />
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/congestion" element={<CongestionMap />} />
+          <Route path="/fleet-performance" element={<FleetPerformance />} />
+          <Route path="/observability" element={<Observability />} />
           <Route path="*" element={<Navigate to="/" replace />} />
         </Route>
       </Routes>

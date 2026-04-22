@@ -9,6 +9,8 @@ const links = [
   { to: '/congestion', label: 'Congestion' },
   { to: '/incident', label: 'Incidents' },
   { to: '/dashboard', label: 'Dashboard' },
+  { to: '/fleet-performance', label: 'Fleet Performance' },
+  { to: '/observability', label: 'Observability' },
 ];
 
 function Navbar() {

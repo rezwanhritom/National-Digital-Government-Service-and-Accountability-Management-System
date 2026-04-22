@@ -7,6 +7,9 @@ import incidentRoutes from './routes/incidentRoutes.js';
 import congestionRoutes from './routes/congestionRoutes.js';
 import routeAdminRoutes from './routes/routeAdminRoutes.js';
 import mlOpsRoutes from './routes/mlOpsRoutes.js';
+import fleetRoutes from './routes/fleetRoutes.js';
+import observabilityRoutes from './routes/observabilityRoutes.js';
+import exportRoutes from './routes/exportRoutes.js';
 import { notFound, errorHandler } from './middleware/errorHandler.js';
 
 const app = express();
@@ -24,6 +27,9 @@ app.use('/api/incidents', incidentRoutes);
 app.use('/api/congestion', congestionRoutes);
 app.use('/api/admin/routes', routeAdminRoutes);
 app.use('/api/ml', mlOpsRoutes);
+app.use('/api/fleet', fleetRoutes);
+app.use('/api/observability', observabilityRoutes);
+app.use('/api/export', exportRoutes);
 
 app.get('/health', (req, res) => {
   res.json({ status: 'OK' });
