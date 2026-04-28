@@ -1,0 +1,87 @@
+{
+  "_meta": {
+    "note": "Phase-3 landmark seed. Entries can be refined with denser road-level points.",
+    "version": 2
+  },
+  "alif paribahan": {
+    "landmarks": [
+      { "name": "Shyamoli Signal", "lat": 23.7705, "lon": 90.3655 },
+      { "name": "Farmgate Overbridge", "lat": 23.7515, "lon": 90.3940 },
+      { "name": "Mohakhali Flyover", "lat": 23.7803, "lon": 90.4066 },
+      { "name": "Badda Link Road", "lat": 23.7807, "lon": 90.4256 },
+      { "name": "Banasree Main Gate", "lat": 23.7619, "lon": 90.4512 }
+    ]
+  },
+  "brtc": {
+    "landmarks": [
+      { "name": "Mirpur 10 Circle", "lat": 23.8067, "lon": 90.3685 },
+      { "name": "Agargaon ICT Crossing", "lat": 23.7789, "lon": 90.3847 },
+      { "name": "Shahbag Junction", "lat": 23.7395, "lon": 90.3944 },
+      { "name": "Paltan Signal", "lat": 23.7312, "lon": 90.4097 }
+    ]
+  },
+  "himachal": {
+    "landmarks": [
+      { "name": "Uttara Sector 10", "lat": 23.8791, "lon": 90.4014 },
+      { "name": "Airport Entry", "lat": 23.8514, "lon": 90.4053 },
+      { "name": "Banani Rail Gate", "lat": 23.7946, "lon": 90.4042 },
+      { "name": "Karwan Bazar Link", "lat": 23.7505, "lon": 90.4012 }
+    ]
+  },
+  "shatabdi": {
+    "landmarks": [
+      { "name": "Mirpur 2", "lat": 23.8012, "lon": 90.3598 },
+      { "name": "Shewrapara Crossing", "lat": 23.7924, "lon": 90.3751 },
+      { "name": "Farmgate", "lat": 23.7515, "lon": 90.3940 },
+      { "name": "Motijheel Entry", "lat": 23.7257, "lon": 90.4187 }
+    ]
+  },
+  "green dhaka": {
+    "landmarks": [
+      { "name": "Badda Main Road", "lat": 23.7807, "lon": 90.4256 },
+      { "name": "Gulshan 1 Circle", "lat": 23.7800, "lon": 90.4196 },
+      { "name": "Banani Kakoli", "lat": 23.7938, "lon": 90.4079 },
+      { "name": "Airport Corridor", "lat": 23.8514, "lon": 90.4053 }
+    ]
+  },
+  "projapati": {
+    "landmarks": [
+      { "name": "Mohammadpur Bus Stand", "lat": 23.7559, "lon": 90.3652 },
+      { "name": "Science Lab Junction", "lat": 23.7382, "lon": 90.3910 },
+      { "name": "Shahbag", "lat": 23.7395, "lon": 90.3944 },
+      { "name": "Motijheel", "lat": 23.7257, "lon": 90.4187 }
+    ]
+  },
+  "raja city": {
+    "landmarks": [
+      { "name": "Mirpur 10", "lat": 23.8067, "lon": 90.3685 },
+      { "name": "Karwan Bazar", "lat": 23.7505, "lon": 90.4012 },
+      { "name": "Mohakhali", "lat": 23.7803, "lon": 90.4066 },
+      { "name": "Airport", "lat": 23.8514, "lon": 90.4053 }
+    ]
+  },
+  "supravat": {
+    "landmarks": [
+      { "name": "Banasree Block", "lat": 23.7619, "lon": 90.4512 },
+      { "name": "Rampura Bridge", "lat": 23.7612, "lon": 90.4201 },
+      { "name": "Mouchak Signal", "lat": 23.7421, "lon": 90.4118 },
+      { "name": "Paltan", "lat": 23.7312, "lon": 90.4097 }
+    ]
+  },
+  "ababil": {
+    "landmarks": [
+      { "name": "House Building", "lat": 23.8732, "lon": 90.3981 },
+      { "name": "Kuril Flyover", "lat": 23.8211, "lon": 90.4240 },
+      { "name": "Notun Bazar", "lat": 23.7948, "lon": 90.4251 },
+      { "name": "Rampura", "lat": 23.7612, "lon": 90.4201 }
+    ]
+  },
+  "borak transport": {
+    "landmarks": [
+      { "name": "Demra Staff Quarter", "lat": 23.7024, "lon": 90.4785 },
+      { "name": "Banasree Main Gate", "lat": 23.7619, "lon": 90.4512 },
+      { "name": "Malibagh Railgate", "lat": 23.7498, "lon": 90.4124 },
+      { "name": "Farmgate", "lat": 23.7515, "lon": 90.3940 }
+    ]
+  }
+}

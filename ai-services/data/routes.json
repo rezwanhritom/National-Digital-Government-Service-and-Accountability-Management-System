@@ -123,5 +123,130 @@
       "Shahbag",
       "Farmgate"
     ]
+  },
+  {
+    "name": "Alif Paribahan (Return)",
+    "stops": [
+      "Demra",
+      "Banasree",
+      "Rampura",
+      "Badda",
+      "Gulshan 1",
+      "Mohakhali",
+      "Karwan Bazar",
+      "Farmgate",
+      "Agargaon",
+      "Shyamoli"
+    ]
+  },
+  {
+    "name": "BRTC (Return)",
+    "stops": [
+      "Motijheel",
+      "Paltan",
+      "Shahbag",
+      "Farmgate",
+      "Agargaon",
+      "Kazipara",
+      "Mirpur 10"
+    ]
+  },
+  {
+    "name": "Himachal (Return)",
+    "stops": [
+      "Mohammadpur",
+      "Dhanmondi 27",
+      "Farmgate",
+      "Karwan Bazar",
+      "Tejgaon",
+      "Mohakhali",
+      "Banani",
+      "Airport",
+      "Uttara Sector 10"
+    ]
+  },
+  {
+    "name": "Shatabdi (Return)",
+    "stops": [
+      "Motijheel",
+      "Paltan",
+      "Shahbag",
+      "Farmgate",
+      "Agargaon",
+      "Shewrapara",
+      "Mirpur 10",
+      "Mirpur 2"
+    ]
+  },
+  {
+    "name": "Green Dhaka (Return)",
+    "stops": [
+      "Uttara Sector 12",
+      "Airport",
+      "Kakoli",
+      "Banani",
+      "Gulshan 2",
+      "Gulshan 1",
+      "Badda"
+    ]
+  },
+  {
+    "name": "Projapati (Return)",
+    "stops": [
+      "Motijheel",
+      "Paltan",
+      "Shahbag",
+      "Science Lab",
+      "Dhanmondi 32",
+      "Mohammadpur"
+    ]
+  },
+  {
+    "name": "Raja City (Return)",
+    "stops": [
+      "Airport",
+      "Banani",
+      "Mohakhali",
+      "Karwan Bazar",
+      "Farmgate",
+      "Agargaon",
+      "Mirpur 10"
+    ]
+  },
+  {
+    "name": "Supravat (Return)",
+    "stops": [
+      "Motijheel",
+      "Paltan",
+      "Mouchak",
+      "Malibagh",
+      "Rampura",
+      "Banasree"
+    ]
+  },
+  {
+    "name": "Ababil (Return)",
+    "stops": [
+      "Rampura",
+      "Badda",
+      "Notun Bazar",
+      "Bashundhara",
+      "Kuril",
+      "Airport",
+      "Uttara House Building"
+    ]
+  },
+  {
+    "name": "Borak Transport (Return)",
+    "stops": [
+      "Farmgate",
+      "Shahbag",
+      "Paltan",
+      "Mouchak",
+      "Malibagh",
+      "Rampura",
+      "Banasree",
+      "Demra"
+    ]
   }
 ]

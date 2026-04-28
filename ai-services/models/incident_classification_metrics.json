@@ -1,0 +1,90 @@
+{
+  "dataset_rows_raw": 60,
+  "dataset_rows_balanced": 112,
+  "category_accuracy": 0.8928571428571429,
+  "severity_accuracy": 0.8928571428571429,
+  "category_report": {
+    "accident": {
+      "precision": 0.8571428571428571,
+      "recall": 1.0,
+      "f1-score": 0.9230769230769231,
+      "support": 6.0
+    },
+    "breakdown": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1-score": 1.0,
+      "support": 6.0
+    },
+    "other": {
+      "precision": 0.75,
+      "recall": 0.75,
+      "f1-score": 0.75,
+      "support": 4.0
+    },
+    "overcrowding": {
+      "precision": 1.0,
+      "recall": 0.75,
+      "f1-score": 0.8571428571428571,
+      "support": 4.0
+    },
+    "reckless_driving": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1-score": 1.0,
+      "support": 4.0
+    },
+    "road_blockage": {
+      "precision": 0.75,
+      "recall": 0.75,
+      "f1-score": 0.75,
+      "support": 4.0
+    },
+    "accuracy": 0.8928571428571429,
+    "macro avg": {
+      "precision": 0.8928571428571429,
+      "recall": 0.875,
+      "f1-score": 0.8800366300366301,
+      "support": 28.0
+    },
+    "weighted avg": {
+      "precision": 0.8979591836734694,
+      "recall": 0.8928571428571429,
+      "f1-score": 0.8916797488226059,
+      "support": 28.0
+    }
+  },
+  "severity_report": {
+    "HIGH": {
+      "precision": 0.9,
+      "recall": 0.9,
+      "f1-score": 0.9,
+      "support": 10.0
+    },
+    "LOW": {
+      "precision": 1.0,
+      "recall": 0.8333333333333334,
+      "f1-score": 0.9090909090909091,
+      "support": 6.0
+    },
+    "MEDIUM": {
+      "precision": 0.8461538461538461,
+      "recall": 0.9166666666666666,
+      "f1-score": 0.88,
+      "support": 12.0
+    },
+    "accuracy": 0.8928571428571429,
+    "macro avg": {
+      "precision": 0.9153846153846154,
+      "recall": 0.8833333333333333,
+      "f1-score": 0.8963636363636364,
+      "support": 28.0
+    },
+    "weighted avg": {
+      "precision": 0.8983516483516484,
+      "recall": 0.8928571428571429,
+      "f1-score": 0.8933766233766234,
+      "support": 28.0
+    }
+  }
+}

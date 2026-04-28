@@ -19,6 +19,7 @@ flowchart LR
     CO[congestion_train.csv]
   end
   subgraph scripts [Python scripts]
+    T0[augment_return_training_data.py]
     T1[train_eta.py]
     T2[train_crowd.py]
     T3[train_incidents.py]
@@ -30,6 +31,10 @@ flowchart LR
   end
   E --> T1
   C --> T2
+  E --> T0
+  C --> T0
+  T0 --> E
+  T0 --> C
   I --> T3
   IM --> T3
   CO --> T4
@@ -111,6 +116,7 @@ flowchart LR
 | [`ai-services/training/paths.py`](../ai-services/training/paths.py) | Re-exports for scripts |
 | [`ai-services/training/train_eta.py`](../ai-services/training/train_eta.py) | ETA |
 | [`ai-services/training/train_crowd.py`](../ai-services/training/train_crowd.py) | Crowding |
+| [`ai-services/training/augment_return_training_data.py`](../ai-services/training/augment_return_training_data.py) | Rebuilds ETA + crowd rows for `... (Return)` routes from `routes.json` before retraining |
 | [`ai-services/training/train_incidents.py`](../ai-services/training/train_incidents.py) | Incidents + impact |
 | [`ai-services/training/train_congestion.py`](../ai-services/training/train_congestion.py) | Congestion |
 | [`ai-services/scripts/generate_ml_datasets.py`](../ai-services/scripts/generate_ml_datasets.py) | Optional helper to generate datasets |

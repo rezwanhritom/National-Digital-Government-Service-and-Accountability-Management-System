@@ -5,6 +5,7 @@ import Home from "./pages/Home";
 import Incident from './pages/Incident';
 import Planner from './pages/Planner';
 import CongestionMap from './pages/CongestionMap';
+import NearbyLive from './pages/NearbyLive';
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
         <Route element={<Layout />}>
           <Route path="/" element={<Home />} />
           <Route path="/planner" element={<Planner />} />
+          <Route path="/nearby-live" element={<NearbyLive />} />
           <Route path="/incident" element={<Incident />} />
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/congestion" element={<CongestionMap />} />
