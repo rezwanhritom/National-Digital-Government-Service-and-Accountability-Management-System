@@ -10,6 +10,8 @@ import {
   updateIncidentStatus,
   getDashboardStats,
   getIncidentsHeatmap,
+  getIncidentMedia,
+  getOperatorPerformance,
 } from '../controllers/incidentsController.js';
 // import exampleRoutes from './exampleRoutes.js';
 
@@ -76,12 +78,14 @@ router.get('/buses/:bus_id/location', getBusLocation);
 // Incidents routes
 router.get('/incidents/areas', getIncidentAreas);
 router.post('/incidents/submit', upload.array('media', 5), submitIncident); // Allow up to 5 files
+router.get('/incidents/:id/media/:filename', getIncidentMedia);
 router.get('/incidents', getIncidents);
 router.patch('/incidents/:id/status', updateIncidentStatus);
 
 // Dashboard routes
 router.get('/dashboard/stats', getDashboardStats);
 router.get('/dashboard/heatmap', getIncidentsHeatmap);
+router.get('/dashboard/operator-performance', getOperatorPerformance);
 
 router.get('/', (req, res) => {
   res.json({ message: 'Dhaka Smart Transit API', docs: '/api/health' });

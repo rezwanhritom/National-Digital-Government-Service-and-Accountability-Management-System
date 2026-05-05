@@ -254,44 +254,102 @@ export const getDashboardStats = async (req, res, next) => {
       return res.json(mockStats);
     }
 
-    // Real database queries would go here
-    // For now, return mock data since DB is not connected
-    const mockStats = {
-      totalIncidents: 247,
-      resolvedIncidents: 189,
-      pendingIncidents: 58,
-      averageResolutionTime: 3.2,
-      incidentsByCategory: {
-        breakdown: 45,
-        unsafe_driving: 32,
-        overcrowding: 78,
-        road_blockage: 56,
-        other: 36
-      },
-      incidentsByStatus: {
-        pending: 58,
-        investigating: 23,
-        resolved: 166
-      },
-      incidentsByZone: {
-        "Dhaka North": 89,
-        "Dhaka South": 76,
-        "Dhaka Central": 82
-      },
-      resolutionTimeByZone: {
-        "Dhaka North": 2.8,
-        "Dhaka South": 3.5,
-        "Dhaka Central": 3.1
-      },
-      recentActivity: [
-        { date: "2026-04-20", incidents: 12, resolved: 8 },
-        { date: "2026-04-19", incidents: 15, resolved: 11 },
-        { date: "2026-04-18", incidents: 9, resolved: 7 },
-        { date: "2026-04-17", incidents: 14, resolved: 10 },
-        { date: "2026-04-16", incidents: 11, resolved: 9 }
-      ]
+    // Real database aggregation queries
+    // Total and resolved incidents
+    const totalIncidents = await Incident.countDocuments();
+    const resolvedIncidents = await Incident.countDocuments({ status: 'resolved' });
+    const pendingIncidents = await Incident.countDocuments({ status: 'pending' });
+
+    // Average resolution time (days)
+    const resolutionTimeStats = await Incident.aggregate([
+      { $match: { status: 'resolved', resolutionTimeHours: { $exists: true, $ne: null } } },
+      { $group: { _id: null, avgHours: { $avg: '$resolutionTimeHours' } } }
+    ]);
+    const averageResolutionTime = resolutionTimeStats.length > 0 
+      ? Math.round((resolutionTimeStats[0].avgHours / 24) * 10) / 10 
+      : 0;
+
+    // Incidents by category
+    const categoryStats = await Incident.aggregate([
+      { $group: { _id: '$category', count: { $sum: 1 } } },
+      { $sort: { _id: 1 } }
+    ]);
+    const incidentsByCategory = {};
+    categoryStats.forEach(cat => {
+      incidentsByCategory[cat._id] = cat.count;
+    });
+
+    // Incidents by status
+    const statusStats = await Incident.aggregate([
+      { $group: { _id: '$status', count: { $sum: 1 } } }
+    ]);
+    const incidentsByStatus = {};
+    statusStats.forEach(stat => {
+      incidentsByStatus[stat._id] = stat.count;
+    });
+
+    // Incidents by zone
+    const zoneStats = await Incident.aggregate([
+      { $group: { _id: '$area', count: { $sum: 1 } } },
+      { $sort: { _id: 1 } }
+    ]);
+    const incidentsByZone = {};
+    zoneStats.forEach(zone => {
+      incidentsByZone[zone._id] = zone.count;
+    });
+
+    // Resolution time by zone
+    const resolutionByZone = await Incident.aggregate([
+      { $match: { status: 'resolved', resolutionTimeHours: { $exists: true, $ne: null } } },
+      { $group: { _id: '$area', avgHours: { $avg: '$resolutionTimeHours' } } },
+      { $sort: { _id: 1 } }
+    ]);
+    const resolutionTimeByZone = {};
+    resolutionByZone.forEach(zone => {
+      resolutionTimeByZone[zone._id] = Math.round((zone.avgHours / 24) * 10) / 10;
+    });
+
+    // Recent activity (last 5 days)
+    const last5Days = [];
+    for (let i = 4; i >= 0; i--) {
+      const date = new Date();
+      date.setDate(date.getDate() - i);
+      const dateStr = date.toISOString().split('T')[0];
+      
+      const startOfDay = new Date(date);
+      startOfDay.setHours(0, 0, 0, 0);
+      const endOfDay = new Date(date);
+      endOfDay.setHours(23, 59, 59, 999);
+
+      const submittedCount = await Incident.countDocuments({
+        createdAt: { $gte: startOfDay, $lte: endOfDay }
+      });
+
+      const resolvedCount = await Incident.countDocuments({
+        status: 'resolved',
+        resolvedAt: { $gte: startOfDay, $lte: endOfDay }
+      });
+
+      last5Days.push({
+        date: dateStr,
+        incidents: submittedCount,
+        resolved: resolvedCount
+      });
+    }
+
+    const stats = {
+      totalIncidents,
+      resolvedIncidents,
+      pendingIncidents,
+      averageResolutionTime,
+      incidentsByCategory,
+      incidentsByStatus,
+      incidentsByZone,
+      resolutionTimeByZone,
+      recentActivity: last5Days
     };
-    res.json(mockStats);
+
+    res.json(stats);
   } catch (error) {
     next(error);
   }
@@ -316,8 +374,58 @@ export const getIncidentsHeatmap = async (req, res, next) => {
       return res.json(mockHeatmap);
     }
 
-    // Real aggregation query would go here
-    res.json([]);
+    // Real geospatial aggregation query
+    // Group incidents into heatmap cells based on geographic proximity
+    const heatmapData = await Incident.aggregate([
+      {
+        $match: {
+          location: { $exists: true },
+          status: { $ne: 'resolved' } // Only show active incidents
+        }
+      },
+      {
+        // Project coordinates and calculate grid cell
+        $project: {
+          coordinates: '$location.coordinates',
+          lat: { $arrayElemAt: ['$location.coordinates', 1] },
+          lng: { $arrayElemAt: ['$location.coordinates', 0] },
+          // Calculate grid cell (0.01 degree precision ~1km)
+          cellLat: {
+            $floor: { $multiply: [{ $arrayElemAt: ['$location.coordinates', 1] }, 100] }
+          },
+          cellLng: {
+            $floor: { $multiply: [{ $arrayElemAt: ['$location.coordinates', 0] }, 100] }
+          }
+        }
+      },
+      {
+        // Group by grid cell to create heatmap cells
+        $group: {
+          _id: {
+            cellLat: '$cellLat',
+            cellLng: '$cellLng'
+          },
+          count: { $sum: 1 },
+          avgLat: { $avg: '$lat' },
+          avgLng: { $avg: '$lng' }
+        }
+      },
+      {
+        // Sort by count descending
+        $sort: { count: -1 }
+      },
+      {
+        // Format output for heatmap
+        $project: {
+          _id: 0,
+          lat: '$avgLat',
+          lng: '$avgLng',
+          intensity: { $min: ['$count', 100] } // Cap intensity at 100 for visualization
+        }
+      }
+    ]);
+
+    res.json(heatmapData);
   } catch (error) {
     next(error);
   }
@@ -342,17 +450,170 @@ export const updateIncidentStatus = async (req, res, next) => {
       });
     }
 
-    const incident = await Incident.findByIdAndUpdate(
+    // Build update object based on status change
+    const updateObj = { status };
+    const now = new Date();
+
+    if (status === 'investigating') {
+      updateObj.investigatingAt = now;
+    } else if (status === 'resolved') {
+      updateObj.resolvedAt = now;
+      
+      // Calculate resolution time in hours
+      const incident = await Incident.findById(id);
+      if (incident && incident.submittedAt) {
+        const resolutionTimeMs = now - new Date(incident.submittedAt);
+        const resolutionTimeHours = Math.round(resolutionTimeMs / (1000 * 60 * 60) * 10) / 10;
+        updateObj.resolutionTimeHours = resolutionTimeHours;
+      }
+    }
+
+    const updatedIncident = await Incident.findByIdAndUpdate(
       id,
-      { status },
+      updateObj,
       { new: true, runValidators: true }
     );
 
+    if (!updatedIncident) {
+      return res.status(404).json({ message: 'Incident not found' });
+    }
+
+    res.json({ message: 'Incident updated', incident: updatedIncident });
+  } catch (error) {
+    next(error);
+  }
+};
+
+// Get incident media file
+export const getIncidentMedia = async (req, res, next) => {
+  try {
+    const { id, filename } = req.params;
+
+    // Check if MongoDB is connected
+    if (mongoose.connection.readyState !== 1) {
+      return res.status(503).json({ message: 'Database connection unavailable' });
+    }
+
+    // Find incident and verify media file exists
+    const incident = await Incident.findById(id);
     if (!incident) {
       return res.status(404).json({ message: 'Incident not found' });
     }
 
-    res.json({ message: 'Incident updated', incident });
+    // Check if file is in incident's media array
+    if (!incident.media.includes(filename) && !incident.media.some(m => m.includes(filename))) {
+      return res.status(403).json({ message: 'Media file not found for this incident' });
+    }
+
+    // Construct file path
+    const path = `./uploads/${filename}`;
+    
+    // Use sendFile to serve the file
+    res.sendFile(path, { root: process.cwd() }, (err) => {
+      if (err) {
+        console.error('Error sending file:', err);
+        if (!res.headersSent) {
+          res.status(404).json({ message: 'File not found' });
+        }
+      }
+    });
+  } catch (error) {
+    next(error);
+  }
+};
+
+// Get operator performance metrics
+export const getOperatorPerformance = async (req, res, next) => {
+  try {
+    // Check if MongoDB is connected
+    if (mongoose.connection.readyState !== 1) {
+      // Return mock operator data
+      const mockOperators = [
+        {
+          operator: 'DTCL',
+          assignedIncidents: 156,
+          resolvedIncidents: 142,
+          resolutionRate: 91,
+          avgResolutionTimeHours: 48,
+          avgResolutionTimeDays: 2.0
+        },
+        {
+          operator: 'Shyamoli',
+          assignedIncidents: 98,
+          resolvedIncidents: 85,
+          resolutionRate: 87,
+          avgResolutionTimeHours: 56,
+          avgResolutionTimeDays: 2.3
+        },
+        {
+          operator: 'Green Line',
+          assignedIncidents: 124,
+          resolvedIncidents: 110,
+          resolutionRate: 89,
+          avgResolutionTimeHours: 52,
+          avgResolutionTimeDays: 2.2
+        }
+      ];
+      return res.json(mockOperators);
+    }
+
+    // Real database aggregation for operator performance
+    const operatorStats = await Incident.aggregate([
+      {
+        $match: {
+          assignedTo: { $exists: true, $ne: null }
+        }
+      },
+      {
+        $group: {
+          _id: '$assignedTo',
+          assignedIncidents: { $sum: 1 },
+          resolvedIncidents: {
+            $sum: { $cond: [{ $eq: ['$status', 'resolved'] }, 1, 0] }
+          },
+          totalResolutionHours: {
+            $sum: { $cond: [{ $eq: ['$status', 'resolved'] }, '$resolutionTimeHours', 0] }
+          },
+          resolvedCount: {
+            $sum: { $cond: [{ $eq: ['$status', 'resolved'] }, 1, 0] }
+          }
+        }
+      },
+      {
+        $project: {
+          operator: '$_id',
+          _id: 0,
+          assignedIncidents: 1,
+          resolvedIncidents: 1,
+          resolutionRate: {
+            $round: [
+              { $multiply: [{ $divide: ['$resolvedIncidents', '$assignedIncidents'] }, 100] },
+              1
+            ]
+          },
+          avgResolutionTimeHours: {
+            $round: [
+              { $divide: ['$totalResolutionHours', { $cond: [{ $eq: ['$resolvedCount', 0] }, 1, '$resolvedCount'] }] },
+              1
+            ]
+          },
+          avgResolutionTimeDays: {
+            $round: [
+              { $divide: [
+                { $divide: ['$totalResolutionHours', { $cond: [{ $eq: ['$resolvedCount', 0] }, 1, '$resolvedCount'] }] },
+                24
+              ]},
+              1
+            ]
+          }
+        }
+      },
+      {
+        $sort: { resolutionRate: -1 }
+      }
+    ]);
+
+    res.json(operatorStats);
   } catch (error) {
     next(error);
   }

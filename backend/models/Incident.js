@@ -30,6 +30,15 @@ const incidentSchema = new mongoose.Schema(
     },
     submittedBy: { type: mongoose.Schema.Types.ObjectId, ref: 'User' }, // Optional, if user is logged in
     aiClassification: { type: Object }, // Store AI classification result
+    // Operator assignment & tracking
+    assignedTo: { type: String, trim: true }, // Operator/Authority ID
+    assignmentTime: { type: Date },
+    handledAt: { type: Date },
+    // Timeline tracking for SLA calculations
+    submittedAt: { type: Date, default: Date.now },
+    investigatingAt: { type: Date },
+    resolvedAt: { type: Date },
+    resolutionTimeHours: { type: Number }, // Calculated field
   },
   { timestamps: true }
 );

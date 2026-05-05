@@ -60,4 +60,8 @@ export const getIncidentsHeatmap = () => {
   return api.get('/dashboard/heatmap');
 };
 
+export const getOperatorPerformance = () => {
+  return api.get('/dashboard/operator-performance');
+};
+
 export default api;

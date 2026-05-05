@@ -1,10 +1,82 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
-import { getDashboardStats, getIncidentsHeatmap } from '../services/api';
+import { getDashboardStats, getIncidentsHeatmap, getOperatorPerformance } from '../services/api';
+import L from 'leaflet';
+import 'leaflet/dist/leaflet.css';
+import HeatmapLayer from 'leaflet-heatmap';
+
+// Heatmap Component
+const HeatmapComponent = ({ data }) => {
+  const mapRef = useRef(null);
+  const mapInstance = useRef(null);
+
+  useEffect(() => {
+    if (!mapRef.current || !data || data.length === 0) return;
+
+    // Initialize map if not already done
+    if (!mapInstance.current) {
+      mapInstance.current = L.map(mapRef.current).setView([23.8103, 90.4125], 12);
+
+      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '© OpenStreetMap contributors',
+        maxZoom: 19,
+      }).addTo(mapInstance.current);
+    }
+
+    // Convert data to heatmap format
+    const heatmapData = data.map(point => [
+      point.lat,
+      point.lng,
+      point.intensity
+    ]);
+
+    // Remove existing heatmap layer if any
+    mapInstance.current.eachLayer((layer) => {
+      if (layer instanceof L.HeatLayer) {
+        mapInstance.current.removeLayer(layer);
+      }
+    });
+
+    // Add new heatmap layer
+    if (heatmapData.length > 0) {
+      L.heatLayer(heatmapData, {
+        radius: 25,
+        blur: 15,
+        maxZoom: 17,
+        max: Math.max(...heatmapData.map(d => d[2])),
+        gradient: {
+          0.2: '#0041e3',
+          0.4: '#0081ff',
+          0.6: '#00ff00',
+          0.8: '#ffff00',
+          1.0: '#ff0000'
+        }
+      }).addTo(mapInstance.current);
+    }
+
+    return () => {
+      // Cleanup on unmount
+    };
+  }, [data]);
+
+  return (
+    <div
+      ref={mapRef}
+      style={{
+        width: '100%',
+        height: '400px',
+        borderRadius: '16px',
+        overflow: 'hidden',
+        border: '1px solid rgba(255, 255, 255, 0.3)'
+      }}
+    />
+  );
+};
 
 function Dashboard() {
   const [stats, setStats] = useState(null);
   const [heatmap, setHeatmap] = useState([]);
+  const [operatorPerformance, setOperatorPerformance] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
@@ -12,12 +84,14 @@ function Dashboard() {
     const fetchDashboardData = async () => {
       try {
         setLoading(true);
-        const [statsResponse, heatmapResponse] = await Promise.all([
+        const [statsResponse, heatmapResponse, operatorResponse] = await Promise.all([
           getDashboardStats(),
-          getIncidentsHeatmap()
+          getIncidentsHeatmap(),
+          getOperatorPerformance()
         ]);
         setStats(statsResponse.data);
         setHeatmap(heatmapResponse.data);
+        setOperatorPerformance(operatorResponse.data);
       } catch (err) {
         console.error('Error fetching dashboard data:', err);
         setError('Failed to load dashboard data');
@@ -225,11 +299,25 @@ function Dashboard() {
         </div>
       </motion.div>
 
+      {/* Heatmap */}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.4, delay: 0.85 }}
+        className="rounded-2xl border border-white/30 bg-white/20 p-6 backdrop-blur-xl shadow-lg"
+      >
+        <h3 className="text-xl font-semibold text-white mb-4">Incident Hotspot Map</h3>
+        <p className="text-sm text-slate-300 mb-4">
+          Heatmap showing incident concentration by geographic area (red = high concentration, blue = low)
+        </p>
+        <HeatmapComponent data={heatmap} />
+      </motion.div>
+
       {/* Zone Distribution */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.4, delay: 0.8 }}
+        transition={{ duration: 0.4, delay: 0.9 }}
         className="rounded-2xl border border-white/30 bg-white/20 p-6 backdrop-blur-xl shadow-lg"
       >
         <h3 className="text-xl font-semibold text-white mb-4">Incidents by Zone</h3>
@@ -249,11 +337,67 @@ function Dashboard() {
         </div>
       </motion.div>
 
+      {/* Operator Performance */}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.4, delay: 0.92 }}
+        className="rounded-2xl border border-white/30 bg-white/20 p-6 backdrop-blur-xl shadow-lg"
+      >
+        <h3 className="text-xl font-semibold text-white mb-4">Operator Performance & Accountability</h3>
+        <div className="overflow-x-auto">
+          <table className="w-full text-slate-200 text-sm">
+            <thead>
+              <tr className="border-b border-white/20">
+                <th className="text-left py-3 px-2">Operator</th>
+                <th className="text-center py-3 px-2">Assigned</th>
+                <th className="text-center py-3 px-2">Resolved</th>
+                <th className="text-center py-3 px-2">Resolution Rate</th>
+                <th className="text-center py-3 px-2">Avg Time</th>
+              </tr>
+            </thead>
+            <tbody>
+              {operatorPerformance?.map((operator, index) => (
+                <tr key={index} className="border-b border-white/10 hover:bg-white/10 transition-colors">
+                  <td className="py-3 px-2 font-semibold text-white">{operator.operator}</td>
+                  <td className="text-center py-3 px-2">{operator.assignedIncidents}</td>
+                  <td className="text-center py-3 px-2">
+                    <span className="bg-green-500/20 text-green-300 px-2 py-1 rounded">
+                      {operator.resolvedIncidents}
+                    </span>
+                  </td>
+                  <td className="text-center py-3 px-2">
+                    <div className="flex items-center justify-center space-x-1">
+                      <div className="w-16 bg-white/20 rounded-full h-2">
+                        <div
+                          className={`h-2 rounded-full ${
+                            operator.resolutionRate >= 90 ? 'bg-green-400' :
+                            operator.resolutionRate >= 80 ? 'bg-yellow-400' :
+                            'bg-red-400'
+                          }`}
+                          style={{ width: `${operator.resolutionRate}%` }}
+                        ></div>
+                      </div>
+                      <span className="w-10 text-right">{operator.resolutionRate}%</span>
+                    </div>
+                  </td>
+                  <td className="text-center py-3 px-2">
+                    <span className="bg-blue-500/20 text-blue-300 px-2 py-1 rounded">
+                      {operator.avgResolutionTimeDays}d
+                    </span>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </motion.div>
+
       {/* Footer Note */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ duration: 0.4, delay: 0.9 }}
+        transition={{ duration: 0.4, delay: 0.99 }}
         className="rounded-2xl border border-white/30 bg-white/20 p-6 backdrop-blur-xl shadow-lg"
       >
         <div className="text-center text-slate-300">
