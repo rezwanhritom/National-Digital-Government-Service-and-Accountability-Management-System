@@ -32,6 +32,7 @@ const incidentSchema = new mongoose.Schema(
     aiClassification: { type: Object }, // Store AI classification result
     // Operator assignment & tracking
     assignedTo: { type: String, trim: true }, // Operator/Authority ID
+    operatorNote: { type: String, trim: true, default: '' },
     assignmentTime: { type: Date },
     handledAt: { type: Date },
     // Timeline tracking for SLA calculations
@@ -45,6 +46,8 @@ const incidentSchema = new mongoose.Schema(
 
 // Index for geospatial queries
 incidentSchema.index({ location: '2dsphere' });
+incidentSchema.index({ submittedBy: 1, createdAt: -1 });
+incidentSchema.index({ status: 1, area: 1, createdAt: -1 });
 
 const Incident = mongoose.model('Incident', incidentSchema);
 export default Incident;

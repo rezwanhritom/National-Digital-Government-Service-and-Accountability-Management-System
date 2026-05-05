@@ -50,7 +50,17 @@ export const listModels = async (req, res, next) => {
 
 export const registerModel = async (req, res, next) => {
   try {
-    const { modelKey, version, metrics, notes, featureFlags, artifactPath, checksum } = req.body ?? {};
+    const {
+      modelKey,
+      version,
+      metrics,
+      notes,
+      featureFlags,
+      artifactPath,
+      checksum,
+      rolloutPercentage,
+      driftScore,
+    } = req.body ?? {};
     if (typeof modelKey !== 'string' || !modelKey.trim()) {
       return res.status(400).json({ message: 'modelKey is required' });
     }
@@ -66,6 +76,10 @@ export const registerModel = async (req, res, next) => {
       featureFlags: featureFlags && typeof featureFlags === 'object' ? featureFlags : {},
       artifactPath: typeof artifactPath === 'string' ? artifactPath.trim() : '',
       checksum: typeof checksum === 'string' ? checksum.trim() : '',
+      rolloutPercentage: Number.isFinite(Number(rolloutPercentage))
+        ? Math.max(0, Math.min(100, Number(rolloutPercentage)))
+        : 100,
+      driftScore: Number.isFinite(Number(driftScore)) ? Number(driftScore) : 0,
     });
     await AuditLog.create({
       action: 'ml_model.register',
@@ -86,6 +100,10 @@ export const activateModel = async (req, res, next) => {
   try {
     const doc = await ModelRegistry.findById(req.params.id);
     if (!doc) return res.status(404).json({ message: 'Model record not found' });
+    const requestedRollout = req.body?.rolloutPercentage;
+    if (Number.isFinite(Number(requestedRollout))) {
+      doc.rolloutPercentage = Math.max(0, Math.min(100, Number(requestedRollout)));
+    }
 
     await ModelRegistry.updateMany(
       { modelKey: doc.modelKey, status: 'active' },
@@ -161,6 +179,30 @@ export const rollbackModel = async (req, res, next) => {
     return res.json({ active: previous, archivedOthers: true });
   } catch (e) {
     next(e);
+  }
+};
+
+export const setRolloutPercentage = async (req, res, next) => {
+  try {
+    const rolloutPercentage = Number(req.body?.rolloutPercentage);
+    if (!Number.isFinite(rolloutPercentage)) {
+      return res.status(400).json({ message: 'rolloutPercentage must be a number' });
+    }
+    const doc = await ModelRegistry.findByIdAndUpdate(
+      req.params.id,
+      { rolloutPercentage: Math.max(0, Math.min(100, rolloutPercentage)) },
+      { new: true },
+    );
+    if (!doc) return res.status(404).json({ message: 'Model record not found' });
+    await AuditLog.create({
+      action: 'ml_model.rollout_update',
+      resourceType: 'ModelRegistry',
+      resourceId: String(doc._id),
+      meta: { modelKey: doc.modelKey, version: doc.version, rolloutPercentage: doc.rolloutPercentage },
+    });
+    return res.json(doc);
+  } catch (e) {
+    return next(e);
   }
 };
 

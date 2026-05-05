@@ -14,6 +14,8 @@ const modelRegistrySchema = new mongoose.Schema(
     featureFlags: { type: mongoose.Schema.Types.Mixed, default: {} },
     artifactPath: { type: String, default: '' },
     checksum: { type: String, default: '' },
+    rolloutPercentage: { type: Number, min: 0, max: 100, default: 100 },
+    driftScore: { type: Number, default: 0 },
   },
   { timestamps: true },
 );

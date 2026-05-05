@@ -7,7 +7,10 @@
   "scripts": {
     "start": "node server.js",
     "dev": "node --watch server.js",
-    "test:module3": "node --test tests/module3.test.mjs"
+    "test:module3": "node --test tests/module3.test.mjs",
+    "test:auth": "node --test tests/auth-rbac.test.mjs",
+    "role:assign": "node scripts/assignRole.js",
+    "user:create-privileged": "node scripts/createPrivilegedUser.js"
   },
   "keywords": [
     "express",
@@ -19,10 +22,12 @@
   "license": "ISC",
   "dependencies": {
     "axios": "^1.15.0",
+    "bcryptjs": "^3.0.3",
     "cors": "^2.8.6",
     "dotenv": "^16.6.1",
     "express": "^4.22.1",
     "json2csv": "^5.0.7",
+    "jsonwebtoken": "^9.0.3",
     "mongoose": "^8.23.0",
     "multer": "^2.1.1",
     "socket.io": "^4.8.3"

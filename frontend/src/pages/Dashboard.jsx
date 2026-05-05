@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 import { getDashboardStats, getIncidentsHeatmap, getOperatorPerformance } from '../services/api';
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
-import HeatmapLayer from 'leaflet-heatmap';
+import 'leaflet.heat';
 
 // Heatmap Component
 const HeatmapComponent = ({ data }) => {

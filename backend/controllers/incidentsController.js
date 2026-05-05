@@ -1,6 +1,7 @@
 import Incident from '../models/Incident.js';
 import { classifyIncident } from '../services/aiService.js';
 import mongoose from 'mongoose';
+import { ROLES } from '../constants/roles.js';
 import {
   buildIncidentAreasFromStops,
   deriveIncidentGeoContext,
@@ -185,6 +186,13 @@ export const getIncidents = async (req, res, next) => {
     }
 
     const query = {};
+    const currentRoles = Array.isArray(req.user?.roles) && req.user.roles.length > 0
+      ? req.user.roles
+      : [req.user?.role].filter(Boolean);
+    const commuterOnly = currentRoles.length === 1 && currentRoles[0] === ROLES.COMMUTER;
+    if (commuterOnly) {
+      query.submittedBy = req.user._id;
+    }
     if (status) query.status = status;
     if (category) query.category = category;
 
@@ -435,7 +443,7 @@ export const getIncidentsHeatmap = async (req, res, next) => {
 export const updateIncidentStatus = async (req, res, next) => {
   try {
     const { id } = req.params;
-    const { status } = req.body;
+    const { status, note } = req.body;
 
     // Check if MongoDB is connected
     if (mongoose.connection.readyState !== 1) {
@@ -452,6 +460,9 @@ export const updateIncidentStatus = async (req, res, next) => {
 
     // Build update object based on status change
     const updateObj = { status };
+    if (note && typeof note === 'string') {
+      updateObj.operatorNote = note;
+    }
     const now = new Date();
 
     if (status === 'investigating') {

@@ -2,6 +2,8 @@
 import alertService from '../services/alertService.js';
 import AlertRule from '../models/AlertRule.js';
 import AlertLog from '../models/AlertLog.js';
+import SystemPolicy from '../models/SystemPolicy.js';
+import { logAudit } from '../services/auditService.js';
 
 export const getSystemHealth = async (req, res, next) => {
   try {
@@ -192,5 +194,34 @@ export const getDashboardOverview = async (req, res, next) => {
     });
   } catch (error) {
     next(error);
+  }
+};
+
+export const getSystemPolicy = async (req, res, next) => {
+  try {
+    let policy = await SystemPolicy.findOne().sort({ createdAt: -1 });
+    if (!policy) {
+      policy = await SystemPolicy.create({});
+    }
+    return res.json({ success: true, data: policy });
+  } catch (error) {
+    return next(error);
+  }
+};
+
+export const upsertSystemPolicy = async (req, res, next) => {
+  try {
+    const current = await SystemPolicy.findOne().sort({ createdAt: -1 });
+    const policy = current
+      ? await SystemPolicy.findByIdAndUpdate(current._id, req.body ?? {}, { new: true, runValidators: true })
+      : await SystemPolicy.create(req.body ?? {});
+    await logAudit('system.policy_update', req, {
+      resourceType: 'SystemPolicy',
+      resourceId: String(policy._id),
+      meta: { retentionDays: policy.retentionDays, backupEnabled: policy.backupEnabled },
+    });
+    return res.json({ success: true, data: policy });
+  } catch (error) {
+    return next(error);
   }
 };

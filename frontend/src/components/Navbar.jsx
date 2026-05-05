@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Menu, X } from 'lucide-react';
 import { Link, NavLink } from 'react-router-dom';
+import { useAuth } from '../context/AuthContext';
 
 const links = [
   { to: '/', label: 'Home' },
@@ -15,6 +16,8 @@ const links = [
 
 function Navbar() {
   const [open, setOpen] = useState(false);
+  const { user, isAuthenticated, logout } = useAuth();
+  const isOpsUser = ['system_admin', 'transport_officer', 'ml_devops_engineer'].includes(user?.role);
 
   return (
     <nav className="fixed left-0 top-0 z-50 w-full max-w-full border-b border-white/10 bg-white/5 backdrop-blur-xl">
@@ -41,6 +44,20 @@ function Navbar() {
               {label}
             </NavLink>
           ))}
+          {isOpsUser ? (
+            <NavLink to="/admin" className="text-sm text-slate-300 transition hover:text-white">
+              Admin Console
+            </NavLink>
+          ) : null}
+          {isAuthenticated ? (
+            <button onClick={logout} className="text-sm text-slate-300 transition hover:text-white">
+              Logout
+            </button>
+          ) : (
+            <Link to="/login" className="text-sm text-slate-300 transition hover:text-white">
+              Login
+            </Link>
+          )}
           <Link
             to="/planner"
             className="rounded-lg bg-primary px-4 py-2 text-sm font-semibold text-white transition hover:bg-indigo-500"
@@ -77,6 +94,19 @@ function Navbar() {
                 {label}
               </NavLink>
             ))}
+            {isOpsUser ? (
+              <NavLink
+                to="/admin"
+                onClick={() => setOpen(false)}
+                className={({ isActive }) =>
+                  `rounded-lg px-3 py-3 text-sm text-slate-300 transition hover:bg-white/5 hover:text-white ${
+                    isActive ? 'bg-white/10 font-medium text-white' : ''
+                  }`
+                }
+              >
+                Admin Console
+              </NavLink>
+            ) : null}
             <Link
               to="/planner"
               onClick={() => setOpen(false)}

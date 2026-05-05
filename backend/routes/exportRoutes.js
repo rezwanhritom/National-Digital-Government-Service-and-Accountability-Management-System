@@ -8,8 +8,15 @@ import {
   validateExportRequest
 } from '../controllers/exportController.js';
 import rateLimit from '../middleware/rateLimitMiddleware.js';
+import { ROLES } from '../constants/roles.js';
+import { requireActiveAccount, requireAuth, requireRoles } from '../middleware/authMiddleware.js';
 
 const router = Router();
+router.use(
+  requireAuth,
+  requireActiveAccount,
+  requireRoles(ROLES.SYSTEM_ADMIN, ROLES.TRANSPORT_OFFICER, ROLES.ML_DEVOPS_ENGINEER),
+);
 
 // Apply rate limiting to all export routes
 router.use(rateLimit({

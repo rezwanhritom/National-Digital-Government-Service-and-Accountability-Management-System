@@ -1,5 +1,7 @@
 import { Router } from 'express';
 import multer from 'multer';
+import { ROLES } from '../constants/roles.js';
+import { requireActiveAccount, requireAuth, requireRoles } from '../middleware/authMiddleware.js';
 import { classifyIncident, getCrowding, getETA, getImpact } from '../services/aiService.js';
 import { getNearbyStops, searchStops } from '../controllers/stopsController.js';
 import { getUpcomingBuses, getLiveBusLocations, getBusLocation } from '../controllers/busesController.js';
@@ -77,15 +79,34 @@ router.get('/buses/:bus_id/location', getBusLocation);
 
 // Incidents routes
 router.get('/incidents/areas', getIncidentAreas);
-router.post('/incidents/submit', upload.array('media', 5), submitIncident); // Allow up to 5 files
+router.post(
+  '/incidents/submit',
+  requireAuth,
+  requireActiveAccount,
+  requireRoles(ROLES.COMMUTER, ROLES.BUS_OPERATOR, ROLES.TRANSPORT_OFFICER),
+  upload.array('media', 5),
+  submitIncident,
+); // Allow up to 5 files
 router.get('/incidents/:id/media/:filename', getIncidentMedia);
-router.get('/incidents', getIncidents);
-router.patch('/incidents/:id/status', updateIncidentStatus);
+router.get('/incidents', requireAuth, requireActiveAccount, getIncidents);
+router.patch(
+  '/incidents/:id/status',
+  requireAuth,
+  requireActiveAccount,
+  requireRoles(ROLES.BUS_OPERATOR, ROLES.TRANSPORT_OFFICER, ROLES.SYSTEM_ADMIN),
+  updateIncidentStatus,
+);
 
 // Dashboard routes
 router.get('/dashboard/stats', getDashboardStats);
 router.get('/dashboard/heatmap', getIncidentsHeatmap);
-router.get('/dashboard/operator-performance', getOperatorPerformance);
+router.get(
+  '/dashboard/operator-performance',
+  requireAuth,
+  requireActiveAccount,
+  requireRoles(ROLES.BUS_OPERATOR, ROLES.TRANSPORT_OFFICER, ROLES.SYSTEM_ADMIN),
+  getOperatorPerformance,
+);
 
 router.get('/', (req, res) => {
   res.json({ message: 'Dhaka Smart Transit API', docs: '/api/health' });

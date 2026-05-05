@@ -1,5 +1,6 @@
 import { Router } from 'express';
-import { requireAdminKey } from '../middleware/requireAdminKey.js';
+import { ROLES } from '../constants/roles.js';
+import { requireActiveAccount, requireAuth, requireRoles } from '../middleware/authMiddleware.js';
 import {
   createRoute,
   deleteRoute,
@@ -10,7 +11,11 @@ import {
 } from '../controllers/routeAdminController.js';
 
 const router = Router();
-router.use(requireAdminKey);
+router.use(
+  requireAuth,
+  requireActiveAccount,
+  requireRoles(ROLES.SYSTEM_ADMIN, ROLES.TRANSPORT_OFFICER),
+);
 
 router.get('/optimization-suggestions', getSuggestions);
 router.get('/', listRoutes);
