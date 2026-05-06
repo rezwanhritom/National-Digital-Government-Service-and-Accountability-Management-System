@@ -13349,3 +13349,146 @@
 {"bus_id":"brtc-(return)-08","route_name":"BRTC (Return)","loop_index":17,"started_at_hhmm":"22:54","ended_at_hhmm":"23:53","duration_min":59,"service_day":"2026-05-05"}
 {"bus_id":"shatabdi-14","route_name":"Shatabdi","loop_index":19,"started_at_hhmm":"23:02","ended_at_hhmm":"23:54","duration_min":52,"service_day":"2026-05-05"}
 {"bus_id":"supravat-07","route_name":"Supravat","loop_index":24,"started_at_hhmm":"23:14","ended_at_hhmm":"23:58","duration_min":44,"service_day":"2026-05-05"}
+{"bus_id":"borak-transport-(return)-01","route_name":"Borak Transport (Return)","loop_index":1,"started_at_hhmm":"05:00","ended_at_hhmm":"05:45","duration_min":45,"service_day":"2026-05-05"}
+{"bus_id":"supravat-01","route_name":"Supravat","loop_index":1,"started_at_hhmm":"05:12","ended_at_hhmm":"05:52","duration_min":40,"service_day":"2026-05-05"}
+{"bus_id":"supravat-01","route_name":"Supravat","loop_index":1,"started_at_hhmm":"05:12","ended_at_hhmm":"05:52","duration_min":40,"service_day":"2026-05-06"}
+{"bus_id":"borak-transport-(return)-01","route_name":"Borak Transport (Return)","loop_index":1,"started_at_hhmm":"05:00","ended_at_hhmm":"05:45","duration_min":45,"service_day":"2026-05-06"}
+{"bus_id":"projapati-01","route_name":"Projapati","loop_index":1,"started_at_hhmm":"05:17","ended_at_hhmm":"06:01","duration_min":44,"service_day":"2026-05-06"}
+{"bus_id":"projapati-02","route_name":"Projapati","loop_index":1,"started_at_hhmm":"05:15","ended_at_hhmm":"06:03","duration_min":48,"service_day":"2026-05-06"}
+{"bus_id":"shatabdi-(return)-01","route_name":"Shatabdi (Return)","loop_index":1,"started_at_hhmm":"05:20","ended_at_hhmm":"06:05","duration_min":45,"service_day":"2026-05-06"}
+{"bus_id":"projapati-(return)-04","route_name":"Projapati (Return)","loop_index":1,"started_at_hhmm":"05:31","ended_at_hhmm":"06:07","duration_min":36,"service_day":"2026-05-06"}
+{"bus_id":"brtc-02","route_name":"BRTC","loop_index":1,"started_at_hhmm":"05:15","ended_at_hhmm":"06:11","duration_min":56,"service_day":"2026-05-06"}
+{"bus_id":"projapati-(return)-01","route_name":"Projapati (Return)","loop_index":1,"started_at_hhmm":"05:40","ended_at_hhmm":"06:16","duration_min":36,"service_day":"2026-05-06"}
+{"bus_id":"ababil-03","route_name":"Ababil","loop_index":1,"started_at_hhmm":"05:24","ended_at_hhmm":"06:19","duration_min":55,"service_day":"2026-05-06"}
+{"bus_id":"ababil-01","route_name":"Ababil","loop_index":1,"started_at_hhmm":"05:25","ended_at_hhmm":"06:21","duration_min":56,"service_day":"2026-05-06"}
+{"bus_id":"green-dhaka-(return)-02","route_name":"Green Dhaka (Return)","loop_index":1,"started_at_hhmm":"05:39","ended_at_hhmm":"06:21","duration_min":42,"service_day":"2026-05-06"}
+{"bus_id":"alif-paribahan-01","route_name":"Alif Paribahan","loop_index":1,"started_at_hhmm":"05:05","ended_at_hhmm":"06:22","duration_min":77,"service_day":"2026-05-06"}
+{"bus_id":"raja-city-02","route_name":"Raja City","loop_index":1,"started_at_hhmm":"05:44","ended_at_hhmm":"06:24","duration_min":40,"service_day":"2026-05-06"}
+{"bus_id":"shatabdi-04","route_name":"Shatabdi","loop_index":1,"started_at_hhmm":"05:36","ended_at_hhmm":"06:28","duration_min":52,"service_day":"2026-05-06"}
+{"bus_id":"supravat-(return)-05","route_name":"Supravat (Return)","loop_index":1,"started_at_hhmm":"05:48","ended_at_hhmm":"06:28","duration_min":40,"service_day":"2026-05-06"}
+{"bus_id":"green-dhaka-02","route_name":"Green Dhaka","loop_index":1,"started_at_hhmm":"05:33","ended_at_hhmm":"06:30","duration_min":57,"service_day":"2026-05-06"}
+{"bus_id":"borak-transport-(return)-01","route_name":"Borak Transport (Return)","loop_index":2,"started_at_hhmm":"05:45","ended_at_hhmm":"06:30","duration_min":45,"service_day":"2026-05-06"}
+{"bus_id":"supravat-01","route_name":"Supravat","loop_index":2,"started_at_hhmm":"05:52","ended_at_hhmm":"06:32","duration_min":40,"service_day":"2026-05-06"}
+{"bus_id":"shatabdi-(return)-03","route_name":"Shatabdi (Return)","loop_index":1,"started_at_hhmm":"05:22","ended_at_hhmm":"06:34","duration_min":72,"service_day":"2026-05-06"}
+{"bus_id":"raja-city-(return)-01","route_name":"Raja City (Return)","loop_index":1,"started_at_hhmm":"05:50","ended_at_hhmm":"06:36","duration_min":46,"service_day":"2026-05-06"}
+{"bus_id":"supravat-(return)-04","route_name":"Supravat (Return)","loop_index":1,"started_at_hhmm":"05:51","ended_at_hhmm":"06:36","duration_min":45,"service_day":"2026-05-06"}
+{"bus_id":"raja-city-03","route_name":"Raja City","loop_index":1,"started_at_hhmm":"05:41","ended_at_hhmm":"06:37","duration_min":56,"service_day":"2026-05-06"}
+{"bus_id":"raja-city-(return)-03","route_name":"Raja City (Return)","loop_index":1,"started_at_hhmm":"05:39","ended_at_hhmm":"06:38","duration_min":59,"service_day":"2026-05-06"}
+{"bus_id":"raja-city-(return)-05","route_name":"Raja City (Return)","loop_index":1,"started_at_hhmm":"06:00","ended_at_hhmm":"06:38","duration_min":38,"service_day":"2026-05-06"}
+{"bus_id":"projapati-(return)-05","route_name":"Projapati (Return)","loop_index":1,"started_at_hhmm":"05:50","ended_at_hhmm":"06:40","duration_min":50,"service_day":"2026-05-06"}
+{"bus_id":"raja-city-(return)-04","route_name":"Raja City (Return)","loop_index":1,"started_at_hhmm":"05:45","ended_at_hhmm":"06:41","duration_min":56,"service_day":"2026-05-06"}
+{"bus_id":"projapati-(return)-04","route_name":"Projapati (Return)","loop_index":2,"started_at_hhmm":"06:07","ended_at_hhmm":"06:43","duration_min":36,"service_day":"2026-05-06"}
+{"bus_id":"projapati-01","route_name":"Projapati","loop_index":2,"started_at_hhmm":"06:01","ended_at_hhmm":"06:45","duration_min":44,"service_day":"2026-05-06"}
+{"bus_id":"shatabdi-(return)-04","route_name":"Shatabdi (Return)","loop_index":1,"started_at_hhmm":"05:48","ended_at_hhmm":"06:45","duration_min":57,"service_day":"2026-05-06"}
+{"bus_id":"brtc-(return)-02","route_name":"BRTC (Return)","loop_index":1,"started_at_hhmm":"05:57","ended_at_hhmm":"06:47","duration_min":50,"service_day":"2026-05-06"}
+{"bus_id":"shatabdi-(return)-01","route_name":"Shatabdi (Return)","loop_index":2,"started_at_hhmm":"06:05","ended_at_hhmm":"06:50","duration_min":45,"service_day":"2026-05-06"}
+{"bus_id":"projapati-02","route_name":"Projapati","loop_index":2,"started_at_hhmm":"06:03","ended_at_hhmm":"06:51","duration_min":48,"service_day":"2026-05-06"}
+{"bus_id":"brtc-(return)-07","route_name":"BRTC (Return)","loop_index":1,"started_at_hhmm":"06:08","ended_at_hhmm":"06:51","duration_min":43,"service_day":"2026-05-06"}
+{"bus_id":"projapati-(return)-01","route_name":"Projapati (Return)","loop_index":2,"started_at_hhmm":"06:16","ended_at_hhmm":"06:52","duration_min":36,"service_day":"2026-05-06"}
+{"bus_id":"raja-city-(return)-07","route_name":"Raja City (Return)","loop_index":1,"started_at_hhmm":"06:05","ended_at_hhmm":"06:52","duration_min":47,"service_day":"2026-05-06"}
+{"bus_id":"ababil-(return)-01","route_name":"Ababil (Return)","loop_index":1,"started_at_hhmm":"06:10","ended_at_hhmm":"06:52","duration_min":42,"service_day":"2026-05-06"}
+{"bus_id":"supravat-04","route_name":"Supravat","loop_index":1,"started_at_hhmm":"06:05","ended_at_hhmm":"06:53","duration_min":48,"service_day":"2026-05-06"}
+{"bus_id":"shatabdi-05","route_name":"Shatabdi","loop_index":1,"started_at_hhmm":"05:53","ended_at_hhmm":"06:55","duration_min":62,"service_day":"2026-05-06"}
+{"bus_id":"borak-transport-02","route_name":"Borak Transport","loop_index":1,"started_at_hhmm":"05:51","ended_at_hhmm":"06:56","duration_min":65,"service_day":"2026-05-06"}
+{"bus_id":"raja-city-01","route_name":"Raja City","loop_index":1,"started_at_hhmm":"05:51","ended_at_hhmm":"06:57","duration_min":66,"service_day":"2026-05-06"}
+{"bus_id":"supravat-03","route_name":"Supravat","loop_index":1,"started_at_hhmm":"06:05","ended_at_hhmm":"06:58","duration_min":53,"service_day":"2026-05-06"}
+{"bus_id":"supravat-05","route_name":"Supravat","loop_index":1,"started_at_hhmm":"06:11","ended_at_hhmm":"06:58","duration_min":47,"service_day":"2026-05-06"}
+{"bus_id":"brtc-03","route_name":"BRTC","loop_index":1,"started_at_hhmm":"06:14","ended_at_hhmm":"07:01","duration_min":47,"service_day":"2026-05-06"}
+{"bus_id":"borak-transport-03","route_name":"Borak Transport","loop_index":1,"started_at_hhmm":"05:55","ended_at_hhmm":"07:02","duration_min":67,"service_day":"2026-05-06"}
+{"bus_id":"green-dhaka-(return)-02","route_name":"Green Dhaka (Return)","loop_index":2,"started_at_hhmm":"06:21","ended_at_hhmm":"07:03","duration_min":42,"service_day":"2026-05-06"}
+{"bus_id":"raja-city-02","route_name":"Raja City","loop_index":2,"started_at_hhmm":"06:24","ended_at_hhmm":"07:04","duration_min":40,"service_day":"2026-05-06"}
+{"bus_id":"alif-paribahan-(return)-01","route_name":"Alif Paribahan (Return)","loop_index":1,"started_at_hhmm":"05:41","ended_at_hhmm":"07:04","duration_min":83,"service_day":"2026-05-06"}
+{"bus_id":"himachal-01","route_name":"Himachal","loop_index":1,"started_at_hhmm":"05:57","ended_at_hhmm":"07:05","duration_min":68,"service_day":"2026-05-06"}
+{"bus_id":"green-dhaka-(return)-01","route_name":"Green Dhaka (Return)","loop_index":1,"started_at_hhmm":"06:11","ended_at_hhmm":"07:05","duration_min":54,"service_day":"2026-05-06"}
+{"bus_id":"borak-transport-(return)-02","route_name":"Borak Transport (Return)","loop_index":1,"started_at_hhmm":"05:58","ended_at_hhmm":"07:05","duration_min":67,"service_day":"2026-05-06"}
+{"bus_id":"supravat-07","route_name":"Supravat","loop_index":1,"started_at_hhmm":"06:22","ended_at_hhmm":"07:06","duration_min":44,"service_day":"2026-05-06"}
+{"bus_id":"himachal-(return)-04","route_name":"Himachal (Return)","loop_index":1,"started_at_hhmm":"05:59","ended_at_hhmm":"07:06","duration_min":67,"service_day":"2026-05-06"}
+{"bus_id":"alif-paribahan-04","route_name":"Alif Paribahan","loop_index":1,"started_at_hhmm":"05:55","ended_at_hhmm":"07:07","duration_min":72,"service_day":"2026-05-06"}
+{"bus_id":"brtc-02","route_name":"BRTC","loop_index":2,"started_at_hhmm":"06:11","ended_at_hhmm":"07:07","duration_min":56,"service_day":"2026-05-06"}
+{"bus_id":"himachal-03","route_name":"Himachal","loop_index":1,"started_at_hhmm":"06:00","ended_at_hhmm":"07:07","duration_min":67,"service_day":"2026-05-06"}
+{"bus_id":"shatabdi-01","route_name":"Shatabdi","loop_index":1,"started_at_hhmm":"05:55","ended_at_hhmm":"07:07","duration_min":72,"service_day":"2026-05-06"}
+{"bus_id":"projapati-09","route_name":"Projapati","loop_index":1,"started_at_hhmm":"06:24","ended_at_hhmm":"07:07","duration_min":43,"service_day":"2026-05-06"}
+{"bus_id":"green-dhaka-01","route_name":"Green Dhaka","loop_index":1,"started_at_hhmm":"06:22","ended_at_hhmm":"07:08","duration_min":46,"service_day":"2026-05-06"}
+{"bus_id":"himachal-(return)-03","route_name":"Himachal (Return)","loop_index":1,"started_at_hhmm":"05:59","ended_at_hhmm":"07:08","duration_min":69,"service_day":"2026-05-06"}
+{"bus_id":"supravat-(return)-05","route_name":"Supravat (Return)","loop_index":2,"started_at_hhmm":"06:28","ended_at_hhmm":"07:08","duration_min":40,"service_day":"2026-05-06"}
+{"bus_id":"green-dhaka-(return)-03","route_name":"Green Dhaka (Return)","loop_index":1,"started_at_hhmm":"05:57","ended_at_hhmm":"07:09","duration_min":72,"service_day":"2026-05-06"}
+{"bus_id":"alif-paribahan-02","route_name":"Alif Paribahan","loop_index":1,"started_at_hhmm":"05:47","ended_at_hhmm":"07:10","duration_min":83,"service_day":"2026-05-06"}
+{"bus_id":"supravat-06","route_name":"Supravat","loop_index":1,"started_at_hhmm":"06:14","ended_at_hhmm":"07:10","duration_min":56,"service_day":"2026-05-06"}
+{"bus_id":"supravat-01","route_name":"Supravat","loop_index":3,"started_at_hhmm":"06:32","ended_at_hhmm":"07:12","duration_min":40,"service_day":"2026-05-06"}
+{"bus_id":"himachal-07","route_name":"Himachal","loop_index":1,"started_at_hhmm":"06:10","ended_at_hhmm":"07:13","duration_min":63,"service_day":"2026-05-06"}
+{"bus_id":"shatabdi-08","route_name":"Shatabdi","loop_index":1,"started_at_hhmm":"06:17","ended_at_hhmm":"07:13","duration_min":56,"service_day":"2026-05-06"}
+{"bus_id":"projapati-06","route_name":"Projapati","loop_index":1,"started_at_hhmm":"06:14","ended_at_hhmm":"07:13","duration_min":59,"service_day":"2026-05-06"}
+{"bus_id":"alif-paribahan-01","route_name":"Alif Paribahan","loop_index":1,"started_at_hhmm":"05:05","ended_at_hhmm":"06:22","duration_min":77,"service_day":"2026-05-06"}
+{"bus_id":"alif-paribahan-02","route_name":"Alif Paribahan","loop_index":1,"started_at_hhmm":"05:47","ended_at_hhmm":"07:10","duration_min":83,"service_day":"2026-05-06"}
+{"bus_id":"alif-paribahan-04","route_name":"Alif Paribahan","loop_index":1,"started_at_hhmm":"05:55","ended_at_hhmm":"07:07","duration_min":72,"service_day":"2026-05-06"}
+{"bus_id":"brtc-02","route_name":"BRTC","loop_index":1,"started_at_hhmm":"05:15","ended_at_hhmm":"06:11","duration_min":56,"service_day":"2026-05-06"}
+{"bus_id":"brtc-02","route_name":"BRTC","loop_index":2,"started_at_hhmm":"06:11","ended_at_hhmm":"07:07","duration_min":56,"service_day":"2026-05-06"}
+{"bus_id":"brtc-03","route_name":"BRTC","loop_index":1,"started_at_hhmm":"06:14","ended_at_hhmm":"07:01","duration_min":47,"service_day":"2026-05-06"}
+{"bus_id":"himachal-01","route_name":"Himachal","loop_index":1,"started_at_hhmm":"05:57","ended_at_hhmm":"07:05","duration_min":68,"service_day":"2026-05-06"}
+{"bus_id":"himachal-03","route_name":"Himachal","loop_index":1,"started_at_hhmm":"06:00","ended_at_hhmm":"07:07","duration_min":67,"service_day":"2026-05-06"}
+{"bus_id":"himachal-07","route_name":"Himachal","loop_index":1,"started_at_hhmm":"06:10","ended_at_hhmm":"07:13","duration_min":63,"service_day":"2026-05-06"}
+{"bus_id":"shatabdi-01","route_name":"Shatabdi","loop_index":1,"started_at_hhmm":"05:55","ended_at_hhmm":"07:07","duration_min":72,"service_day":"2026-05-06"}
+{"bus_id":"shatabdi-04","route_name":"Shatabdi","loop_index":1,"started_at_hhmm":"05:36","ended_at_hhmm":"06:28","duration_min":52,"service_day":"2026-05-06"}
+{"bus_id":"shatabdi-05","route_name":"Shatabdi","loop_index":1,"started_at_hhmm":"05:53","ended_at_hhmm":"06:55","duration_min":62,"service_day":"2026-05-06"}
+{"bus_id":"shatabdi-08","route_name":"Shatabdi","loop_index":1,"started_at_hhmm":"06:17","ended_at_hhmm":"07:13","duration_min":56,"service_day":"2026-05-06"}
+{"bus_id":"green-dhaka-01","route_name":"Green Dhaka","loop_index":1,"started_at_hhmm":"06:22","ended_at_hhmm":"07:08","duration_min":46,"service_day":"2026-05-06"}
+{"bus_id":"green-dhaka-02","route_name":"Green Dhaka","loop_index":1,"started_at_hhmm":"05:33","ended_at_hhmm":"06:30","duration_min":57,"service_day":"2026-05-06"}
+{"bus_id":"projapati-01","route_name":"Projapati","loop_index":1,"started_at_hhmm":"05:17","ended_at_hhmm":"06:01","duration_min":44,"service_day":"2026-05-06"}
+{"bus_id":"projapati-01","route_name":"Projapati","loop_index":2,"started_at_hhmm":"06:01","ended_at_hhmm":"06:45","duration_min":44,"service_day":"2026-05-06"}
+{"bus_id":"projapati-02","route_name":"Projapati","loop_index":1,"started_at_hhmm":"05:15","ended_at_hhmm":"06:03","duration_min":48,"service_day":"2026-05-06"}
+{"bus_id":"projapati-02","route_name":"Projapati","loop_index":2,"started_at_hhmm":"06:03","ended_at_hhmm":"06:51","duration_min":48,"service_day":"2026-05-06"}
+{"bus_id":"projapati-06","route_name":"Projapati","loop_index":1,"started_at_hhmm":"06:14","ended_at_hhmm":"07:13","duration_min":59,"service_day":"2026-05-06"}
+{"bus_id":"projapati-09","route_name":"Projapati","loop_index":1,"started_at_hhmm":"06:24","ended_at_hhmm":"07:07","duration_min":43,"service_day":"2026-05-06"}
+{"bus_id":"raja-city-01","route_name":"Raja City","loop_index":1,"started_at_hhmm":"05:51","ended_at_hhmm":"06:57","duration_min":66,"service_day":"2026-05-06"}
+{"bus_id":"raja-city-02","route_name":"Raja City","loop_index":1,"started_at_hhmm":"05:44","ended_at_hhmm":"06:24","duration_min":40,"service_day":"2026-05-06"}
+{"bus_id":"raja-city-02","route_name":"Raja City","loop_index":2,"started_at_hhmm":"06:24","ended_at_hhmm":"07:04","duration_min":40,"service_day":"2026-05-06"}
+{"bus_id":"raja-city-03","route_name":"Raja City","loop_index":1,"started_at_hhmm":"05:41","ended_at_hhmm":"06:37","duration_min":56,"service_day":"2026-05-06"}
+{"bus_id":"supravat-01","route_name":"Supravat","loop_index":1,"started_at_hhmm":"05:12","ended_at_hhmm":"05:52","duration_min":40,"service_day":"2026-05-06"}
+{"bus_id":"supravat-01","route_name":"Supravat","loop_index":2,"started_at_hhmm":"05:52","ended_at_hhmm":"06:32","duration_min":40,"service_day":"2026-05-06"}
+{"bus_id":"supravat-01","route_name":"Supravat","loop_index":3,"started_at_hhmm":"06:32","ended_at_hhmm":"07:12","duration_min":40,"service_day":"2026-05-06"}
+{"bus_id":"supravat-03","route_name":"Supravat","loop_index":1,"started_at_hhmm":"06:05","ended_at_hhmm":"06:58","duration_min":53,"service_day":"2026-05-06"}
+{"bus_id":"supravat-04","route_name":"Supravat","loop_index":1,"started_at_hhmm":"06:05","ended_at_hhmm":"06:53","duration_min":48,"service_day":"2026-05-06"}
+{"bus_id":"supravat-05","route_name":"Supravat","loop_index":1,"started_at_hhmm":"06:11","ended_at_hhmm":"06:58","duration_min":47,"service_day":"2026-05-06"}
+{"bus_id":"supravat-06","route_name":"Supravat","loop_index":1,"started_at_hhmm":"06:14","ended_at_hhmm":"07:10","duration_min":56,"service_day":"2026-05-06"}
+{"bus_id":"supravat-07","route_name":"Supravat","loop_index":1,"started_at_hhmm":"06:22","ended_at_hhmm":"07:06","duration_min":44,"service_day":"2026-05-06"}
+{"bus_id":"ababil-01","route_name":"Ababil","loop_index":1,"started_at_hhmm":"05:25","ended_at_hhmm":"06:21","duration_min":56,"service_day":"2026-05-06"}
+{"bus_id":"ababil-03","route_name":"Ababil","loop_index":1,"started_at_hhmm":"05:24","ended_at_hhmm":"06:19","duration_min":55,"service_day":"2026-05-06"}
+{"bus_id":"borak-transport-02","route_name":"Borak Transport","loop_index":1,"started_at_hhmm":"05:51","ended_at_hhmm":"06:56","duration_min":65,"service_day":"2026-05-06"}
+{"bus_id":"borak-transport-03","route_name":"Borak Transport","loop_index":1,"started_at_hhmm":"05:55","ended_at_hhmm":"07:02","duration_min":67,"service_day":"2026-05-06"}
+{"bus_id":"alif-paribahan-(return)-01","route_name":"Alif Paribahan (Return)","loop_index":1,"started_at_hhmm":"05:41","ended_at_hhmm":"07:04","duration_min":83,"service_day":"2026-05-06"}
+{"bus_id":"brtc-(return)-02","route_name":"BRTC (Return)","loop_index":1,"started_at_hhmm":"05:57","ended_at_hhmm":"06:47","duration_min":50,"service_day":"2026-05-06"}
+{"bus_id":"brtc-(return)-07","route_name":"BRTC (Return)","loop_index":1,"started_at_hhmm":"06:08","ended_at_hhmm":"06:51","duration_min":43,"service_day":"2026-05-06"}
+{"bus_id":"himachal-(return)-03","route_name":"Himachal (Return)","loop_index":1,"started_at_hhmm":"05:59","ended_at_hhmm":"07:08","duration_min":69,"service_day":"2026-05-06"}
+{"bus_id":"himachal-(return)-04","route_name":"Himachal (Return)","loop_index":1,"started_at_hhmm":"05:59","ended_at_hhmm":"07:06","duration_min":67,"service_day":"2026-05-06"}
+{"bus_id":"shatabdi-(return)-01","route_name":"Shatabdi (Return)","loop_index":1,"started_at_hhmm":"05:20","ended_at_hhmm":"06:05","duration_min":45,"service_day":"2026-05-06"}
+{"bus_id":"shatabdi-(return)-01","route_name":"Shatabdi (Return)","loop_index":2,"started_at_hhmm":"06:05","ended_at_hhmm":"06:50","duration_min":45,"service_day":"2026-05-06"}
+{"bus_id":"shatabdi-(return)-03","route_name":"Shatabdi (Return)","loop_index":1,"started_at_hhmm":"05:22","ended_at_hhmm":"06:34","duration_min":72,"service_day":"2026-05-06"}
+{"bus_id":"shatabdi-(return)-04","route_name":"Shatabdi (Return)","loop_index":1,"started_at_hhmm":"05:48","ended_at_hhmm":"06:45","duration_min":57,"service_day":"2026-05-06"}
+{"bus_id":"green-dhaka-(return)-01","route_name":"Green Dhaka (Return)","loop_index":1,"started_at_hhmm":"06:11","ended_at_hhmm":"07:05","duration_min":54,"service_day":"2026-05-06"}
+{"bus_id":"green-dhaka-(return)-02","route_name":"Green Dhaka (Return)","loop_index":1,"started_at_hhmm":"05:39","ended_at_hhmm":"06:21","duration_min":42,"service_day":"2026-05-06"}
+{"bus_id":"green-dhaka-(return)-02","route_name":"Green Dhaka (Return)","loop_index":2,"started_at_hhmm":"06:21","ended_at_hhmm":"07:03","duration_min":42,"service_day":"2026-05-06"}
+{"bus_id":"green-dhaka-(return)-03","route_name":"Green Dhaka (Return)","loop_index":1,"started_at_hhmm":"05:57","ended_at_hhmm":"07:09","duration_min":72,"service_day":"2026-05-06"}
+{"bus_id":"projapati-(return)-01","route_name":"Projapati (Return)","loop_index":1,"started_at_hhmm":"05:40","ended_at_hhmm":"06:16","duration_min":36,"service_day":"2026-05-06"}
+{"bus_id":"projapati-(return)-01","route_name":"Projapati (Return)","loop_index":2,"started_at_hhmm":"06:16","ended_at_hhmm":"06:52","duration_min":36,"service_day":"2026-05-06"}
+{"bus_id":"projapati-(return)-04","route_name":"Projapati (Return)","loop_index":1,"started_at_hhmm":"05:31","ended_at_hhmm":"06:07","duration_min":36,"service_day":"2026-05-06"}
+{"bus_id":"projapati-(return)-04","route_name":"Projapati (Return)","loop_index":2,"started_at_hhmm":"06:07","ended_at_hhmm":"06:43","duration_min":36,"service_day":"2026-05-06"}
+{"bus_id":"projapati-(return)-05","route_name":"Projapati (Return)","loop_index":1,"started_at_hhmm":"05:50","ended_at_hhmm":"06:40","duration_min":50,"service_day":"2026-05-06"}
+{"bus_id":"raja-city-(return)-01","route_name":"Raja City (Return)","loop_index":1,"started_at_hhmm":"05:50","ended_at_hhmm":"06:36","duration_min":46,"service_day":"2026-05-06"}
+{"bus_id":"raja-city-(return)-03","route_name":"Raja City (Return)","loop_index":1,"started_at_hhmm":"05:39","ended_at_hhmm":"06:38","duration_min":59,"service_day":"2026-05-06"}
+{"bus_id":"raja-city-(return)-04","route_name":"Raja City (Return)","loop_index":1,"started_at_hhmm":"05:45","ended_at_hhmm":"06:41","duration_min":56,"service_day":"2026-05-06"}
+{"bus_id":"raja-city-(return)-05","route_name":"Raja City (Return)","loop_index":1,"started_at_hhmm":"06:00","ended_at_hhmm":"06:38","duration_min":38,"service_day":"2026-05-06"}
+{"bus_id":"raja-city-(return)-07","route_name":"Raja City (Return)","loop_index":1,"started_at_hhmm":"06:05","ended_at_hhmm":"06:52","duration_min":47,"service_day":"2026-05-06"}
+{"bus_id":"supravat-(return)-04","route_name":"Supravat (Return)","loop_index":1,"started_at_hhmm":"05:51","ended_at_hhmm":"06:36","duration_min":45,"service_day":"2026-05-06"}
+{"bus_id":"supravat-(return)-05","route_name":"Supravat (Return)","loop_index":1,"started_at_hhmm":"05:48","ended_at_hhmm":"06:28","duration_min":40,"service_day":"2026-05-06"}
+{"bus_id":"supravat-(return)-05","route_name":"Supravat (Return)","loop_index":2,"started_at_hhmm":"06:28","ended_at_hhmm":"07:08","duration_min":40,"service_day":"2026-05-06"}
+{"bus_id":"ababil-(return)-01","route_name":"Ababil (Return)","loop_index":1,"started_at_hhmm":"06:10","ended_at_hhmm":"06:52","duration_min":42,"service_day":"2026-05-06"}
+{"bus_id":"borak-transport-(return)-01","route_name":"Borak Transport (Return)","loop_index":1,"started_at_hhmm":"05:00","ended_at_hhmm":"05:45","duration_min":45,"service_day":"2026-05-06"}
+{"bus_id":"borak-transport-(return)-01","route_name":"Borak Transport (Return)","loop_index":2,"started_at_hhmm":"05:45","ended_at_hhmm":"06:30","duration_min":45,"service_day":"2026-05-06"}
+{"bus_id":"borak-transport-(return)-02","route_name":"Borak Transport (Return)","loop_index":1,"started_at_hhmm":"05:58","ended_at_hhmm":"07:05","duration_min":67,"service_day":"2026-05-06"}
+{"bus_id":"himachal-06","route_name":"Himachal","loop_index":1,"started_at_hhmm":"05:54","ended_at_hhmm":"07:14","duration_min":80,"service_day":"2026-05-06"}
+{"bus_id":"ababil-03","route_name":"Ababil","loop_index":2,"started_at_hhmm":"06:19","ended_at_hhmm":"07:14","duration_min":55,"service_day":"2026-05-06"}
+{"bus_id":"shatabdi-03","route_name":"Shatabdi","loop_index":1,"started_at_hhmm":"06:17","ended_at_hhmm":"07:15","duration_min":58,"service_day":"2026-05-06"}
+{"bus_id":"borak-transport-04","route_name":"Borak Transport","loop_index":1,"started_at_hhmm":"06:23","ended_at_hhmm":"07:15","duration_min":52,"service_day":"2026-05-06"}
+{"bus_id":"brtc-(return)-01","route_name":"BRTC (Return)","loop_index":1,"started_at_hhmm":"06:30","ended_at_hhmm":"07:15","duration_min":45,"service_day":"2026-05-06"}
+{"bus_id":"supravat-(return)-02","route_name":"Supravat (Return)","loop_index":1,"started_at_hhmm":"06:37","ended_at_hhmm":"07:15","duration_min":38,"service_day":"2026-05-06"}
+{"bus_id":"borak-transport-(return)-01","route_name":"Borak Transport (Return)","loop_index":3,"started_at_hhmm":"06:30","ended_at_hhmm":"07:15","duration_min":45,"service_day":"2026-05-06"}
